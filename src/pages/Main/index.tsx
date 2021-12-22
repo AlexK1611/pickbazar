@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import TopSection from './components/TopSection'
 
 const Main = () => {
     return (
-        <div>
-            <Link to='/product'>to product</Link>
-        </div>
+        <>
+           <TopSection/>
+        </>
+        
     )
 }
 

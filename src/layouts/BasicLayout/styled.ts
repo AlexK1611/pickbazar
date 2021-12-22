@@ -47,4 +47,5 @@ export const SearchInput = styled.input`
 export const Content = styled.div`
     background-color: #F7F7F7;
     height: calc(100vh - 70px);
+    overflow-y: auto;
 `
