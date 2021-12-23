@@ -1,4 +1,5 @@
 export interface SubmitButtonProps {
     title: string,
-    onClick: () => void
+    onClick: () => void,
+    isWide?: boolean
 }
