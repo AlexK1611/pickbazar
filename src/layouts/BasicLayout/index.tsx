@@ -14,6 +14,8 @@ import {
     UserProfilePic,
     Content
 } from './styled'
+// types
+import { RootReducer } from '../../redux/rootReducer'
 // components
 import { Toast } from '../../components/Toast'
 import { SubmitButton } from '../../components/SubmitButton'
@@ -23,8 +25,8 @@ import { ProfileDropdown } from './components/ProfileDropdown'
 import { ReactComponent as Logo } from '../../assets/images/logo.svg'
 
 export const BasicLayout: FC = ({ children }) => {
-    const user = useSelector((state: any) => state.auth.user)
-    const authMessage = useSelector((state: any) => state.auth.authMessage)
+    const user = useSelector((state: RootReducer) => state.auth.user)
+    const authMessage = useSelector((state: RootReducer) => state.auth.authMessage)
     const dispatch = useDispatch()
 
     const [isAuthModal, handleAuthModal] = useState(false)

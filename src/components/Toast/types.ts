@@ -1,4 +1,4 @@
 export interface ToastProps {
     isToast: boolean,
-    message: string
+    message: string | null
 }
