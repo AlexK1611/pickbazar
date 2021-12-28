@@ -44,6 +44,18 @@ export const SearchInput = styled.input`
     color: rgba(13, 17, 54, 0.5);
 `
 
+export const ProfileDropdownContainer = styled.div`
+    position: relative;
+`
+
+export const UserProfilePic = styled.div`
+    width: 38px;
+    height: 38px;
+    border-radius: 19px;
+    background-color: indianred;
+    cursor: pointer;
+`
+
 export const Content = styled.div`
     background-color: #F7F7F7;
     height: calc(100vh - 70px);
