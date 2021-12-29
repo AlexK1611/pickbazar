@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux'
-import { axiosInstance } from '../../axios/instance'
+import { axiosInstance } from '../../config/api'
 import { CouponsActionTypes } from './types'
 
 export const couponsRequest = () => {

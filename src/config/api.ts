@@ -1,12 +1,10 @@
 import axios from 'axios'
 import { AuthActionTypes } from '../redux/auth/types'
+import { store } from '../redux/store'
 
 export const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_HOST,
-    timeout: 1000,
-    headers: {
-        'Content-Type': 'application/json'
-    }
+    timeout: 1000
 })
 
 export const interceptor = (store: any) => {
@@ -21,3 +19,4 @@ export const interceptor = (store: any) => {
         }
     )
 }
+interceptor(store)
