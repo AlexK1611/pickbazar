@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import mainGroceryBg from '../../../../assets/images/mainGrocery.svg'
+import mainGroceryBg from '../../../../assets/images/mainGrocery.png'
 
 export const TopSectionContainer = styled.section`
     display: flex;
