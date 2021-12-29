@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { GlobalStyles } from './assets/styles/global'
+import { GlobalStyles } from './ui-kit/global'
 import { BasicLayout } from './layouts/BasicLayout'
 import Main from './pages/Main'
 import Product from './pages/Product'
