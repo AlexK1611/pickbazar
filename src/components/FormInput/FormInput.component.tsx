@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { InputComponent } from './FormInput.styles'
 import { FormInputProps } from './FormInput.types'
 
-export const FormInput = ({
+export const FormInput: FC<FormInputProps> = ({
     placeholder,
     type,
     onChange,
     ref,
     ...rest
-}: FormInputProps) => {
+}) => {
     return (
         <InputComponent
             placeholder={placeholder}

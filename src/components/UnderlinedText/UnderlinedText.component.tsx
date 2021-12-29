@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { TextComponent } from './UnderlinedText.styles'
 import { UnderlinedTextProps } from './UnderlinedText.types'
 
-export const UnderlinedText = ({
+export const UnderlinedText: FC<UnderlinedTextProps> = ({
     text,
     onClick,
     color,
     fontSize
-}: UnderlinedTextProps) => {
+}) => {
     return (
         <TextComponent
             color={color}

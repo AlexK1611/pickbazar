@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { useDispatch } from 'react-redux'
 import { signOutRequest } from '../../../../redux/auth/actions'
 import { OptionItem, OptionItemText, OptionsList } from './ProfileMenu.styles'
 import { ProfileMenuProps } from './ProfileMenu.types'
 
-export const ProfileMenu = ({ isMenu }: ProfileMenuProps ) => {
+export const ProfileMenu: FC<ProfileMenuProps> = ({ isMenu }) => {
     const dispatch = useDispatch()
     if (!isMenu) return null
 

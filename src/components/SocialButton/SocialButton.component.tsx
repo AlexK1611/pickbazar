@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { ButtonContainer, ButtonTitle } from './SocialButton.styles'
 import { SocialButtonProps } from './SocialButton.types'
 
-export const SocialButton = ({ icon, bgColor, title }: SocialButtonProps) => {
+export const SocialButton: FC<SocialButtonProps> = ({ icon, bgColor, title }) => {
     return (
         <ButtonContainer bgColor={bgColor}>
             {icon}

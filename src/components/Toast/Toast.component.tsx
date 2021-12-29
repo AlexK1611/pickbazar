@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 import ReactDOM from 'react-dom'
 import { ToastComponent, ToastMessage } from './Toast.styles'
 import { ToastProps } from './Toast.types'
 
-export const Toast = ({ isToast, message }: ToastProps) => {
+export const Toast: FC<ToastProps> = ({ isToast, message }) => {
     if (!isToast) return null
 
     const portalNode = document.getElementById('portal')!

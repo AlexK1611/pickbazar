@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 // redux
 import { useDispatch } from 'react-redux'
 import { signInRequest } from '../../../../redux/auth/actions'
@@ -31,7 +31,7 @@ import { UnderlinedText } from '../../../../components/UnderlinedText/Underlined
 import { ReactComponent as FacebookIcon } from '../../../../assets/icons/facebook.svg'
 import { ReactComponent as GoogleIcon } from '../../../../assets/icons/google.svg'
 
-export const SignIn = ({ switchToRegister }: SignInProps) => {
+export const SignIn: FC<SignInProps> = ({ switchToRegister }) => {
     const dispatch = useDispatch()
     const {
         register,

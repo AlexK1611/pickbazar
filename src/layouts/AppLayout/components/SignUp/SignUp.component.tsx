@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 // redux
 import { useDispatch } from 'react-redux'
 import { signUpRequest } from '../../../../redux/auth/actions'
@@ -32,7 +32,7 @@ import { FormTooltip } from '../../../../components/FormTooltip/FormTooltip.comp
 import { ReactComponent as FacebookIcon } from '../../../../assets/icons/facebook.svg'
 import { ReactComponent as GoogleIcon } from '../../../../assets/icons/google.svg'
 
-export const SignUp = ({ switchToLogin }: SignUpProps) => {
+export const SignUp: FC<SignUpProps> = ({ switchToLogin }) => {
     const dispatch = useDispatch()
     const {
         register,

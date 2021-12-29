@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import {
     ModalBackground,
@@ -10,7 +10,7 @@ import { SignUp } from '../SignUp/SignUp.component'
 import { AuthModalProps } from './AuthModal.types'
 import { ReactComponent as CloseIcon } from '../../../../assets/icons/close.svg'
 
-export const AuthModal = ({ isModal, closeModal }: AuthModalProps) => {
+export const AuthModal: FC<AuthModalProps> = ({ isModal, closeModal }) => {
     const [formType, setFormType] = useState('register')
 
     useEffect(() => {
