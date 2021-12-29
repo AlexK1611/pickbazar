@@ -6,7 +6,7 @@ import {
     TopSectionSubTitle
 } from './styled'
 
-const TopSection = () => {
+export const TopSection = () => {
     return (
         <TopSectionContainer>
             <TopSectionInfo>
@@ -20,5 +20,3 @@ const TopSection = () => {
         </TopSectionContainer>
     )
 }
-
-export default TopSection

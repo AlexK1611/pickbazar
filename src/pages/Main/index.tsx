@@ -1,10 +1,12 @@
 import React from 'react'
-import TopSection from './components/TopSection'
+import { Coupons } from './components/Coupons'
+import { TopSection } from './components/TopSection'
 
 const Main = () => {
     return (
         <>
-           <TopSection/>
+           <TopSection />
+           <Coupons />
         </>
         
     )
