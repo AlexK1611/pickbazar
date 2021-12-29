@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { handleGradientColors } from './helpers'
+import { handleGradientColors } from './Coupons.helpers'
 
 export const CouponsContainer = styled.div`
     padding: 55px;

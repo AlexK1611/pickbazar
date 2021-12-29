@@ -12,9 +12,9 @@ import {
     CouponDescription,
     CouponButton,
     CouponButtonTitle
-} from './styled'
+} from './Coupons.styles'
 import { RootReducer } from '../../../../redux/rootReducer'
-import { CouponItemProps } from './types'
+import { CouponItemProps } from './Coupons.types'
 
 export const Coupons = () => {
     const coupons: CouponItemProps[] | null = useSelector((state: RootReducer) => state.coupons.coupons)

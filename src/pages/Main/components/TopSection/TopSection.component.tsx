@@ -4,7 +4,7 @@ import {
     TopSectionInfo,
     TopSectionTitle,
     TopSectionSubTitle
-} from './styled'
+} from './TopSection.styles'
 
 export const TopSection = () => {
     return (

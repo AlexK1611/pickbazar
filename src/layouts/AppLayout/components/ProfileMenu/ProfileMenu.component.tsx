@@ -1,12 +1,12 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { signOutRequest } from '../../../../redux/auth/actions'
-import { OptionItem, OptionItemText, OptionsList } from './styled'
-import { ProfileDropdownProps } from './types'
+import { OptionItem, OptionItemText, OptionsList } from './ProfileMenu.styles'
+import { ProfileMenuProps } from './ProfileMenu.types'
 
-export const ProfileDropdown = ({ isDropdown }: ProfileDropdownProps ) => {
+export const ProfileMenu = ({ isMenu }: ProfileMenuProps ) => {
     const dispatch = useDispatch()
-    if (!isDropdown) return null
+    if (!isMenu) return null
 
     const profileOptions = [
         {

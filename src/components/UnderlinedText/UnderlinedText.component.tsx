@@ -1,6 +1,6 @@
 import React from 'react'
-import { TextComponent } from './styled'
-import { UnderlinedTextProps } from './types'
+import { TextComponent } from './UnderlinedText.styles'
+import { UnderlinedTextProps } from './UnderlinedText.types'
 
 export const UnderlinedText = ({
     text,

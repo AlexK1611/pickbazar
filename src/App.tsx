@@ -1,22 +1,20 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GlobalStyles } from './ui-kit/global'
-import { BasicLayout } from './layouts/BasicLayout'
-import Main from './pages/Main'
-import Product from './pages/Product'
-import NotFound from './pages/NotFound'
+import { AppLayout } from './layouts/AppLayout/AppLayout.component'
+import { Main } from './pages/Main/Main.page'
+import { NotFound } from './pages/NotFound/NotFound.page'
 
 const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyles />
-      <BasicLayout>
+      <AppLayout>
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/product' element={<Product />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
-      </BasicLayout>
+      </AppLayout>
     </BrowserRouter>
   )
 }

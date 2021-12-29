@@ -1,6 +1,6 @@
 import React from 'react'
-import { SubtitleComponent } from './styled'
-import { FormSubtitleProps } from './types'
+import { SubtitleComponent } from './FormSubtitle.styles'
+import { FormSubtitleProps } from './FormSubtitle.types'
 
 export const FormSubtitle = ({ subtitle }: FormSubtitleProps) => {
     return (

@@ -1,6 +1,6 @@
 import React from 'react'
-import { ButtonContainer, ButtonTitle } from './styled'
-import { SocialButtonProps } from './types'
+import { ButtonContainer, ButtonTitle } from './SocialButton.styles'
+import { SocialButtonProps } from './SocialButton.types'
 
 export const SocialButton = ({ icon, bgColor, title }: SocialButtonProps) => {
     return (

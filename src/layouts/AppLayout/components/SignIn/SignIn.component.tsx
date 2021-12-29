@@ -1,7 +1,7 @@
 import React from 'react'
 // redux
 import { useDispatch } from 'react-redux'
-import { signUpRequest } from '../../../../redux/auth/actions'
+import { signInRequest } from '../../../../redux/auth/actions'
 // libraries
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -9,30 +9,29 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import {
     Form,
     FormFieldContainer,
-    TermsAndConditions,
     Splitter,
     SplitterLine,
     SplitterText,
     SocialButtons,
-    LoginProposal
-} from './styled'
+    RegisterProposal
+} from './SignIn.styles'
 // types
-import { SignUpFormProps } from './types'
+import { SignInProps } from './SignIn.types'
 // helpers
-import { signUpValidation, signUpFields } from './helpers'
+import { signInValidation, signInFields } from './SignIn.helpers'
 // common components
-import { FormSubtitle } from '../../../../components/FormSubtitle'
-import { FormTitle } from '../../../../components/FormTitle'
-import { Input } from '../../../../components/Input'
-import { SubmitButton } from '../../../../components/SubmitButton'
-import { SocialButton } from '../../../../components/SocialButton'
-import { UnderlinedText } from '../../../../components/UnderlinedText'
-import { FormTooltip } from '../../../../components/FormTooltip'
+import { FormSubtitle } from '../../../../components/FormSubtitle/FormSubtitle.component'
+import { FormTitle } from '../../../../components/FormTitle/FormTitle.component'
+import { FormInput } from '../../../../components/FormInput/FormInput.component'
+import { SubmitButton } from '../../../../components/SubmitButton/SubmitButton.component'
+import { SocialButton } from '../../../../components/SocialButton/SocialButton.component'
+import { FormTooltip } from '../../../../components/FormTooltip/FormTooltip.component'
+import { UnderlinedText } from '../../../../components/UnderlinedText/UnderlinedText.component'
 // icons
 import { ReactComponent as FacebookIcon } from '../../../../assets/icons/facebook.svg'
 import { ReactComponent as GoogleIcon } from '../../../../assets/icons/google.svg'
 
-export const SignUpForm = ({ switchToLogin }: SignUpFormProps) => {
+export const SignIn = ({ switchToRegister }: SignInProps) => {
     const dispatch = useDispatch()
     const {
         register,
@@ -41,20 +40,20 @@ export const SignUpForm = ({ switchToLogin }: SignUpFormProps) => {
         formState: { errors }
     } = useForm({
         mode: 'all',
-        resolver: yupResolver(signUpValidation)
+        resolver: yupResolver(signInValidation)
     })
     const onSubmit = (data: { [key: string]: string }) => {
-        dispatch(signUpRequest(data))
+        dispatch(signInRequest(data))
     }
 
     return (
         <>
-            <FormTitle title='Sign Up'/>
-            <FormSubtitle subtitle='Welcome!'/>
+            <FormTitle title='Welcome Back'/>
+            <FormSubtitle subtitle='Login with your email & password'/>
             <Form>
-                {signUpFields.map(field => (
-                    <FormFieldContainer key={`signUp-${field.name}`}>
-                        <Input
+                {signInFields.map(field => (
+                    <FormFieldContainer key={`signIn-${field.name}`}>
+                        <FormInput
                             {...register(field.name)}
                             placeholder={field.placeholder}
                             type={field.type}
@@ -63,15 +62,8 @@ export const SignUpForm = ({ switchToLogin }: SignUpFormProps) => {
                         />
                         {errors[field.name] && <FormTooltip text={errors[field.name].message}/>}
                     </FormFieldContainer>
+                    
                 ))}
-                <TermsAndConditions>
-                    By signing up, you agree to Pickbazar's
-                    <UnderlinedText
-                        text='Terms & Condtion'
-                        color='#4286F4'
-                        fontSize='13px'
-                    />
-                </TermsAndConditions>
                 <SubmitButton
                     isWide={true}
                     title='Submit'
@@ -94,15 +86,15 @@ export const SignUpForm = ({ switchToLogin }: SignUpFormProps) => {
                     title='Continue With Google'
                 />
             </SocialButtons>
-            <LoginProposal>
-                Already have an account?
+            <RegisterProposal>
+                Do not have account yet? 
                 <UnderlinedText
-                    text='Login'
+                    text='Register'
                     color='#009E7F'
                     fontSize='15px'
-                    onClick={switchToLogin}
+                    onClick={switchToRegister}
                 />
-            </LoginProposal>
+            </RegisterProposal>
         </>
     )
 }

@@ -10,21 +10,21 @@ import {
     SearchInputContainer,
     SearchInputIcon,
     SearchInput,
-    ProfileDropdownContainer,
+    ProfileMenuContainer,
     UserProfilePic,
     Content
-} from './styled'
+} from './AppLayout.styles'
 // types
 import { RootReducer } from '../../redux/rootReducer'
 // components
-import { Toast } from '../../components/Toast'
-import { SubmitButton } from '../../components/SubmitButton'
-import { AuthModal } from './components/AuthModal'
-import { ProfileDropdown } from './components/ProfileDropdown'
+import { Toast } from '../../components/Toast/Toast.component'
+import { SubmitButton } from '../../components/SubmitButton/SubmitButton.component'
+import { AuthModal } from './components/AuthModal/AuthModal.component'
+import { ProfileMenu } from './components/ProfileMenu/ProfileMenu.component'
 // icons
 import { ReactComponent as Logo } from '../../assets/images/logo.svg'
 
-export const BasicLayout: FC = ({ children }) => {
+export const AppLayout: FC = ({ children }) => {
     const user = useSelector((state: RootReducer) => state.auth.user)
     const authMessage = useSelector((state: RootReducer) => state.auth.authMessage)
     const dispatch = useDispatch()
@@ -42,10 +42,10 @@ export const BasicLayout: FC = ({ children }) => {
         }
     }, [authMessage])
 
-    const [isProfileDropdown, handleProfileDropdown] = useState(false)
+    const [isProfileMenu, handleProfileMenu] = useState(false)
     useEffect(() => {
         if (user === null) {
-            handleProfileDropdown(false)
+            handleProfileMenu(false)
         }
     }, [user])
 
@@ -68,10 +68,10 @@ export const BasicLayout: FC = ({ children }) => {
                     </SearchInputContainer>
                 </HeaderItemsGroup>
                 {user ? (
-                    <ProfileDropdownContainer>
-                        <UserProfilePic onClick={() => handleProfileDropdown(!isProfileDropdown)}/>
-                        <ProfileDropdown isDropdown={isProfileDropdown}/>
-                    </ProfileDropdownContainer>
+                    <ProfileMenuContainer>
+                        <UserProfilePic onClick={() => handleProfileMenu(!isProfileMenu)}/>
+                        <ProfileMenu isMenu={isProfileMenu}/>
+                    </ProfileMenuContainer>
                 ) : (
                     <SubmitButton title='Join' onClick={() => handleAuthModal(true)} />
                 )}

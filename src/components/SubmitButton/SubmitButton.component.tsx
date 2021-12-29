@@ -1,6 +1,6 @@
 import React from 'react'
-import { ButtonContainer, ButtonTitle } from './styled'
-import { SubmitButtonProps } from './types'
+import { ButtonContainer, ButtonTitle } from './SubmitButton.styles'
+import { SubmitButtonProps } from './SubmitButton.types'
 
 export const SubmitButton = ({ title, onClick, isWide }: SubmitButtonProps) => {
     return (

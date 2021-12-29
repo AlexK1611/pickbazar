@@ -1,6 +1,6 @@
 import React from 'react'
-import { TitleComponent } from './styled'
-import { FormTitleProps } from './types'
+import { TitleComponent } from './FormTitle.styles'
+import { FormTitleProps } from './FormTitle.types'
 
 export const FormTitle = ({ title }: FormTitleProps) => {
     return (

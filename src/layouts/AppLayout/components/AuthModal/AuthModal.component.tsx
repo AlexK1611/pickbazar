@@ -4,10 +4,10 @@ import {
     ModalBackground,
     ModalContent,
     CloseButton,
-} from './styled'
-import { SignInForm } from '../SignInForm'
-import { SignUpForm } from '../SignUpForm'
-import { AuthModalProps } from './types'
+} from './AuthModal.styles'
+import { SignIn } from '../SignIn/SignIn.component'
+import { SignUp } from '../SignUp/SignUp.component'
+import { AuthModalProps } from './AuthModal.types'
 import { ReactComponent as CloseIcon } from '../../../../assets/icons/close.svg'
 
 export const AuthModal = ({ isModal, closeModal }: AuthModalProps) => {
@@ -28,10 +28,10 @@ export const AuthModal = ({ isModal, closeModal }: AuthModalProps) => {
                     <CloseIcon />
                 </CloseButton>
                 {formType === 'register' && (
-                    <SignUpForm switchToLogin={() => setFormType('login')} />
+                    <SignUp switchToLogin={() => setFormType('login')} />
                 )}
                 {formType === 'login' && (
-                    <SignInForm switchToRegister={() => setFormType('register')} />
+                    <SignIn switchToRegister={() => setFormType('register')} />
                 )}
             </ModalContent>
         </ModalBackground>,

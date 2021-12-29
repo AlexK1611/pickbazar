@@ -44,7 +44,7 @@ export const SearchInput = styled.input`
     color: rgba(13, 17, 54, 0.5);
 `
 
-export const ProfileDropdownContainer = styled.div`
+export const ProfileMenuContainer = styled.div`
     position: relative;
 `
 
