@@ -89,7 +89,7 @@ export const SignInForm = ({ switchToRegister }: SignInFormProps) => {
             <RegisterProposal>
                 Do not have account yet? 
                 <UnderlinedText
-                    text='Login'
+                    text='Register'
                     color='#009E7F'
                     fontSize='15px'
                     onClick={switchToRegister}
