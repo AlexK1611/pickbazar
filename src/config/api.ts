@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { AuthActionTypes } from '../redux/auth/types'
-import { store } from '../redux/store'
+import { AuthActionTypes } from 'redux/auth/types'
+import { store } from 'redux/store'
 
 export const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_HOST,

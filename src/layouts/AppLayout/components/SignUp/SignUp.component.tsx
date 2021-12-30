@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 // redux
 import { useDispatch } from 'react-redux'
-import { signUpRequest } from '../../../../redux/auth/actions'
+import { signUpRequest } from 'redux/auth/actions'
 
 // libraries
 import { useForm } from 'react-hook-form'
@@ -23,20 +23,20 @@ import {
 
 // types
 import { SignUpProps } from './SignUp.types'
-import { SignUpData } from '../../../../redux/auth/types'
+import { SignUpData } from 'redux/auth/types'
 
 // helpers
 import { signUpValidation, signUpFields } from './SignUp.helpers'
 
 // reusable components
-import { FormField } from '../../../../components/FormField/FormField.component'
-import { SubmitButton } from '../../../../components/SubmitButton/SubmitButton.component'
-import { SocialButton } from '../../../../components/SocialButton/SocialButton.component'
-import { UnderlinedText } from '../../../../components/UnderlinedText/UnderlinedText.component'
+import { FormField } from 'components/FormField/FormField.component'
+import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
+import { SocialButton } from 'components/SocialButton/SocialButton.component'
+import { UnderlinedText } from 'components/UnderlinedText/UnderlinedText.component'
 
 // icons
-import { ReactComponent as FacebookIcon } from '../../../../assets/icons/facebook.svg'
-import { ReactComponent as GoogleIcon } from '../../../../assets/icons/google.svg'
+import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg'
+import { ReactComponent as GoogleIcon } from 'assets/icons/google.svg'
 
 export const SignUp: FC<SignUpProps> = ({ switchToLogin }) => {
     const dispatch = useDispatch()

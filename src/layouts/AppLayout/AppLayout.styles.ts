@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg'
+import { ReactComponent as SearchIcon } from 'assets/icons/search.svg'
 
 export const LayoutContainer = styled.div`
     width: 100vw;

@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux'
-import { axiosInstance } from '../../config/api'
+import { axiosInstance } from 'config/api'
 import { AuthActionTypes, AuthResponse, SignInData, SignUpData } from './types'
 
 export const signUpRequest = (data: SignUpData) => {

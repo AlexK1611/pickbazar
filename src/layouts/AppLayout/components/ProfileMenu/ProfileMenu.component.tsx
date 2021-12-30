@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useDispatch } from 'react-redux'
-import { signOutRequest } from '../../../../redux/auth/actions'
+import { signOutRequest } from 'redux/auth/actions'
 import { OptionItem, OptionItemText, OptionsList } from './ProfileMenu.styles'
 import { ProfileMenuProps } from './ProfileMenu.types'
 

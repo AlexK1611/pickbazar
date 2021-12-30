@@ -2,8 +2,8 @@ import { FC, useState, useEffect } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { removeAuthMessage } from '../../redux/auth/actions'
-import { getAuthMessageSelector, getUserSelector } from '../../redux/auth/selectors'
+import { removeAuthMessage } from 'redux/auth/actions'
+import { getAuthMessageSelector, getUserSelector } from 'redux/auth/selectors'
 
 // styled components
 import {
@@ -19,16 +19,16 @@ import {
 } from './AppLayout.styles'
 
 // types
-import { RootReducer } from '../../redux/rootReducer'
+import { RootReducer } from 'redux/rootReducer'
 
 // reusable components
-import { Toast } from '../../components/Toast/Toast.component'
-import { SubmitButton } from '../../components/SubmitButton/SubmitButton.component'
+import { Toast } from 'components/Toast/Toast.component'
+import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 import { AuthModal } from './components/AuthModal/AuthModal.component'
 import { ProfileMenu } from './components/ProfileMenu/ProfileMenu.component'
 
 // icons
-import { ReactComponent as Logo } from '../../assets/images/logo.svg'
+import { ReactComponent as Logo } from 'assets/images/logo.svg'
 
 export const AppLayout: FC = ({ children }) => {
     const user = useSelector(
