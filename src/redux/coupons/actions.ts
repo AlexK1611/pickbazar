@@ -4,12 +4,11 @@ import { CouponsActionTypes } from './types'
 
 export const couponsRequest = () => {
     return async (dispatch: Dispatch) => {
-        const response = await axiosInstance.get('/coupons')
-        if (response.status === 200) {
-            dispatch({
-                type: CouponsActionTypes.SET_COUPONS,
-                payload: response.data
-            })
+        try {
+            const { data } = await axiosInstance.get('/coupons')
+            dispatch({ type: CouponsActionTypes.SET_COUPONS, payload: data })
+        } catch (error) {
+            console.log(error)
         }
     }
 }

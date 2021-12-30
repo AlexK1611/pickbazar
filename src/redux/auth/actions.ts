@@ -1,28 +1,21 @@
 import { Dispatch } from 'redux'
 import { axiosInstance } from '../../config/api'
-import { AuthActionTypes } from './types'
+import { AuthActionTypes, AuthResponse, SignInData, SignUpData } from './types'
 
-export const signUpRequest = (data: { [key: string]: string }) => {
+export const signUpRequest = (data: SignUpData) => {
     return async (dispatch: Dispatch) => {
-        const { confirmPassword, ...endData } = data
-        const response = await axiosInstance.post('/auth/local/register', endData)
-        if (response.status === 200) {
-            dispatch({
-                type: AuthActionTypes.SET_JWT,
-                payload: response.data.jwt
-            })
-            localStorage.setItem('jwt', JSON.stringify(response.data.jwt))
+        try {
+            const { data: { jwt, user } } = await axiosInstance.post<AuthResponse>('/auth/local/register', data)
 
-            dispatch({
-                type: AuthActionTypes.SET_USER,
-                payload: response.data.user
-            })
-            localStorage.setItem('user', JSON.stringify(response.data.user))
+            dispatch({ type: AuthActionTypes.SET_JWT, payload: jwt })
+            localStorage.setItem('jwt', JSON.stringify(jwt))
 
-            dispatch({
-                type: AuthActionTypes.SET_AUTH_MESSAGE,
-                payload: 'Signed up successfully'
-            })
+            dispatch({ type: AuthActionTypes.SET_USER, payload: user })
+            localStorage.setItem('user', JSON.stringify(user))
+
+            dispatch({ type: AuthActionTypes.SET_AUTH_MESSAGE, payload: 'Signed up successfully' })
+        } catch (error) {
+            console.log(error)
         }
     }
 }
@@ -31,26 +24,20 @@ export const removeAuthMessage = () => ({
     type: AuthActionTypes.REMOVE_AUTH_MESSAGE
 })
 
-export const signInRequest = (data: { [key: string]: string }) => {
+export const signInRequest = (data: SignInData) => {
     return async (dispatch: Dispatch) => {
-        const response = await axiosInstance.post('/auth/local', data)
-        if (response.status === 200) {
-            dispatch({
-                type: AuthActionTypes.SET_JWT,
-                payload: response.data.jwt
-            })
-            localStorage.setItem('jwt', JSON.stringify(response.data.jwt))
+        try {
+            const { data: { jwt, user } } = await axiosInstance.post<AuthResponse>('/auth/local', data)
 
-            dispatch({
-                type: AuthActionTypes.SET_USER,
-                payload: response.data.user
-            })
-            localStorage.setItem('user', JSON.stringify(response.data.user))
+            dispatch({ type: AuthActionTypes.SET_JWT, payload: jwt })
+            localStorage.setItem('jwt', JSON.stringify(jwt))
 
-            dispatch({
-                type: AuthActionTypes.SET_AUTH_MESSAGE,
-                payload: 'Signed in successfully'
-            })
+            dispatch({ type: AuthActionTypes.SET_USER, payload: user })
+            localStorage.setItem('user', JSON.stringify(user))
+
+            dispatch({ type: AuthActionTypes.SET_AUTH_MESSAGE, payload: 'Signed in successfully' })
+        } catch (error) {
+            console.log(error)
         }
     }
 }

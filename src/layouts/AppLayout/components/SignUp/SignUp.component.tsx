@@ -18,6 +18,7 @@ import {
 } from './SignUp.styled'
 // types
 import { SignUpProps } from './SignUp.types'
+import { SignUpData } from '../../../../redux/auth/types'
 // helpers
 import { signUpValidation, signUpFields } from './SignUp.helpers'
 // common components
@@ -43,7 +44,7 @@ export const SignUp: FC<SignUpProps> = ({ switchToLogin }) => {
         mode: 'all',
         resolver: yupResolver(signUpValidation)
     })
-    const onSubmit = (data: { [key: string]: string }) => {
+    const onSubmit = (data: SignUpData) => {
         dispatch(signUpRequest(data))
     }
 

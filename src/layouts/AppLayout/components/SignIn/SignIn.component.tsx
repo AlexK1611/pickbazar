@@ -17,6 +17,7 @@ import {
 } from './SignIn.styles'
 // types
 import { SignInProps } from './SignIn.types'
+import { SignInData } from '../../../../redux/auth/types'
 // helpers
 import { signInValidation, signInFields } from './SignIn.helpers'
 // common components
@@ -42,7 +43,7 @@ export const SignIn: FC<SignInProps> = ({ switchToRegister }) => {
         mode: 'all',
         resolver: yupResolver(signInValidation)
     })
-    const onSubmit = (data: { [key: string]: string }) => {
+    const onSubmit = (data: SignInData) => {
         dispatch(signInRequest(data))
     }
 

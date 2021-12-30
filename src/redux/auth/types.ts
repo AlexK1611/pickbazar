@@ -1,7 +1,45 @@
+export interface SignUpData {
+    username: string,
+    email: string,
+    password: string,
+    confirmPassword: string
+}
+
+export interface SignInData {
+    identifier: string,
+    password: string
+}
+
+interface UserItem {
+    id: number,
+    username: string,
+    email: string,
+    provider: string,
+    confirmed: boolean,
+    blocked: null,
+    role: {
+        id: number,
+        name: string,
+        description: string,
+        type: string,
+        created_by: null,
+        updated_by: null
+    },
+    created_by: null,
+    updated_by: null,
+    created_at: string,
+    updated_at: string
+}
+
+export interface AuthResponse {
+    jwt: string,
+    user: UserItem
+}
+
 export interface AuthState {
     authMessage: string | null,
     jwt: string | null,
-    user: object | null
+    user: UserItem | null
 }
 
 export enum AuthActionTypes {
@@ -33,7 +71,7 @@ interface RemoveJwtAction {
 
 interface SetUserAction {
     type: AuthActionTypes.SET_USER,
-    payload: object
+    payload: UserItem
 }
 
 interface RemoveUserAction {
