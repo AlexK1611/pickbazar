@@ -1,4 +1,4 @@
-interface CouponItem {
+export interface CouponItem {
     id: number,
     title: string,
     description: string,

@@ -6,7 +6,7 @@ export const CouponsContainer = styled.div`
     background-color: #FFF;
 `
 
-export const CouponItem = styled.div<{
+export const Coupon = styled.div<{
     startColor: string,
     endColor: string
 }>`

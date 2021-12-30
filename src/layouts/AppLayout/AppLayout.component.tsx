@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from 'react'
 // redux
 import { useSelector, useDispatch } from 'react-redux'
 import { removeAuthMessage } from '../../redux/auth/actions'
+import { getAuthMessageSelector, getUserSelector } from '../../redux/auth/selectors'
 // styled
 import {
     LayoutContainer,
@@ -25,8 +26,12 @@ import { ProfileMenu } from './components/ProfileMenu/ProfileMenu.component'
 import { ReactComponent as Logo } from '../../assets/images/logo.svg'
 
 export const AppLayout: FC = ({ children }) => {
-    const user = useSelector((state: RootReducer) => state.auth.user)
-    const authMessage = useSelector((state: RootReducer) => state.auth.authMessage)
+    const user = useSelector(
+        (state: RootReducer) => getUserSelector(state)
+    )
+    const authMessage = useSelector(
+        (state: RootReducer) => getAuthMessageSelector(state)
+    )
     const dispatch = useDispatch()
 
     const [isAuthModal, handleAuthModal] = useState(false)

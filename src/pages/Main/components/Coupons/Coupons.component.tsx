@@ -1,23 +1,26 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { couponsRequest } from '../../../../redux/coupons/actions'
+import { getCouponsSelector } from '../../../../redux/coupons/selectors'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import {
     CouponsContainer,
-    CouponItem,
+    Coupon,
     CouponTitle,
     CouponDescription,
     CouponButton,
     CouponButtonTitle
 } from './Coupons.styles'
 import { RootReducer } from '../../../../redux/rootReducer'
-import { CouponItemProps } from './Coupons.types'
+import { CouponItem } from '../../../../redux/coupons/types'
 
 export const Coupons = () => {
-    const coupons: CouponItemProps[] | null = useSelector((state: RootReducer) => state.coupons.coupons)
+    const coupons: CouponItem[] | null = useSelector(
+        (state: RootReducer) => getCouponsSelector(state)
+    )
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -36,7 +39,7 @@ export const Coupons = () => {
                 >
                     {coupons.map(coupon => (
                         <SwiperSlide key={`coupon-${coupon.id}`}>
-                            <CouponItem
+                            <Coupon
                                 startColor={coupon.gradientColors.start}
                                 endColor={coupon.gradientColors.end}
                             >
@@ -47,7 +50,7 @@ export const Coupons = () => {
                                         {coupon.buttonText}
                                     </CouponButtonTitle>
                                 </CouponButton>
-                            </CouponItem>
+                            </Coupon>
                         </SwiperSlide>
                     ))}
                 </Swiper>
