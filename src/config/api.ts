@@ -13,7 +13,7 @@ export const interceptor = (store: any) => {
         error => {
             store.dispatch({
                 type: AuthActionTypes.SET_AUTH_MESSAGE,
-                payload: 'Something went wrong'
+                payload: error.response.data.message[0].messages[0].message
             })
             return Promise.reject(error)
         }
