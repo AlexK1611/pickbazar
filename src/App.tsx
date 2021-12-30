@@ -1,11 +1,11 @@
-import React from 'react'
+import { FC } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GlobalStyles } from './ui-kit/global'
 import { AppLayout } from './layouts/AppLayout/AppLayout.component'
 import { Main } from './pages/Main/Main.page'
 import { NotFound } from './pages/NotFound/NotFound.page'
 
-const App = () => {
+const App: FC = () => {
   return (
     <BrowserRouter>
       <GlobalStyles />

@@ -1,11 +1,14 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
+
 // redux
 import { useDispatch } from 'react-redux'
 import { signUpRequest } from '../../../../redux/auth/actions'
+
 // libraries
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-// styled
+
+// styled components
 import {
     Form,
     Title,
@@ -17,16 +20,20 @@ import {
     SocialButtons,
     LoginProposal
 } from './SignUp.styled'
+
 // types
 import { SignUpProps } from './SignUp.types'
 import { SignUpData } from '../../../../redux/auth/types'
+
 // helpers
 import { signUpValidation, signUpFields } from './SignUp.helpers'
-// common components
+
+// reusable components
 import { FormField } from '../../../../components/FormField/FormField.component'
 import { SubmitButton } from '../../../../components/SubmitButton/SubmitButton.component'
 import { SocialButton } from '../../../../components/SocialButton/SocialButton.component'
 import { UnderlinedText } from '../../../../components/UnderlinedText/UnderlinedText.component'
+
 // icons
 import { ReactComponent as FacebookIcon } from '../../../../assets/icons/facebook.svg'
 import { ReactComponent as GoogleIcon } from '../../../../assets/icons/google.svg'

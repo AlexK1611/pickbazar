@@ -1,9 +1,11 @@
-import React, { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect } from 'react'
+
 // redux
 import { useSelector, useDispatch } from 'react-redux'
 import { removeAuthMessage } from '../../redux/auth/actions'
 import { getAuthMessageSelector, getUserSelector } from '../../redux/auth/selectors'
-// styled
+
+// styled components
 import {
     LayoutContainer,
     Header,
@@ -15,13 +17,16 @@ import {
     UserProfilePic,
     Content
 } from './AppLayout.styles'
+
 // types
 import { RootReducer } from '../../redux/rootReducer'
-// components
+
+// reusable components
 import { Toast } from '../../components/Toast/Toast.component'
 import { SubmitButton } from '../../components/SubmitButton/SubmitButton.component'
 import { AuthModal } from './components/AuthModal/AuthModal.component'
 import { ProfileMenu } from './components/ProfileMenu/ProfileMenu.component'
+
 // icons
 import { ReactComponent as Logo } from '../../assets/images/logo.svg'
 

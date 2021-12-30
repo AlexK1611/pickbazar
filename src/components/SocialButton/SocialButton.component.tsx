@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { ButtonContainer, ButtonTitle } from './SocialButton.styles'
 import { SocialButtonProps } from './SocialButton.types'
 

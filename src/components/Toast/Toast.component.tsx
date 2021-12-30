@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import ReactDOM from 'react-dom'
 import { ToastComponent, ToastMessage } from './Toast.styles'
 import { ToastProps } from './Toast.types'

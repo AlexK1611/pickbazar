@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import {
     TopSectionContainer,
     TopSectionInfo,
@@ -6,7 +6,7 @@ import {
     TopSectionSubTitle
 } from './TopSection.styles'
 
-export const TopSection = () => {
+export const TopSection: FC = () => {
     return (
         <TopSectionContainer>
             <TopSectionInfo>

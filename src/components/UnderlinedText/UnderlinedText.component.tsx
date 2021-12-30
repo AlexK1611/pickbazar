@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { TextComponent } from './UnderlinedText.styles'
 import { UnderlinedTextProps } from './UnderlinedText.types'
 

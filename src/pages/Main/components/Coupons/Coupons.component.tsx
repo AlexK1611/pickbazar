@@ -1,11 +1,17 @@
-import React, { useEffect } from 'react'
+import { FC, useEffect } from 'react'
+
+// redux
 import { useSelector, useDispatch } from 'react-redux'
 import { couponsRequest } from '../../../../redux/coupons/actions'
 import { getCouponsSelector } from '../../../../redux/coupons/selectors'
+
+// libraries
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
+
+// styled components
 import {
     CouponsContainer,
     Coupon,
@@ -14,10 +20,12 @@ import {
     CouponButton,
     CouponButtonTitle
 } from './Coupons.styles'
+
+// types
 import { RootReducer } from '../../../../redux/rootReducer'
 import { CouponItem } from '../../../../redux/coupons/types'
 
-export const Coupons = () => {
+export const Coupons: FC = () => {
     const coupons: CouponItem[] | null = useSelector(
         (state: RootReducer) => getCouponsSelector(state)
     )

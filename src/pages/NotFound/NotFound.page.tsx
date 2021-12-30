@@ -1,6 +1,6 @@
-import React from 'react'
+import { FC } from 'react'
 
-export const NotFound = () => {
+export const NotFound: FC = () => {
     return (
         <div>
             not found

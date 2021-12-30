@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { ButtonContainer, ButtonTitle } from './SubmitButton.styles'
 import { SubmitButtonProps } from './SubmitButton.types'
 
