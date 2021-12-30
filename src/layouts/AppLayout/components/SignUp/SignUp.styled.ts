@@ -4,12 +4,19 @@ export const Form = styled.form`
     margin-top: 30px;
 `
 
-export const FormFieldContainer = styled.div`
-    position: relative;
+export const Title = styled.h2`
+    font-size: 21px;
+    font-weight: 700;
+    color: #009E7F;
+    text-align: center;
+`
+
+export const Subtitle = styled.p`
+    font-size: 15px;
+    font-weight: 400;
+    color: #77798C;
+    text-align: center;
     margin-top: 10px;
-    &:first-child {
-        margin-top: 0;
-    }
 `
 
 export const TermsAndConditions = styled.p`

@@ -8,7 +8,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 // styled
 import {
     Form,
-    FormFieldContainer,
+    Title,
+    Subtitle,
     TermsAndConditions,
     Splitter,
     SplitterLine,
@@ -22,13 +23,10 @@ import { SignUpData } from '../../../../redux/auth/types'
 // helpers
 import { signUpValidation, signUpFields } from './SignUp.helpers'
 // common components
-import { FormSubtitle } from '../../../../components/FormSubtitle/FormSubtitle.component'
-import { FormTitle } from '../../../../components/FormTitle/FormTitle.component'
-import { FormInput } from '../../../../components/FormInput/FormInput.component'
+import { FormField } from '../../../../components/FormField/FormField.component'
 import { SubmitButton } from '../../../../components/SubmitButton/SubmitButton.component'
 import { SocialButton } from '../../../../components/SocialButton/SocialButton.component'
 import { UnderlinedText } from '../../../../components/UnderlinedText/UnderlinedText.component'
-import { FormTooltip } from '../../../../components/FormTooltip/FormTooltip.component'
 // icons
 import { ReactComponent as FacebookIcon } from '../../../../assets/icons/facebook.svg'
 import { ReactComponent as GoogleIcon } from '../../../../assets/icons/google.svg'
@@ -50,20 +48,20 @@ export const SignUp: FC<SignUpProps> = ({ switchToLogin }) => {
 
     return (
         <>
-            <FormTitle title='Sign Up'/>
-            <FormSubtitle subtitle='Welcome!'/>
+            <Title>Sign Up</Title>
+            <Subtitle>Welcome!</Subtitle>
             <Form>
                 {signUpFields.map(field => (
-                    <FormFieldContainer key={`signUp-${field.name}`}>
-                        <FormInput
-                            {...register(field.name)}
-                            placeholder={field.placeholder}
-                            type={field.type}
-                            onChange={(event: { target: HTMLInputElement }) => setValue(field.name, event.target.value)}
-                            ref={null}
-                        />
-                        {errors[field.name] && <FormTooltip text={errors[field.name].message}/>}
-                    </FormFieldContainer>
+                    <FormField
+                        key={`signUp-${field.name}`}
+                        {...register(field.name, {
+                            onChange: event => setValue(field.name, event.target.value)
+                        })}
+                        placeholder={field.placeholder}
+                        type={field.type}
+                        ref={null}
+                        error={errors?.[field.name]?.message}
+                    />
                 ))}
                 <TermsAndConditions>
                     By signing up, you agree to Pickbazar's
@@ -74,7 +72,7 @@ export const SignUp: FC<SignUpProps> = ({ switchToLogin }) => {
                     />
                 </TermsAndConditions>
                 <SubmitButton
-                    isWide={true}
+                    isWide
                     title='Submit'
                     onClick={handleSubmit(onSubmit)}
                 />

@@ -8,7 +8,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 // styled
 import {
     Form,
-    FormFieldContainer,
+    Title,
+    Subtitle,
     Splitter,
     SplitterLine,
     SplitterText,
@@ -21,12 +22,9 @@ import { SignInData } from '../../../../redux/auth/types'
 // helpers
 import { signInValidation, signInFields } from './SignIn.helpers'
 // common components
-import { FormSubtitle } from '../../../../components/FormSubtitle/FormSubtitle.component'
-import { FormTitle } from '../../../../components/FormTitle/FormTitle.component'
-import { FormInput } from '../../../../components/FormInput/FormInput.component'
+import { FormField } from '../../../../components/FormField/FormField.component'
 import { SubmitButton } from '../../../../components/SubmitButton/SubmitButton.component'
 import { SocialButton } from '../../../../components/SocialButton/SocialButton.component'
-import { FormTooltip } from '../../../../components/FormTooltip/FormTooltip.component'
 import { UnderlinedText } from '../../../../components/UnderlinedText/UnderlinedText.component'
 // icons
 import { ReactComponent as FacebookIcon } from '../../../../assets/icons/facebook.svg'
@@ -49,24 +47,23 @@ export const SignIn: FC<SignInProps> = ({ switchToRegister }) => {
 
     return (
         <>
-            <FormTitle title='Welcome Back'/>
-            <FormSubtitle subtitle='Login with your email & password'/>
+            <Title>Welcome Back</Title>
+            <Subtitle>Login with your email & password</Subtitle>
             <Form>
                 {signInFields.map(field => (
-                    <FormFieldContainer key={`signIn-${field.name}`}>
-                        <FormInput
-                            {...register(field.name)}
-                            placeholder={field.placeholder}
-                            type={field.type}
-                            onChange={(event: { target: HTMLInputElement }) => setValue(field.name, event.target.value)}
-                            ref={null}
-                        />
-                        {errors[field.name] && <FormTooltip text={errors[field.name].message}/>}
-                    </FormFieldContainer>
-                    
+                    <FormField
+                        key={`signIn-${field.name}`}
+                        {...register(field.name, {
+                            onChange: event => setValue(field.name, event.target.value)
+                        })}
+                        placeholder={field.placeholder}
+                        type={field.type}
+                        ref={null}
+                        error={errors?.[field.name]?.message}
+                    />
                 ))}
                 <SubmitButton
-                    isWide={true}
+                    isWide
                     title='Submit'
                     onClick={handleSubmit(onSubmit)}
                 />

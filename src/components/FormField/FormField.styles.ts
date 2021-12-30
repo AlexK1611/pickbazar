@@ -1,6 +1,25 @@
 import styled from 'styled-components'
 
-export const TooltipContainer = styled.div`
+export const FieldContainer = styled.div`
+    position: relative;
+    margin-top: 10px;
+    &:first-child {
+        margin-top: 0;
+    }
+`
+
+export const FieldInput = styled.input`
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #F1F1F1;
+    border-radius: 6px;
+    background-color: #F7F7F7;
+    &:focus {
+        border-color: #009E7F;
+    }
+`
+
+export const FieldTooltip = styled.div`
     position: absolute;
     top: 50%;
     left: 100%;
@@ -21,7 +40,7 @@ export const TooltipContainer = styled.div`
     }
 `
 
-export const TooltipText = styled.p`
+export const FieldTooltipText = styled.p`
     font-size: 15px;
     font-weight: 400;
     color: #FFF;
