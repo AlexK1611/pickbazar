@@ -39,12 +39,7 @@ import { ReactComponent as GoogleIcon } from 'assets/icons/google.svg'
 
 export const SignIn: FC<SignInProps> = ({ switchToRegister }) => {
     const dispatch = useDispatch()
-    const {
-        register,
-        setValue,
-        handleSubmit,
-        formState: { errors }
-    } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         mode: 'all',
         resolver: yupResolver(signInValidation)
     })
@@ -56,24 +51,17 @@ export const SignIn: FC<SignInProps> = ({ switchToRegister }) => {
         <>
             <Title>Welcome Back</Title>
             <Subtitle>Login with your email & password</Subtitle>
-            <Form>
+            <Form onSubmit={handleSubmit(onSubmit)}>
                 {signInFields.map(field => (
                     <FormField
                         key={`signIn-${field.name}`}
-                        {...register(field.name, {
-                            onChange: event => setValue(field.name, event.target.value)
-                        })}
+                        {...register(field.name)}
                         placeholder={field.placeholder}
                         type={field.type}
-                        ref={null}
                         error={errors?.[field.name]?.message}
                     />
                 ))}
-                <SubmitButton
-                    isWide
-                    title='Submit'
-                    onClick={handleSubmit(onSubmit)}
-                />
+                <SubmitButton isWide title='Submit' />
             </Form>
             <Splitter>
                 <SplitterLine/>
