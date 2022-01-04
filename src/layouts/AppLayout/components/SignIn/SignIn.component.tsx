@@ -25,7 +25,7 @@ import { SignInProps } from './SignIn.types'
 import { SignInData } from 'redux/auth/types'
 
 // helpers
-import { signInValidation, signInFields } from './SignIn.helpers'
+import { signInValidation } from './SignIn.helpers'
 
 // reusable components
 import { FormField } from 'components/FormField/FormField.component'
@@ -39,7 +39,7 @@ import { ReactComponent as GoogleIcon } from 'assets/icons/google.svg'
 
 export const SignIn: FC<SignInProps> = ({ switchToRegister }) => {
     const dispatch = useDispatch()
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm<SignInData>({
         mode: 'all',
         resolver: yupResolver(signInValidation)
     })
@@ -52,15 +52,18 @@ export const SignIn: FC<SignInProps> = ({ switchToRegister }) => {
             <Title>Welcome Back</Title>
             <Subtitle>Login with your email & password</Subtitle>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                {signInFields.map(field => (
-                    <FormField
-                        key={`signIn-${field.name}`}
-                        {...register(field.name)}
-                        placeholder={field.placeholder}
-                        type={field.type}
-                        error={errors?.[field.name]?.message}
-                    />
-                ))}
+                <FormField
+                    {...register('identifier')}
+                    placeholder='Your email'
+                    type='text'
+                    error={errors.identifier?.message}
+                />
+                <FormField
+                    {...register('password')}
+                    placeholder='Your password'
+                    type='password'
+                    error={errors.password?.message}
+                />
                 <SubmitButton isWide title='Submit' />
             </Form>
             <Splitter>

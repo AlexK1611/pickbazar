@@ -16,26 +16,3 @@ export const signUpValidation = yup.object({
         .required('Confirm Password is required')
         .oneOf([yup.ref('password')], 'Passwords must match')
 })
-
-export const signUpFields = [
-    {
-        name: 'username',
-        placeholder: 'Your username',
-        type: 'text'
-    },
-    {
-        name: 'email',
-        placeholder: 'Your email',
-        type: 'text'
-    },
-    {
-        name: 'password',
-        placeholder: 'Your password',
-        type: 'password'
-    },
-    {
-        name: 'confirmPassword',
-        placeholder: 'Confirm password',
-        type: 'password'
-    }
-]

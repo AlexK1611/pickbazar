@@ -26,7 +26,7 @@ import { SignUpProps } from './SignUp.types'
 import { SignUpData } from 'redux/auth/types'
 
 // helpers
-import { signUpValidation, signUpFields } from './SignUp.helpers'
+import { signUpValidation } from './SignUp.helpers'
 
 // reusable components
 import { FormField } from 'components/FormField/FormField.component'
@@ -40,7 +40,7 @@ import { ReactComponent as GoogleIcon } from 'assets/icons/google.svg'
 
 export const SignUp: FC<SignUpProps> = ({ switchToLogin }) => {
     const dispatch = useDispatch()
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm<SignUpData>({
         mode: 'all',
         resolver: yupResolver(signUpValidation)
     })
@@ -53,15 +53,30 @@ export const SignUp: FC<SignUpProps> = ({ switchToLogin }) => {
             <Title>Sign Up</Title>
             <Subtitle>Welcome!</Subtitle>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                {signUpFields.map(field => (
-                    <FormField
-                        key={`signUp-${field.name}`}
-                        {...register(field.name)}
-                        placeholder={field.placeholder}
-                        type={field.type}
-                        error={errors?.[field.name]?.message}
-                    />
-                ))}
+                <FormField
+                    {...register('username')}
+                    placeholder='Your username'
+                    type='text'
+                    error={errors.username?.message}
+                />
+                <FormField
+                    {...register('email')}
+                    placeholder='Your email'
+                    type='text'
+                    error={errors.email?.message}
+                />
+                <FormField
+                    {...register('password')}
+                    placeholder='Your password'
+                    type='password'
+                    error={errors.password?.message}
+                />
+                <FormField
+                    {...register('confirmPassword')}
+                    placeholder='Confirm password'
+                    type='password'
+                    error={errors.confirmPassword?.message}
+                />
                 <TermsAndConditions>
                     By signing up, you agree to Pickbazar's
                     <UnderlinedText

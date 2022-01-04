@@ -9,16 +9,3 @@ export const signInValidation = yup.object({
         .required('Password is required')
         .min(6, 'At least 6 charachters')
 })
-
-export const signInFields = [
-    {
-        name: 'identifier',
-        placeholder: 'Your email',
-        type: 'text'
-    },
-    {
-        name: 'password',
-        placeholder: 'Your password',
-        type: 'password'
-    }
-]
