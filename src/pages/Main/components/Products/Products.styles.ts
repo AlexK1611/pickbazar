@@ -52,6 +52,10 @@ export const SubCategoryTitle = styled.p`
 `
 
 export const ProductsSection = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 40px;
+    align-items: start;
     padding: 30px 20px;
     background-color: #F7F7F7;
 `
