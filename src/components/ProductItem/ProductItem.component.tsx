@@ -14,11 +14,11 @@ import {
     ButtonTitle
 } from './ProductItem.styles'
 import { ProductItemProps } from './ProductItem.types'
+import productDefault from 'assets/images/product-default.png'
 
 export const ProductItem: FC<ProductItemProps> = ({
     title,
-    description,
-    picture,
+    size,
     finalPrice,
     previousPrice,
     discount
@@ -26,10 +26,10 @@ export const ProductItem: FC<ProductItemProps> = ({
     return (
         <ItemContainer>
             {discount && <Discount>{discount}%</Discount>}
-            <Picture src={picture}/>
+            <Picture src={productDefault}/>
             <InfoSection>
                 <Title>{title}</Title>
-                <Description>{description}</Description>
+                <Description>{size}</Description>
             </InfoSection>
             <PurchaseSection>
                 {previousPrice && <PreviousPrice>${previousPrice}</PreviousPrice>}

@@ -2,60 +2,41 @@ import styled from 'styled-components'
 
 export const ProductsSectionContainer = styled.section`
     display: grid;
-    grid-template-columns: 280px calc(100% - 280px);
+    grid-template-columns: 300px calc(100% - 300px);
 `
 
 export const CategoriesSection = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 45px 0;
+    padding: 50px 0 50px 50px;
     background-color: #FFF;
 `
 
-export const CategoriesList = styled.ul`
-    list-style: none;
-`
-
-export const CategoryListItem = styled.li`
-    margin-bottom: 12px;
-    &:last-child {
-        margin-bottom: 0;
-    }
-`
-
-export const CategoryTitle = styled.p<{
-    isSelected?: boolean
-}>`
-    font-size: 15px;
-    font-weight: 700;
-    color: ${props => props.isSelected ? '#009E7F' : '#0A3247'};
-    cursor: pointer;
-`
-
-export const SubCategoriesList = styled.ul`
-    list-style: none;
-    margin: 12px 0 12px 36px;
-`
-
-export const SubCategoryTitle = styled.p`
-    position: relative;
-    font-size: 13px;
-    font-weight: 700;
-    color: #77798C;
-    cursor: pointer;
-    &:before {
-        content: '—';
-        position: absolute;
-        left: -20px;
-    }
-`
-
 export const ProductsSection = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-column-gap: 40px;
-    align-items: start;
-    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 41vw;
+    padding: 20px;
     background-color: #F7F7F7;
+    overflow-y: auto;
+    overflow-x: hidden;
+`
+
+export const ProductsMessage = styled.h2`
+    font-size: 21px;
+    font-weight: 700;
+    color: #009E7F;
+`
+
+export const LoadMoreBtn = styled.button`
+    margin-top: 20px;
+    padding: 10px 30px;
+    border: 1px solid #F7F7F7;
+    border-radius: 6px;
+    background-color: #FFF;
+`
+
+export const LoadMoreBtnTitle = styled.p`
+    font-size: 14;
+    font-weight: 700;
+    color: #009E7F;
 `

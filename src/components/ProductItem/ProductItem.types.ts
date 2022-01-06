@@ -1,8 +1,7 @@
 export interface ProductItemProps {
     title: string,
-    description: string,
-    picture: string,
+    size: string,
     finalPrice: number,
-    previousPrice?: number,
-    discount?: number
+    previousPrice: number | null,
+    discount: number | null
 }
