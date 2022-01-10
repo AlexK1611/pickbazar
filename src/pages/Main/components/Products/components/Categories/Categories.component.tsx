@@ -10,11 +10,11 @@ import { CategoriesProps } from './Categories.types'
 
 export const Categories: FC<CategoriesProps> = ({
     categories,
+    parentCategory,
+    setParentCategory,
     selectedCategory,
-    setSelectedCategory
+    categoryHandler
 }) => {
-    const [parentCategory, setParentCategory] = useState(0)
-
     return (
         <CategoriesList>
             {categories.map(category => (
@@ -30,7 +30,7 @@ export const Categories: FC<CategoriesProps> = ({
                             {category.childCategories.map(childCategory => (
                                 <CategoryListItem
                                     key={`category-${childCategory.id}`}
-                                    onClick={() => setSelectedCategory(childCategory.id)}
+                                    onClick={() => categoryHandler(childCategory.id)}
                                 >
                                     <SubCategoryTitle isSelected={childCategory.id === selectedCategory}>
                                         {childCategory.title}

@@ -32,7 +32,7 @@ export const Product: FC = () => {
 
     useEffect(() => {
         if (productInfo) {
-            dispatch(productsRequest(productInfo.category.id))
+            dispatch(productsRequest(productInfo.category.id, 0))
         }
     }, [productInfo])
     const products: ProductUnit[] | null = useSelector((state: RootReducer) => getProductsSelector(state))

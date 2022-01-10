@@ -5,7 +5,6 @@ import { ProductItem } from 'components/ProductItem/ProductItem.component'
 import { Link } from 'react-router-dom'
 
 export const ProductsList: FC<ProductsListProps> = ({ products }) => {
-    console.log(products)
     return (
         <ProductsLayout>
             {products.map(product => (

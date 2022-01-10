@@ -1,14 +1,24 @@
 import { Dispatch } from 'redux'
 import { axiosInstance } from 'config/api'
-import { ProductInfoResponse, ProductsActionTypes, ProductsResponse } from './types'
+import { ProductInfoResponse, ProductsActionTypes, ProductUnit } from './types'
+import { RootReducer } from 'redux/rootReducer'
 
-export const productsRequest = (category: number) => {
-    return async (dispatch: Dispatch) => {
+export const productsRequest = (category: number, start: number) => {
+    return async (dispatch: Dispatch, getState: () => RootReducer) => {
         try {
-            const { data } = await axiosInstance.get<ProductsResponse>(
-                `/products?_where[_or][0][category]=${category}&_start=0&_limit=10`
-            )
-            dispatch({ type: ProductsActionTypes.SET_PRODUCTS, payload: data })
+            const { data } = await axiosInstance.get(`/products?_where[_or][0][category]=${category}&_start=${start}&_limit=10`)
+            const products = getState().products.products
+
+            if (products && products[0].category.id === data[0].category.id) {
+                const payload = products.concat(
+                    data.filter((newItem: ProductUnit) => !products.some((oldItem: ProductUnit) => oldItem.id === newItem.id))
+                )
+                dispatch({ type: ProductsActionTypes.SET_PRODUCTS, payload })
+                localStorage.setItem('products', JSON.stringify(payload))
+            } else {
+                dispatch({ type: ProductsActionTypes.SET_PRODUCTS, payload: data })
+                localStorage.setItem('products', JSON.stringify(data))
+            }
         } catch (error) {
             console.log(error)
         }

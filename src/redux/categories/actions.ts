@@ -7,6 +7,7 @@ export const categoriesRequest = () => {
         try {
             const { data } = await axiosInstance.get<CategoriesResponse>('/categories')
             dispatch({ type: CategoriesActionTypes.SET_CATEGORIES, payload: data })
+            localStorage.setItem('categories', JSON.stringify(data))
         } catch (error) {
             console.log(error)
         }
