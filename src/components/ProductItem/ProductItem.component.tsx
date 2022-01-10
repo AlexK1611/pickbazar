@@ -14,9 +14,9 @@ import {
     ButtonTitle
 } from './ProductItem.styles'
 import { ProductItemProps } from './ProductItem.types'
-import productDefault from 'assets/images/product-default.png'
 
 export const ProductItem: FC<ProductItemProps> = ({
+    picture,
     title,
     size,
     finalPrice,
@@ -26,7 +26,7 @@ export const ProductItem: FC<ProductItemProps> = ({
     return (
         <ItemContainer>
             {discount && <Discount>{discount}%</Discount>}
-            <Picture src={productDefault}/>
+            <Picture src={`${process.env.REACT_APP_HOST}${picture}`}/>
             <InfoSection>
                 <Title>{title}</Title>
                 <Description>{size}</Description>

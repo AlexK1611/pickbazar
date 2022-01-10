@@ -5,6 +5,7 @@ import { ProductItem } from 'components/ProductItem/ProductItem.component'
 import { Link } from 'react-router-dom'
 
 export const ProductsList: FC<ProductsListProps> = ({ products }) => {
+    console.log(products)
     return (
         <ProductsLayout>
             {products.map(product => (
@@ -13,6 +14,7 @@ export const ProductsList: FC<ProductsListProps> = ({ products }) => {
                     key={`product-${product.id}`}
                 >
                     <ProductItem
+                        picture={product.photos[0].url}
                         title={product.name}
                         size={product.size}
                         finalPrice={product.finalPrice}

@@ -19,6 +19,7 @@ export const Related: FC<RelatedProps> = ({ products, productId }) => {
                         key={`related-${product.id}`}
                     >
                         <ProductItem
+                            picture={product.photos[0].url}
                             title={product.name}
                             size={product.size}
                             finalPrice={product.finalPrice}
