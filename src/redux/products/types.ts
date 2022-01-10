@@ -15,6 +15,30 @@ interface ProductPhoto {
     url: string
 }
 
+export interface ExtendedProductPhoto extends ProductPhoto {
+    id: number,
+    name: string,
+    formats: {
+        thumbnail: ProductPhoto['formats']['thumbnail'] & {
+            name: string,
+            ext: string,
+            mime: string,
+            size: number,
+            path: null,
+        }
+    },
+    ext: string,
+    mime: string,
+    size: number,
+    previewUrl: null,
+    provider: string,
+    provider_metadata: null,
+    created_by: number,
+    updated_by: number,
+    created_at: string,
+    updated_at: string
+}
+
 export interface ProductUnit {
     id: number,
     name: string,
@@ -39,16 +63,47 @@ export interface ProductUnit {
     finalPrice: number
 }
 
+export interface ExtendedProductUnit extends ProductUnit {
+    category: ProductUnit['category'] & {
+        parentCategory: number,
+        created_by: number,
+        updated_by: number,
+        created_at: string,
+        updated_at: string
+    },
+    created_by: {
+        id: number,
+        firstname: string,
+        lastname: string,
+        username: null
+    },
+    updated_by: {
+        id: number,
+        firstname: string,
+        lastname: string,
+        username: null
+    },
+    created_at: string,
+    updated_at: string,
+    photos: ExtendedProductPhoto[]
+}
+
 export interface ProductsResponse {
     data: ProductUnit[]
 }
 
+export interface ProductInfoResponse {
+    data: ExtendedProductUnit
+}
+
 export interface ProductsState {
-    products: ProductUnit[] | null
+    products: ProductUnit[] | null,
+    productInfo: ExtendedProductUnit | null
 }
 
 export enum ProductsActionTypes {
-    SET_PRODUCTS = 'SET_PRODUCTS'
+    SET_PRODUCTS = 'SET_PRODUCTS',
+    SET_PRODUCT_INFO = 'SET_PRODUCT_INFO'
 }
 
 interface SetProductsAction {
@@ -56,4 +111,9 @@ interface SetProductsAction {
     payload: ProductUnit[]
 }
 
-export type ProductsAction = SetProductsAction
+interface SetProductInfoAction {
+    type: ProductsActionTypes.SET_PRODUCT_INFO,
+    payload: ExtendedProductUnit
+}
+
+export type ProductsAction = SetProductsAction | SetProductInfoAction
