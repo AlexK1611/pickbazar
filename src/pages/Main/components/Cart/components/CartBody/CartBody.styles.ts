@@ -26,7 +26,17 @@ export const EmptyTitle = styled.p`
 `
 
 export const CheckoutSection = styled.div`
-    padding: 25px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    padding: 0 15px;
+`
+
+export const AuthMessage = styled.p`
+    font-size: 21px;
+    font-weight: 700;
+    color: #009E7F;
 `
 
 export const CheckoutButton = styled.button`

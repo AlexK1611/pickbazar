@@ -1,7 +1,10 @@
 import { FC } from 'react'
+import { useDispatch } from 'react-redux'
+import { addItemToCart } from 'redux/cart/actions'
 import {
     ItemContainer,
     Discount,
+    ItemLink,
     Picture,
     InfoSection,
     Title,
@@ -15,26 +18,23 @@ import {
 } from './ProductItem.styles'
 import { ProductItemProps } from './ProductItem.types'
 
-export const ProductItem: FC<ProductItemProps> = ({
-    picture,
-    title,
-    size,
-    finalPrice,
-    previousPrice,
-    discount
-}) => {
+export const ProductItem: FC<ProductItemProps> = ({ product }) => {
+    const dispatch = useDispatch()
+    
     return (
         <ItemContainer>
-            {discount && <Discount>{discount}%</Discount>}
-            <Picture src={`${process.env.REACT_APP_HOST}${picture}`}/>
+            {product.discount?.amount ? <Discount>{product.discount.amount}</Discount> : null}
+            <ItemLink to={`/products/${product.id}`}>
+                <Picture src={`${process.env.REACT_APP_HOST}${product.photos[0].url}`}/>
+            </ItemLink>
             <InfoSection>
-                <Title>{title}</Title>
-                <Description>{size}</Description>
+                <Title>{product.name}</Title>
+                <Description>{product.size}</Description>
             </InfoSection>
             <PurchaseSection>
-                {previousPrice && <PreviousPrice>${previousPrice}</PreviousPrice>}
-                <FinalPrice>${finalPrice}</FinalPrice>
-                <Button>
+                {product.price !== product.finalPrice ? <PreviousPrice>{product.price}</PreviousPrice> : null}
+                <FinalPrice>${product.finalPrice}</FinalPrice>
+                <Button onClick={() => dispatch(addItemToCart(product))}>
                     <ButtonIcon/>
                     <ButtonTitle>Cart</ButtonTitle>
                 </Button>

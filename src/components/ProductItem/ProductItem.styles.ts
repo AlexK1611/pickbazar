@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { ReactComponent as CartIcon } from 'assets/icons/cart.svg'
 
 export const ItemContainer = styled.div`
@@ -22,10 +23,15 @@ export const Discount = styled.div`
     color: #FFF;
 `
 
+export const ItemLink = styled(Link)`
+    display: flex;
+    justify-content: center;
+`
+
 export const Picture = styled.img`
-    align-self: center;
     width: 50%;
     aspect-ratio: 1;
+    cursor: pointer;
 `
 
 export const InfoSection = styled.div`

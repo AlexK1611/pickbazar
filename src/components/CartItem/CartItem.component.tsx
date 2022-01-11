@@ -1,4 +1,6 @@
 import { FC } from 'react'
+import { useDispatch } from 'react-redux'
+import { removeItemFromCart } from 'redux/cart/actions'
 import {
     ItemContainer,
     PrimaryText,
@@ -12,9 +14,18 @@ import {
     RightContent,
     RemoveButton
 } from './CartItem.styles'
+import { CartItemProps } from './CartItem.types'
 import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
 
-export const CartItem: FC = () => {
+export const CartItem: FC<CartItemProps> = ({
+    id,
+    quantity,
+    picture,
+    name,
+    price,
+    size
+}) => {
+    const dispatch = useDispatch()
     return (
         <ItemContainer>
             <LeftContent>
@@ -23,22 +34,22 @@ export const CartItem: FC = () => {
                         <SecondaryText>+</SecondaryText>
                     </CounterSection>
                     <CounterSection>
-                        <PrimaryText>3</PrimaryText>
+                        {quantity && <PrimaryText>{quantity}</PrimaryText>}
                     </CounterSection>
                     <CounterSection isLast>
                         <SecondaryText>-</SecondaryText>
                     </CounterSection>
                 </ItemCounter>
-                <ItemPicture src={''} />
+                {picture && <ItemPicture src={`${process.env.REACT_APP_HOST}${picture}`} />}
                 <ItemInfo>
-                    <PrimaryText>Lime</PrimaryText>
-                    <ItemCost>$1.5</ItemCost>
-                    <SecondaryText>3 x 12 pc(s)</SecondaryText>
+                    {name && <PrimaryText>{name}</PrimaryText>}
+                    {price && <ItemCost>${price}</ItemCost>}
+                    {quantity && size && <SecondaryText>{quantity} x {size}</SecondaryText>}
                 </ItemInfo>
             </LeftContent>
             <RightContent>
-                <PrimaryText>$4.50</PrimaryText>
-                <RemoveButton>
+                {quantity && price && <PrimaryText>${(quantity * price).toFixed(2)}</PrimaryText>}
+                <RemoveButton onClick={() => dispatch(removeItemFromCart(id))}>
                     <CloseIcon />
                 </RemoveButton>
             </RightContent>

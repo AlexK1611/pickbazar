@@ -1,8 +1,5 @@
+import { ExtendedProductUnit, ProductUnit } from "redux/products/types";
+
 export interface ProductItemProps {
-    picture: string,
-    title: string,
-    size: string,
-    finalPrice: number,
-    previousPrice: number | null,
-    discount: number | null
+    product: ExtendedProductUnit | ProductUnit
 }
