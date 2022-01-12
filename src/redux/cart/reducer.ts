@@ -15,6 +15,28 @@ export const CartReducer = (state = initialState, action: CartAction): CartState
                 cart: state.cart.filter(item => item.id !== action.payload)
             }
         }
+        case CartActionTypes.INCREASE_QUANTITY: {
+            return {
+                ...state,
+                cart: state.cart.map(item => {
+                    if (item.id === action.payload) {
+                        item.quantity = item.quantity + 1
+                    }
+                    return item
+                })
+            }
+        }
+        case CartActionTypes.DECREASE_QUANTITY: {
+            return {
+                ...state,
+                cart: state.cart.map(item => {
+                    if (item.id === action.payload) {
+                        item.quantity = item.quantity - 1
+                    }
+                    return item
+                })
+            }
+        }
         default: {
             return state
         }

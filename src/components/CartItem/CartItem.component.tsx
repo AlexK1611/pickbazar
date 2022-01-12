@@ -1,6 +1,10 @@
 import { FC } from 'react'
 import { useDispatch } from 'react-redux'
-import { removeItemFromCart } from 'redux/cart/actions'
+import {
+    decreaseQuantity,
+    increaseQuantity,
+    removeItemFromCart
+} from 'redux/cart/actions'
 import {
     ItemContainer,
     PrimaryText,
@@ -30,13 +34,19 @@ export const CartItem: FC<CartItemProps> = ({
         <ItemContainer>
             <LeftContent>
                 <ItemCounter>
-                    <CounterSection isFirst>
+                    <CounterSection
+                        isFirst
+                        onClick={() => dispatch(increaseQuantity(id))}
+                    >
                         <SecondaryText>+</SecondaryText>
                     </CounterSection>
                     <CounterSection>
                         {quantity && <PrimaryText>{quantity}</PrimaryText>}
                     </CounterSection>
-                    <CounterSection isLast>
+                    <CounterSection
+                        isLast
+                        onClick={() => dispatch(decreaseQuantity(id))}
+                    >
                         <SecondaryText>-</SecondaryText>
                     </CounterSection>
                 </ItemCounter>
