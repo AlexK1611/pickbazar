@@ -1,6 +1,7 @@
 import { FC } from 'react'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { addItemToCart } from 'redux/cart/actions'
+import { getCartItemsSelector } from 'redux/cart/selectors'
 import {
     ItemContainer,
     Discount,
@@ -17,8 +18,11 @@ import {
     ButtonTitle
 } from './ProductItem.styles'
 import { ProductItemProps } from './ProductItem.types'
+import { RootReducer } from 'redux/rootReducer'
+import { PurchaseItem } from 'redux/cart/types'
 
 export const ProductItem: FC<ProductItemProps> = ({ product }) => {
+    const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItemsSelector(state))
     const dispatch = useDispatch()
     
     return (
@@ -34,7 +38,10 @@ export const ProductItem: FC<ProductItemProps> = ({ product }) => {
             <PurchaseSection>
                 {product.price !== product.finalPrice ? <PreviousPrice>{product.price}</PreviousPrice> : null}
                 <FinalPrice>${product.finalPrice}</FinalPrice>
-                <Button onClick={() => dispatch(addItemToCart(product))}>
+                <Button
+                    disabled={!!cart.find(item => item.id === product.id)}
+                    onClick={() => dispatch(addItemToCart(product))}
+                >
                     <ButtonIcon/>
                     <ButtonTitle>Cart</ButtonTitle>
                 </Button>
