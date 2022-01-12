@@ -13,6 +13,9 @@ export const ProductsReducer = (state = initialState, action: ProductsAction): P
         case ProductsActionTypes.SET_PRODUCT_INFO: {
             return { ...state, productInfo: action.payload }
         }
+        case ProductsActionTypes.CLEAR_PRODUCTS: {
+            return { ...state, products: null }
+        }
         default: {
             return state
         }

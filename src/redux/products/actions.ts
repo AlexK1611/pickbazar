@@ -9,7 +9,10 @@ export const productsRequest = (category: number, start: number) => {
             const { data } = await axiosInstance.get(`/products?_where[_or][0][category]=${category}&_start=${start}&_limit=10`)
             const products = getState().products.products
 
-            if (products && products[0].category.id === data[0].category.id) {
+            if (data.length === 0) {
+                dispatch({ type: ProductsActionTypes.CLEAR_PRODUCTS })
+                if (localStorage.getItem('products')) localStorage.removeItem('products')
+            } else if (products && products[0].category.id === data[0].category.id) {
                 const payload = products.concat(
                     data.filter((newItem: ProductUnit) => !products.some((oldItem: ProductUnit) => oldItem.id === newItem.id))
                 )

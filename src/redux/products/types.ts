@@ -103,7 +103,8 @@ export interface ProductsState {
 
 export enum ProductsActionTypes {
     SET_PRODUCTS = 'SET_PRODUCTS',
-    SET_PRODUCT_INFO = 'SET_PRODUCT_INFO'
+    SET_PRODUCT_INFO = 'SET_PRODUCT_INFO',
+    CLEAR_PRODUCTS = 'CLEAR_PRODUCTS'
 }
 
 interface SetProductsAction {
@@ -116,4 +117,8 @@ interface SetProductInfoAction {
     payload: ExtendedProductUnit
 }
 
-export type ProductsAction = SetProductsAction | SetProductInfoAction
+interface ClearProductsAction {
+    type: ProductsActionTypes.CLEAR_PRODUCTS
+}
+
+export type ProductsAction = SetProductsAction | SetProductInfoAction | ClearProductsAction
