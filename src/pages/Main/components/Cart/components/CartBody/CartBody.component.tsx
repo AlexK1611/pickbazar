@@ -45,6 +45,7 @@ export const CartBody: FC = () => {
             <div>
                 {cart.length && cart.map(item => (
                     <CartItem
+                        key={`cart-item-${item.id}`}
                         id={item.id}
                         quantity={item.quantity}
                         picture={item.photos[0].url}
