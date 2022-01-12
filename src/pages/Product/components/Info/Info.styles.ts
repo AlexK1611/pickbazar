@@ -115,6 +115,17 @@ export const Button = styled.button`
             color: #FFF;
         }
     }
+    &:disabled {
+        border-color: rgba(0, 158, 127, 0);
+        background-color: rgba(0, 158, 127, 0.5);
+        cursor: not-allowed;
+        ${ButtonIcon} {
+            fill: #FFF;
+        }
+        ${ButtonTitle} {
+            color: #FFF;
+        }
+    }
 `
 
 export const Category = styled.div`

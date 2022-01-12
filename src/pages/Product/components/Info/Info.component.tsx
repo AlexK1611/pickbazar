@@ -1,4 +1,7 @@
 import { FC, useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { addItemToCart } from 'redux/cart/actions'
+import { getCartItemsSelector } from 'redux/cart/selectors'
 import {
     InfoContainer,
     PicturesSection,
@@ -18,14 +21,23 @@ import {
     CategoryTitle
 } from './Info.styles'
 import { InfoProps } from './Info.types'
+import { RootReducer } from 'redux/rootReducer'
+import { PurchaseItem } from 'redux/cart/types'
+import { CartButton } from 'components/CartButton/CartButton.component'
+import { Cart } from 'components/Cart/Cart.component'
 
 export const Info: FC<InfoProps> = ({ productInfo }) => {
+    const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItemsSelector(state))
+    const dispatch = useDispatch()
+
     const [selectedPicture, setSelectedPicture] = useState('')
     useEffect(() => {
         if (productInfo.photos.length) {
             setSelectedPicture(productInfo.photos[0].url)
         }
     }, [productInfo.photos.length])
+
+    const [isCart, handleCart] = useState(false)
 
     return (
         <InfoContainer>
@@ -51,7 +63,10 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
                 </TitleAndPrice>
                 {productInfo.size && <Size>{productInfo.size}</Size>}
                 {productInfo.description && <Description>{productInfo.description}</Description>}
-                <Button>
+                <Button
+                    disabled={!!cart.find(item => item.id === productInfo.id)}
+                    onClick={() => dispatch(addItemToCart(productInfo))}
+                >
                     <ButtonIcon />
                     <ButtonTitle>Buy</ButtonTitle>
                 </Button>
@@ -61,6 +76,11 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
                     </Category>
                 )}   
             </InfoSection>
+            <CartButton openCart={() => handleCart(true)} />
+            <Cart
+                isCart={isCart}
+                closeCart={() => handleCart(false)}
+            />
         </InfoContainer>
     )
 }
