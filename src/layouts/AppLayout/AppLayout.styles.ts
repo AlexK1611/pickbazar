@@ -46,6 +46,7 @@ export const SearchInput = styled.input`
 
 export const ProfileMenuContainer = styled.div`
     position: relative;
+    z-index: 50;
 `
 
 export const UserProfilePic = styled.div`
