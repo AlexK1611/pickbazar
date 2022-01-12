@@ -1,7 +1,7 @@
 import { CartAction, CartActionTypes, CartState } from './types'
 
 const initialState: CartState = {
-    cart: []
+    cart: JSON.parse(localStorage.getItem('cart') || '[]')
 }
 
 export const CartReducer = (state = initialState, action: CartAction): CartState => {

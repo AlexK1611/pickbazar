@@ -5,7 +5,7 @@ export interface PurchaseItem extends ExtendedProductUnit {
 }
 
 export interface CartState {
-    cart: PurchaseItem[]
+    cart: PurchaseItem[] | []
 }
 
 export enum CartActionTypes {
