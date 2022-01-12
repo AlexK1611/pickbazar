@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { removeAuthMessage } from 'redux/auth/actions'
 import { getAuthMessageSelector, getUserSelector } from 'redux/auth/selectors'
 
+// libraries
+import { Link } from 'react-router-dom'
+
 // styled components
 import {
     LayoutContainer,
@@ -71,7 +74,9 @@ export const AppLayout: FC = ({ children }) => {
             />
             <Header>
                 <HeaderItemsGroup>
-                    <Logo />
+                    <Link to='/'>
+                        <Logo />
+                    </Link>
                     <SearchInputContainer>
                         <SearchInputIcon />
                         <SearchInput />
