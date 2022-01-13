@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
 
 export const ItemContainer = styled.div`
     display: flex;
@@ -73,4 +74,8 @@ export const RemoveButton = styled.button`
     height: 10px;
     margin-left: 20px;
     background-color: transparent;
+`
+
+export const RemoveIcon = styled(CloseIcon)`
+    fill: rgba(0, 0, 0, 0.25);
 `

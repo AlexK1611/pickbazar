@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { ReactComponent as CloseSvg } from 'assets/icons/close.svg'
 
 export const ModalBackground = styled.div`
     position: fixed;
@@ -25,7 +26,11 @@ export const CloseButton = styled.button`
     position: absolute;
     top: 20px;
     right: 20px;
-    width: 11px;
+    width: 10px;
     height: 10px;
     background-color: transparent;
+`
+
+export const CloseIcon = styled(CloseSvg)`
+    fill: rgba(0, 0, 0, 0.25);
 `

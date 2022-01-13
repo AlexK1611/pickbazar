@@ -6,11 +6,11 @@ import {
     ItemsContainer,
     ItemsIcon,
     ItemsCount,
-    CloseButton
+    CloseButton,
+    CloseIcon
 } from './CartHeader.styles'
 import { CartHeaderProps } from './CartHeader.types'
 import { RootReducer } from 'redux/rootReducer'
-import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
 
 export const CartHeader: FC<CartHeaderProps> = ({ closeCart }) => {
     const cartItemTypes = useSelector((state: RootReducer) => getCartItemTypesSelector(state))

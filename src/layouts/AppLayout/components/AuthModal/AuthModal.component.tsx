@@ -4,11 +4,11 @@ import {
     ModalBackground,
     ModalContent,
     CloseButton,
+    CloseIcon
 } from './AuthModal.styles'
 import { SignIn } from '../SignIn/SignIn.component'
 import { SignUp } from '../SignUp/SignUp.component'
 import { AuthModalProps } from './AuthModal.types'
-import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
 
 export const AuthModal: FC<AuthModalProps> = ({ isModal, closeModal }) => {
     const [formType, setFormType] = useState('register')

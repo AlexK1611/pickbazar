@@ -16,10 +16,10 @@ import {
     ItemInfo,
     ItemCost,
     RightContent,
-    RemoveButton
+    RemoveButton,
+    RemoveIcon
 } from './CartItem.styles'
 import { CartItemProps } from './CartItem.types'
-import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
 
 export const CartItem: FC<CartItemProps> = ({
     id,
@@ -60,7 +60,7 @@ export const CartItem: FC<CartItemProps> = ({
             <RightContent>
                 {quantity && price && <PrimaryText>${(quantity * price).toFixed(2)}</PrimaryText>}
                 <RemoveButton onClick={() => dispatch(removeItemFromCart(id))}>
-                    <CloseIcon />
+                    <RemoveIcon />
                 </RemoveButton>
             </RightContent>
         </ItemContainer>
