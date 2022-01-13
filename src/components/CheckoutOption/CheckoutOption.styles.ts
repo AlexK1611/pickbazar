@@ -4,6 +4,7 @@ import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
 export const Option = styled.div<{
     isSelected?: boolean
 }>`
+    max-width: 180px;
     padding: 15px;
     border: ${props => props.isSelected ? '1px solid #009E7F' : 'none'};
     border-radius: 6px;
