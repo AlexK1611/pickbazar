@@ -6,34 +6,33 @@ import {
     Title,
     HighlightedText,
     SimpleText,
-    OrderItems,
-    OrderSection,
+    OrderBody,
+    OrderItemsList,
     OrderItem,
     QuantityAndSize
-} from './Order.styles'
+} from './OrderSection.styles'
 import { RootReducer } from 'redux/rootReducer'
 import { PurchaseItem } from 'redux/cart/types'
 
-
-export const Order: FC = () => {
+export const OrderSection: FC = () => {
     const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItemsSelector(state))
     const cartTotal = useSelector((state: RootReducer) => getCartTotalSelector(state))
 
     return (
         <OrderContainer>
             <Title>Your Order</Title>
-            <OrderItems>
-                <OrderSection>
+            <OrderBody>
+                <OrderItemsList>
                     {cart.map(purchase => (
-                        <OrderItem>
+                        <OrderItem key={`purchase-${purchase.id}`}>
                             <QuantityAndSize>
                                 <HighlightedText>{purchase.quantity}</HighlightedText> X {purchase.name} | {purchase.size}
                             </QuantityAndSize>
                             <SimpleText>${(purchase.quantity * purchase.price).toFixed(2)}</SimpleText>
                         </OrderItem>
                     ))}
-                </OrderSection>
-                <OrderSection>
+                </OrderItemsList>
+                <OrderItemsList>
                     <OrderItem>
                         <SimpleText>Sub Total</SimpleText>
                         <SimpleText>${cartTotal.toFixed(2)}</SimpleText>
@@ -50,8 +49,8 @@ export const Order: FC = () => {
                         <HighlightedText>Total (Incl. VAT)</HighlightedText>
                         <SimpleText>${(cartTotal + 3).toFixed(2)}</SimpleText>
                     </OrderItem>
-                </OrderSection>
-            </OrderItems>
+                </OrderItemsList>
+            </OrderBody>
         </OrderContainer>
     )
 }

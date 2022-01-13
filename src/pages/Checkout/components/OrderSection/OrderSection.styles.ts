@@ -29,11 +29,11 @@ export const SimpleText = styled.p`
     color: #77798C;
 `
 
-export const OrderItems = styled.div`
+export const OrderBody = styled.div`
     margin-top: 20px;
 `
 
-export const OrderSection = styled.div`
+export const OrderItemsList = styled.div`
     padding: 20px 0;
     border-bottom: 1px solid #E6E6E6;
     &:last-child {
