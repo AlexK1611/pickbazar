@@ -5,6 +5,8 @@ import { AppLayout } from './layouts/AppLayout/AppLayout.component'
 import { Main } from './pages/Main/Main.page'
 import { Product } from 'pages/Product/Product.page'
 import { NotFound } from './pages/NotFound/NotFound.page'
+import { CheckoutRoute } from 'layouts/CheckoutRoute/CheckoutRoute.component'
+import { Checkout } from 'pages/Checkout/Checkout.page'
 
 const App: FC = () => {
   return (
@@ -14,6 +16,14 @@ const App: FC = () => {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/products/:id' element={<Product />} />
+          <Route
+            path='/checkout'
+            element={
+              <CheckoutRoute>
+                <Checkout />
+              </CheckoutRoute>
+            }
+          />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </AppLayout>
