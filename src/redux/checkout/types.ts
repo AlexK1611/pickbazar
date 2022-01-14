@@ -6,6 +6,13 @@ export interface ScheduleItem {
     time: string
 }
 
+export interface PaymentOption {
+    id: string,
+    name: string,
+    description: string
+}
+
 export interface CheckoutState {
-    schedules: ScheduleItem[]
+    schedules: ScheduleItem[],
+    payments: PaymentOption[]
 }

@@ -21,3 +21,11 @@ export const deliverySchedules = [
         time: '2:00 PM - 5:00 PM'
     }
 ]
+
+export const paymentOptions = [
+    {
+        id: 'cash',
+        name: 'Cash',
+        description: 'Pay with cash on delivery'
+    }
+]

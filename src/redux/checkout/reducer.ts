@@ -1,8 +1,9 @@
-import { deliverySchedules } from './helpers'
+import { deliverySchedules, paymentOptions } from './helpers'
 import { CheckoutState } from './types'
 
 const initialState: CheckoutState = {
-    schedules: deliverySchedules
+    schedules: deliverySchedules,
+    payments: paymentOptions
 }
 
 export const CheckoutReducer = (state = initialState): CheckoutState => {

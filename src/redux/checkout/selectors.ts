@@ -5,3 +5,8 @@ export const getDeliverySchedulesSelector = createSelector(
     (state: RootReducer) => state.checkout,
     state => state.schedules
 )
+
+export const getPaymentOptionsSelector = createSelector(
+    (state: RootReducer) => state.checkout,
+    state => state.payments
+)
