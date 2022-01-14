@@ -13,6 +13,7 @@ import {
     EmptyTitle,
     CheckoutSection,
     AuthMessage,
+    CheckoutLink,
     CheckoutButton,
     ButtonTitle,
     PriceContainer,
@@ -57,12 +58,14 @@ export const CartBody: FC = () => {
             </div>
             <CheckoutSection>
                 {user ? (
-                    <CheckoutButton>
-                        <ButtonTitle>Checkout</ButtonTitle>
-                        <PriceContainer>
-                            <Price>${cartTotal.toFixed(2)}</Price>
-                        </PriceContainer>
-                    </CheckoutButton>
+                    <CheckoutLink to={cart.length > 0 ? '/checkout' : '/'}>
+                        <CheckoutButton>
+                            <ButtonTitle>Checkout</ButtonTitle>
+                            <PriceContainer>
+                                <Price>${cartTotal.toFixed(2)}</Price>
+                            </PriceContainer>
+                        </CheckoutButton>
+                    </CheckoutLink>
                 ) : <AuthMessage>Sign in to proceed</AuthMessage>}
             </CheckoutSection>
         </BodyContainer>

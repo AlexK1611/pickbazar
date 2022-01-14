@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const BodyContainer = styled.div`
     display: flex;
@@ -37,6 +38,10 @@ export const AuthMessage = styled.p`
     font-size: 21px;
     font-weight: 700;
     color: #009E7F;
+`
+
+export const CheckoutLink = styled(Link)`
+    width: 100%;
 `
 
 export const CheckoutButton = styled.button`
