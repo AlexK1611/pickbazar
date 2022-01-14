@@ -15,6 +15,7 @@ export const FormTextarea = forwardRef<any, FormTextareaProps>(
                     ref={ref}
                     placeholder={placeholder}
                     {...rest}
+                    rows={10}
                 />
                 {error && (
                     <TextareaTooltip>

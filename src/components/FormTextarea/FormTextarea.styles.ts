@@ -15,6 +15,7 @@ export const Textarea = styled.textarea`
     border-radius: 6px;
     background-color: #F7F7F7;
     resize: none;
+    font-size: 12px;
     &:focus {
         border-color: #009E7F;
     }
