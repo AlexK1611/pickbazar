@@ -13,8 +13,14 @@ export const CheckoutReducer = (state = initialState, action: CheckoutAction): C
         case CheckoutActionTypes.ADD_ADDRESS: {
             return { ...state, addresses: [...state.addresses, action.payload] }
         }
+        case CheckoutActionTypes.REMOVE_ADDRESS: {
+            return { ...state, addresses: [...state.addresses.filter(address => address.id !== action.payload)] }
+        }
         case CheckoutActionTypes.ADD_PHONE_NUMBER: {
             return { ...state, phones: [...state.phones, action.payload] }
+        }
+        case CheckoutActionTypes.REMOVE_PHONE_NUMBER: {
+            return { ...state, phones: [...state.phones.filter(phone => phone.number !== action.payload)] }
         }
         default: {
             return state

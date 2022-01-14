@@ -24,6 +24,16 @@ export const addAddress = (data: AddressPayload) => {
     }
 }
 
+export const removeAddress = (id: string) => {
+    return (dispatch: Dispatch) => {
+        dispatch({ type: CheckoutActionTypes.REMOVE_ADDRESS, payload: id })
+
+        const storagedAddresses: AddressItem[] = JSON.parse(localStorage.getItem('addresses') || '[]')
+        const updatedAddresses = storagedAddresses.filter(address => address.id !== id)
+        localStorage.setItem('addresses', JSON.stringify(updatedAddresses))
+    }
+}
+
 export const addPhoneNumber = (data: PhoneNumberItem) => {
     return (dispatch: Dispatch, getState: () => RootReducer) => {
         const phones = getState().checkout.phones
@@ -36,5 +46,15 @@ export const addPhoneNumber = (data: PhoneNumberItem) => {
             const updatedPhones = [...storagedPhones, data]
             localStorage.setItem('phones', JSON.stringify(updatedPhones))
         }
+    }
+}
+
+export const removePhoneNumber = (phoneNumber: string) => {
+    return (dispatch: Dispatch) => {
+        dispatch({ type: CheckoutActionTypes.REMOVE_PHONE_NUMBER, payload: phoneNumber })
+
+        const storagedPhones: PhoneNumberItem[] = JSON.parse(localStorage.getItem('phones') || '[]')
+        const updatedPhones = storagedPhones.filter(phone => phone.number !== phoneNumber)
+        localStorage.setItem('phones', JSON.stringify(updatedPhones))
     }
 }

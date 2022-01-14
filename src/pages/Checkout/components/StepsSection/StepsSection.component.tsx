@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
 // redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { removeAddress, removePhoneNumber } from 'redux/checkout/actions'
 import {
     getDeliveryAddressesSelector,
     getDeliverySchedulesSelector,
@@ -34,6 +35,8 @@ export const StepsSection: FC<StepsSectionProps> = ({ setFormType }) => {
     const deliverySchedules: ScheduleItem[] = useSelector((state: RootReducer) => getDeliverySchedulesSelector(state))
     const phoneNumbers: PhoneNumberItem[] = useSelector((state: RootReducer) => getPhoneNumbersSelector(state))
     const paymentOptions: PaymentOption[] = useSelector((state: RootReducer) => getPaymentOptionsSelector(state))
+
+    const dispatch = useDispatch()
     
     return (
         <CheckoutSteps>
@@ -50,6 +53,8 @@ export const StepsSection: FC<StepsSectionProps> = ({ setFormType }) => {
                                 key={`address-${address.id}`}
                                 title={address.title}
                                 info={address.description}
+                                editAction={() => {}}
+                                removeAction={() => dispatch(removeAddress(address.id))}
                             />
                         ))}
                     </CheckoutStepOptions>
@@ -95,6 +100,8 @@ export const StepsSection: FC<StepsSectionProps> = ({ setFormType }) => {
                                 key={`phone-${phone.number.slice(0, 4)}-${phone.number.slice(-4)}`}
                                 title={phone.title}
                                 info={phone.number}
+                                editAction={() => {}}
+                                removeAction={() => dispatch(removePhoneNumber(phone.number))}
                             />
                         ))}
                     </CheckoutStepOptions>
