@@ -40,13 +40,20 @@ export interface CheckoutState {
 
 export enum CheckoutActionTypes {
     ADD_ADDRESS = 'ADD_ADDRESS',
+    EDIT_ADDRESS = 'EDIT_ADDRESS',
     REMOVE_ADDRESS = 'REMOVE_ADDRESS',
     ADD_PHONE_NUMBER = 'ADD_PHONE_NUMBER',
+    EDIT_PHONE_NUMBER = 'EDIT_PHONE_NUMBER',
     REMOVE_PHONE_NUMBER = 'REMOVE_PHONE_NUMBER'
 }
 
 interface AddAddressAction {
     type: CheckoutActionTypes.ADD_ADDRESS,
+    payload: AddressItem
+}
+
+interface EditAddressAction {
+    type: CheckoutActionTypes.EDIT_ADDRESS,
     payload: AddressItem
 }
 
@@ -60,6 +67,11 @@ interface AddPhoneNumberAction {
     payload: PhoneNumberItem
 }
 
+interface EditPhoneNumberAction {
+    type: CheckoutActionTypes.EDIT_PHONE_NUMBER,
+    payload: PhoneNumberItem
+}
+
 interface RemovePhoneNumberAction {
     type: CheckoutActionTypes.REMOVE_PHONE_NUMBER,
     payload: string
@@ -67,7 +79,9 @@ interface RemovePhoneNumberAction {
 
 export type CheckoutAction = (
     AddAddressAction | 
+    EditAddressAction |
     RemoveAddressAction |
     AddPhoneNumberAction |
+    EditPhoneNumberAction |
     RemovePhoneNumberAction
 )

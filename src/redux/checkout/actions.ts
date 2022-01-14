@@ -24,6 +24,12 @@ export const addAddress = (data: AddressPayload) => {
     }
 }
 
+export const editAddress = (data: AddressItem) => {
+    return (dispatch: Dispatch, getState: () => RootReducer) => {
+        dispatch({ type: CheckoutActionTypes.EDIT_ADDRESS, payload: data })
+    }
+}
+
 export const removeAddress = (id: string) => {
     return (dispatch: Dispatch) => {
         dispatch({ type: CheckoutActionTypes.REMOVE_ADDRESS, payload: id })
