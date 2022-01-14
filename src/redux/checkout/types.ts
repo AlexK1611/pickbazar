@@ -3,10 +3,8 @@ export interface AddressPayload {
     description: string
 }
 
-export interface AddressItem {
-    id: string,
-    title: string,
-    description: string
+export interface AddressItem extends AddressPayload {
+    id: string
 }
 
 export interface ScheduleItem {
@@ -17,6 +15,16 @@ export interface ScheduleItem {
     time: string
 }
 
+export interface PhoneNumberPayload {
+    title: string,
+    number: string
+}
+
+export interface PhoneNumberItem {
+    title: string,
+    number: string
+}
+
 export interface PaymentOption {
     id: string,
     name: string,
@@ -24,13 +32,15 @@ export interface PaymentOption {
 }
 
 export interface CheckoutState {
-    addresses: AddressItem[],
-    schedules: ScheduleItem[],
-    payments: PaymentOption[]
+    addresses: AddressItem[] | [],
+    schedules: ScheduleItem[] | [],
+    phones: PhoneNumberItem[] | [],
+    payments: PaymentOption[] | []
 }
 
 export enum CheckoutActionTypes {
-    ADD_ADDRESS = 'ADD_ADDRESS'
+    ADD_ADDRESS = 'ADD_ADDRESS',
+    ADD_PHONE_NUMBER = 'ADD_PHONE_NUMBER'
 }
 
 interface AddAddressAction {
@@ -38,4 +48,9 @@ interface AddAddressAction {
     payload: AddressItem
 }
 
-export type CheckoutAction = AddAddressAction
+interface AddPhoneNumber {
+    type: CheckoutActionTypes.ADD_PHONE_NUMBER,
+    payload: PhoneNumberItem
+}
+
+export type CheckoutAction = AddAddressAction | AddPhoneNumber

@@ -11,6 +11,11 @@ export const getDeliverySchedulesSelector = createSelector(
     state => state.schedules
 )
 
+export const getPhoneNumbersSelector = createSelector(
+    (state: RootReducer) => state.checkout,
+    state => state.phones
+)
+
 export const getPaymentOptionsSelector = createSelector(
     (state: RootReducer) => state.checkout,
     state => state.payments

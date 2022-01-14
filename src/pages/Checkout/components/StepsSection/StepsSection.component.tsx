@@ -5,12 +5,18 @@ import { useSelector } from 'react-redux'
 import {
     getDeliveryAddressesSelector,
     getDeliverySchedulesSelector,
-    getPaymentOptionsSelector
+    getPaymentOptionsSelector,
+    getPhoneNumbersSelector
 } from 'redux/checkout/selectors'
 
 // types
 import { RootReducer } from 'redux/rootReducer'
-import { AddressItem, PaymentOption, ScheduleItem } from 'redux/checkout/types'
+import {
+    AddressItem,
+    PaymentOption,
+    PhoneNumberItem,
+    ScheduleItem
+} from 'redux/checkout/types'
 import { StepsSectionProps } from './StepsSection.types'
 
 import {
@@ -26,6 +32,7 @@ import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 export const StepsSection: FC<StepsSectionProps> = ({ setFormType }) => {
     const deliveryAddresses: AddressItem[] = useSelector((state: RootReducer) => getDeliveryAddressesSelector(state))
     const deliverySchedules: ScheduleItem[] = useSelector((state: RootReducer) => getDeliverySchedulesSelector(state))
+    const phoneNumbers: PhoneNumberItem[] = useSelector((state: RootReducer) => getPhoneNumbersSelector(state))
     const paymentOptions: PaymentOption[] = useSelector((state: RootReducer) => getPaymentOptionsSelector(state))
     
     return (
@@ -81,6 +88,17 @@ export const StepsSection: FC<StepsSectionProps> = ({ setFormType }) => {
                 stepLabel='Number'
                 addAction={() => setFormType('add-number')}
             >
+                {phoneNumbers && (
+                    <CheckoutStepOptions>
+                        {phoneNumbers.map(phone => (
+                            <CheckoutOption
+                                key={`phone-${phone.number.slice(0, 4)}-${phone.number.slice(-4)}`}
+                                title={phone.title}
+                                info={phone.number}
+                            />
+                        ))}
+                    </CheckoutStepOptions>
+                )}
             </CheckoutStep>
             <CheckoutStep
                 stepNumber={4}

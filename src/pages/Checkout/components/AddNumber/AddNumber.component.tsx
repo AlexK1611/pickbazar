@@ -1,5 +1,9 @@
 import { FC } from 'react'
 
+// redux
+import { useDispatch } from 'react-redux'
+import { addPhoneNumber } from 'redux/checkout/actions'
+
 // libraries
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -12,18 +16,20 @@ import { FormField } from 'components/FormField/FormField.component'
 import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 
 // types
-import { NumberData } from './AddNumber.types'
+import { AddNumberProps, NumberData } from './AddNumber.types'
 
 // helpers
 import { numberValidation } from './AddNumber.helpers'
 
-export const AddNumber: FC = () => {
+export const AddNumber: FC<AddNumberProps> = ({ closeModal }) => {
+    const dispatch = useDispatch()
     const { register, handleSubmit, formState: { errors } } = useForm<NumberData>({
         mode: 'all',
         resolver: yupResolver(numberValidation)
     })
     const onSubmit = (data: NumberData) => {
-        console.log('number added')
+        dispatch(addPhoneNumber(data))
+        closeModal()
     }
 
     return (
