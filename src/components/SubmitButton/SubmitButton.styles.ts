@@ -8,6 +8,9 @@ export const ButtonContainer = styled.button<{
     padding: 10px 20px;
     border-radius: 6px;
     background-color: #009E7F;
+    &:disabled {
+        background-color: rgba(0, 158, 127, 0.5);
+    }
 `
 
 export const ButtonTitle = styled.p`
