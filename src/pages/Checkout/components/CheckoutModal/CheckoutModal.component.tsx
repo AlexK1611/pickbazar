@@ -25,7 +25,7 @@ export const CheckoutModal: FC<CheckoutModalProps> = ({
                 <CloseButton onClick={closeModal}>
                     <CloseIcon />
                 </CloseButton>
-                {formType === 'add-address' && <AddAddress />}
+                {formType === 'add-address' && <AddAddress closeModal={closeModal} />}
                 {formType === 'add-number' && <AddNumber />}
             </ModalContent>
         </ModalBackground>,

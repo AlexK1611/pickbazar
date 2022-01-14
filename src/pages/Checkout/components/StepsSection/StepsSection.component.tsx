@@ -3,13 +3,14 @@ import { FC } from 'react'
 // redux
 import { useSelector } from 'react-redux'
 import {
+    getDeliveryAddressesSelector,
     getDeliverySchedulesSelector,
     getPaymentOptionsSelector
 } from 'redux/checkout/selectors'
 
 // types
 import { RootReducer } from 'redux/rootReducer'
-import { PaymentOption, ScheduleItem } from 'redux/checkout/types'
+import { AddressItem, PaymentOption, ScheduleItem } from 'redux/checkout/types'
 import { StepsSectionProps } from './StepsSection.types'
 
 import {
@@ -23,11 +24,30 @@ import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 
 export const StepsSection: FC<StepsSectionProps> = ({ setFormType }) => {
+    const deliveryAddresses: AddressItem[] = useSelector((state: RootReducer) => getDeliveryAddressesSelector(state))
     const deliverySchedules: ScheduleItem[] = useSelector((state: RootReducer) => getDeliverySchedulesSelector(state))
     const paymentOptions: PaymentOption[] = useSelector((state: RootReducer) => getPaymentOptionsSelector(state))
     
     return (
         <CheckoutSteps>
+            <CheckoutStep
+                stepNumber={1}
+                stepName='Delivery Address'
+                stepLabel='Address'
+                addAction={() => setFormType('add-address')}
+            >
+                {deliveryAddresses && (
+                    <CheckoutStepOptions>
+                        {deliveryAddresses.map(address => (
+                            <CheckoutOption
+                                key={`address-${address.id}`}
+                                title={address.title}
+                                info={address.description}
+                            />
+                        ))}
+                    </CheckoutStepOptions>
+                )}
+            </CheckoutStep>
             <CheckoutStep
                 stepNumber={2}
                 stepName='Delivery Schedule'
@@ -54,6 +74,13 @@ export const StepsSection: FC<StepsSectionProps> = ({ setFormType }) => {
                         </CheckoutStepOptions>
                     </>
                 )}
+            </CheckoutStep>
+            <CheckoutStep
+                stepNumber={3}
+                stepName='Contact Number'
+                stepLabel='Number'
+                addAction={() => setFormType('add-number')}
+            >
             </CheckoutStep>
             <CheckoutStep
                 stepNumber={4}
