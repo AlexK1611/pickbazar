@@ -1,7 +1,9 @@
+import { MouseEvent } from 'react'
+
 export interface CheckoutOptionProps {
     title: string,
     info: string,
     isSelected?: boolean,
-    editAction?: () => void,
-    removeAction?: () => void
+    editAction?: (event: MouseEvent<HTMLButtonElement>) => void,
+    removeAction?: (event: MouseEvent<HTMLButtonElement>) => void
 }

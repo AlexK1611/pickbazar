@@ -6,7 +6,8 @@ export const Option = styled.div<{
 }>`
     max-width: 180px;
     padding: 15px;
-    border: ${props => props.isSelected ? '1px solid #009E7F' : 'none'};
+    border: 1px solid;
+    border-color: ${props => props.isSelected ? '#009E7F' : '#F7F7F7'};
     border-radius: 6px;
     background-color: ${props => props.isSelected ? '#FFF' : '#F7F7F7'};
 `
