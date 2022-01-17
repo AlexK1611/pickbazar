@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, MouseEvent } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -20,15 +20,17 @@ import {
 } from 'redux/checkout/types'
 import { StepsSectionProps } from './StepsSection.types'
 
+// styled components
 import {
     CheckoutSteps,
     CheckoutStepOptions,
     CheckoutStepInfo,
     TermsAndConditions
 } from './StepsSection.styles'
+
+import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
-import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 
 export const StepsSection: FC<StepsSectionProps> = ({
     setFormType,
@@ -42,14 +44,26 @@ export const StepsSection: FC<StepsSectionProps> = ({
 
     const dispatch = useDispatch()
 
-    const editAddressHandler = (id: string) => {
+    const editAddressHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
+        event.stopPropagation()
         setAddressId(id)
         setFormType('edit-address')
     }
 
-    const editPhoneNumberHandler = (number: string) => {
+    const removeAddressHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
+        event.stopPropagation()
+        dispatch(removeAddress(id))
+    }
+
+    const editPhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, number: string) => {
+        event.stopPropagation()
         setPhoneNumber(number)
         setFormType('edit-number')
+    }
+
+    const removePhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, number: string) => {
+        event.stopPropagation()
+        dispatch(removePhoneNumber(number))
     }
     
     return (
@@ -67,8 +81,8 @@ export const StepsSection: FC<StepsSectionProps> = ({
                                 key={`address-${address.id}`}
                                 title={address.title}
                                 info={address.description}
-                                editAction={() => editAddressHandler(address.id)}
-                                removeAction={() => dispatch(removeAddress(address.id))}
+                                editAction={event => editAddressHandler(event, address.id)}
+                                removeAction={event => removeAddressHandler(event, address.id)}
                             />
                         ))}
                     </CheckoutStepOptions>
@@ -114,8 +128,8 @@ export const StepsSection: FC<StepsSectionProps> = ({
                                 key={`phone-${phone.number.slice(0, 4)}-${phone.number.slice(-4)}`}
                                 title={phone.title}
                                 info={phone.number}
-                                editAction={() => editPhoneNumberHandler(phone.number)}
-                                removeAction={() => dispatch(removePhoneNumber(phone.number))}
+                                editAction={event => editPhoneNumberHandler(event, phone.number)}
+                                removeAction={event => removePhoneNumberHandler(event, phone.number)}
                             />
                         ))}
                     </CheckoutStepOptions>
