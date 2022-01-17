@@ -44,7 +44,7 @@ export const CartBody: FC = () => {
                 </EmptySection>
             )}
             <div>
-                {cart.length && cart.map(item => (
+                {cart.length > 0 && cart.map(item => (
                     <CartItem
                         key={`cart-item-${item.id}`}
                         id={item.id}
