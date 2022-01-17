@@ -25,8 +25,17 @@ export const addAddress = (data: AddressPayload) => {
 }
 
 export const editAddress = (data: AddressItem) => {
-    return (dispatch: Dispatch, getState: () => RootReducer) => {
+    return (dispatch: Dispatch) => {
         dispatch({ type: CheckoutActionTypes.EDIT_ADDRESS, payload: data })
+
+        const storagedAddresses: AddressItem[] = JSON.parse(localStorage.getItem('addresses') || '[]')
+        const updatedAddresses = storagedAddresses.map(address => {
+            if (address.id === data.id) {
+                return { ...address, title: data.title, description: data.description }
+            }
+            return address
+        })
+        localStorage.setItem('addresses', JSON.stringify(updatedAddresses))
     }
 }
 
@@ -52,6 +61,21 @@ export const addPhoneNumber = (data: PhoneNumberItem) => {
             const updatedPhones = [...storagedPhones, data]
             localStorage.setItem('phones', JSON.stringify(updatedPhones))
         }
+    }
+}
+
+export const editPhoneNumber = (data: PhoneNumberItem) => {
+    return (dispatch: Dispatch) => {
+        dispatch({ type: CheckoutActionTypes.EDIT_PHONE_NUMBER, payload: data })
+
+        const storagedPhones: PhoneNumberItem[] = JSON.parse(localStorage.getItem('phones') || '[]')
+        const updatedPhones = storagedPhones.map(phone => {
+            if (phone.number === data.number) {
+                return { ...phone, title: data.title, number: data.number }
+            }
+            return phone
+        })
+        localStorage.setItem('phones', JSON.stringify(updatedPhones))
     }
 }
 

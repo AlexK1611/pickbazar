@@ -6,7 +6,7 @@ export const getDeliveryAddressesSelector = createSelector(
     state => state.addresses
 )
 
-export const getDeliveryAddress = (id: string) => {
+export const getDeliveryAddress = (id?: string) => {
     return createSelector(
         (state: RootReducer) => state.checkout.addresses,
         addresses => addresses.find(address => address.id === id)
@@ -23,7 +23,7 @@ export const getPhoneNumbersSelector = createSelector(
     state => state.phones
 )
 
-export const getPhoneNumber = (phoneNumber: string) => {
+export const getPhoneNumber = (phoneNumber?: string) => {
     return createSelector(
         (state: RootReducer) => state.checkout.phones,
         phones => phones.find(phone => phone.number === phoneNumber)
