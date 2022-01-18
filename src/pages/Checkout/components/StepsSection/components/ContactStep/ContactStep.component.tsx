@@ -9,6 +9,7 @@ import { getPhoneNumbersSelector } from 'redux/checkout/selectors'
 import { ContactStepProps } from './ContactStep.types'
 import { PhoneNumberItem } from 'redux/checkout/types'
 import { RootReducer } from 'redux/rootReducer'
+import { OrderCreationTypes } from '../../StepsSection.types'
 
 // styled components
 import { StepOptions } from './ContactStep.styles'
@@ -17,7 +18,12 @@ import { StepOptions } from './ContactStep.styles'
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 
-export const ContactStep: FC<ContactStepProps> = ({ setFormType, setPhoneNumber }) => {
+export const ContactStep: FC<ContactStepProps> = ({
+    setFormType,
+    setPhoneNumber,
+    state,
+    action
+}) => {
     const phoneNumbers: PhoneNumberItem[] = useSelector(
         (state: RootReducer) => getPhoneNumbersSelector(state)
     )
@@ -51,6 +57,11 @@ export const ContactStep: FC<ContactStepProps> = ({ setFormType, setPhoneNumber 
                             info={phone.number}
                             editAction={event => editPhoneNumberHandler(event, phone.number)}
                             removeAction={event => removePhoneNumberHandler(event, phone.number)}
+                            isSelected={!!(state.number === phone.number)}
+                            onClick={() => action({
+                                type: OrderCreationTypes.SET_ORDER_PHONE_NUMBER,
+                                payload: phone.number
+                            })}
                         />
                     ))}
                 </StepOptions>

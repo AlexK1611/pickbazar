@@ -16,10 +16,11 @@ export const CheckoutOption: FC<CheckoutOptionProps> = ({
     info,
     isSelected,
     editAction,
-    removeAction
+    removeAction,
+    onClick
 }) => {
     return (
-        <Option isSelected={isSelected}>
+        <Option isSelected={isSelected} onClick={onClick}>
             <OptionHeader>
                 <OptionTitle>{title}</OptionTitle>
                 {editAction && removeAction && (

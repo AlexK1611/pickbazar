@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useReducer } from 'react'
 
 // types
 import { StepsSectionProps } from './StepsSection.types'
@@ -12,23 +12,38 @@ import { DeliveryStep } from './components/DeliveryStep/DeliveryStep.component'
 import { ContactStep } from './components/ContactStep/ContactStep.component'
 import { PaymentStep } from './components/PaymentStep/PaymentStep.component'
 
+// state
+import { orderCreationReducer, orderCreationState } from './StepsSection.state'
+
 export const StepsSection: FC<StepsSectionProps> = ({
     setFormType,
     setAddressId,
     setPhoneNumber
-}) => { 
+}) => {
+    const [state, action] = useReducer(orderCreationReducer, orderCreationState)
+
     return (
         <CheckoutSteps>
             <AddressStep
                 setFormType={setFormType}
                 setAddressId={setAddressId}
+                state={state}
+                action={action}
             />
-            <DeliveryStep />
+            <DeliveryStep
+                state={state}
+                action={action}
+            />
             <ContactStep
                 setFormType={setFormType}
                 setPhoneNumber={setPhoneNumber}
+                state={state}
+                action={action}
             />
-            <PaymentStep />
+            <PaymentStep
+                state={state}
+                action={action}
+            />
         </CheckoutSteps>
     )
 }

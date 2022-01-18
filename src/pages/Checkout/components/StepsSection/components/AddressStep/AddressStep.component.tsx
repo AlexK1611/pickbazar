@@ -9,6 +9,7 @@ import { getDeliveryAddressesSelector } from 'redux/checkout/selectors'
 import { AddressItem } from 'redux/checkout/types'
 import { RootReducer } from 'redux/rootReducer'
 import { AddressStepProps } from './AddressStep.types'
+import { OrderCreationTypes } from '../../StepsSection.types'
 
 // styled components
 import { StepOptions } from './AddressStep.styles'
@@ -17,7 +18,12 @@ import { StepOptions } from './AddressStep.styles'
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 
-export const AddressStep: FC<AddressStepProps> = ({ setFormType, setAddressId }) => {
+export const AddressStep: FC<AddressStepProps> = ({
+    setFormType,
+    setAddressId,
+    state,
+    action
+}) => {
     const deliveryAddresses: AddressItem[] = useSelector(
         (state: RootReducer) => getDeliveryAddressesSelector(state)
     )
@@ -51,6 +57,11 @@ export const AddressStep: FC<AddressStepProps> = ({ setFormType, setAddressId })
                             info={address.description}
                             editAction={event => editAddressHandler(event, address.id)}
                             removeAction={event => removeAddressHandler(event, address.id)}
+                            isSelected={!!(state.address?.id === address.id)}
+                            onClick={() => action({
+                                type: OrderCreationTypes.SET_ORDER_ADDRESS,
+                                payload: { id: address.id, description: address.description }
+                            })}
                         />
                     ))}
                 </StepOptions>

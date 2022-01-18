@@ -7,6 +7,8 @@ import { getPaymentOptionsSelector } from 'redux/checkout/selectors'
 // types
 import { RootReducer } from 'redux/rootReducer'
 import { PaymentOption } from 'redux/checkout/types'
+import { PaymentStepProps } from './PaymentStep.types'
+import { OrderCreationTypes } from '../../StepsSection.types'
 
 // styled components
 import { StepOptions, StepInfo, TermsAndConditions } from './PaymentStep.styles'
@@ -16,7 +18,7 @@ import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 
-export const PaymentStep: FC = () => {
+export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
     const paymentOptions: PaymentOption[] = useSelector(
         (state: RootReducer) => getPaymentOptionsSelector(state)
     )
@@ -34,6 +36,11 @@ export const PaymentStep: FC = () => {
                             key={`payment-${payment.id}`}
                             title={payment.name}
                             info={payment.description}
+                            isSelected={!!(state.payment?.id === payment.id)}
+                            onClick={() => action({
+                                type: OrderCreationTypes.SET_ORDER_PAYMENT,
+                                payload: { id: payment.id, name: payment.name }
+                            })}
                         />
                     ))}
                 </StepOptions>
@@ -45,6 +52,7 @@ export const PaymentStep: FC = () => {
             <SubmitButton
                 isWide
                 title='Proceed to Checkout'
+                disabled={!(state.address && state.schedule && state.number && state.payment)}
                 onClick={() => { }}
             />
         </CheckoutStep>
