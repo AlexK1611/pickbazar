@@ -57,3 +57,10 @@ export const decreaseQuantity = (id: number) => {
         localStorage.setItem('cart', JSON.stringify(updatedCart))
     }
 }
+
+export const clearCart = () => {
+    return (dispatch: Dispatch) => {
+        dispatch({ type: CartActionTypes.CLEAR_CART })
+        localStorage.removeItem('cart')
+    }
+}

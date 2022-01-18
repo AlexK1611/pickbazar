@@ -12,7 +12,8 @@ export enum CartActionTypes {
     ADD_CART_ITEM = 'ADD_CART_ITEM',
     REMOVE_CART_ITEM = 'REMOVE_CART_ITEM',
     INCREASE_QUANTITY = 'INCREASE_QUANTITY',
-    DECREASE_QUANTITY = 'DECREASE_QUANTITY'
+    DECREASE_QUANTITY = 'DECREASE_QUANTITY',
+    CLEAR_CART = 'CLEAR_CART'
 }
 
 interface AddCartItemAction {
@@ -35,9 +36,14 @@ interface DecreaseQuantityAction {
     payload: number
 }
 
+interface ClearCartAction {
+    type: CartActionTypes.CLEAR_CART
+}
+
 export type CartAction = (
     AddCartItemAction | 
     RemoveCartItemAction |
     IncreaseQuantityAction |
-    DecreaseQuantityAction
+    DecreaseQuantityAction |
+    ClearCartAction
 )

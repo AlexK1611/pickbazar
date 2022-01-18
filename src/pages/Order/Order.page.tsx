@@ -1,4 +1,7 @@
 import { FC } from 'react'
+import { useSelector } from 'react-redux'
+import { getCreatedOrder } from 'redux/orders/selectors'
+import { RootReducer } from 'redux/rootReducer'
 import {
     OrderContainer,
     OrderBody,
@@ -13,6 +16,8 @@ import {
 } from './Order.styles'
 
 export const Order: FC = () => {
+    const createdOrder = useSelector((state: RootReducer) => getCreatedOrder(state))
+
     return (
         <OrderContainer>
             <OrderBody>
@@ -20,64 +25,102 @@ export const Order: FC = () => {
                     <DataTitle>Order Received</DataTitle>
                     <OrderMessage>Thank you. Your order has been received</OrderMessage>
                     <OverallInfo>
-                        <div>
-                            <Subtitle>Order Number</Subtitle>
-                            <Info isColumn>1444</Info>
-                        </div>
-                        <div>
-                            <Subtitle>Date</Subtitle>
-                            <Info isColumn>March 14, 2019</Info>
-                        </div>
-                        <div>
-                            <Subtitle>Total</Subtitle>
-                            <Info isColumn>$10,944.00</Info>
-                        </div>
-                        <div>
-                            <Subtitle>Payment Method</Subtitle>
-                            <Info isColumn>Cash on delivery</Info>
-                        </div>
+                        {createdOrder?.id && (
+                            <div>
+                                <Subtitle>Order Number</Subtitle>
+                                <Info isColumn>{createdOrder.id}</Info>
+                            </div>
+                        )}
+                        {createdOrder?.created_at && (
+                            <div>
+                                <Subtitle>Date</Subtitle>
+                                <Info isColumn>{createdOrder.created_at.slice(0, 10)}</Info>
+                            </div>
+                        )}
+                        {createdOrder?.products.length && (
+                            <div>
+                                <Subtitle>Total</Subtitle>
+                                <Info isColumn>
+                                    ${(createdOrder.products
+                                        .map(product => product.price)
+                                        .reduce((total, current) => total + current, 0)
+                                    ).toFixed(2)}
+                                </Info>
+                            </div>
+                        )}
+                        {createdOrder?.payment && (
+                            <div>
+                                <Subtitle>Payment Method</Subtitle>
+                                <Info isColumn>{createdOrder.payment}</Info>
+                            </div>
+                        )}
                     </OverallInfo>
                 </DataSection>
                 <DataSection>
                     <DataTitle>Order Details</DataTitle>
                     <DataItems>
-                        <DataItem>
-                            <Subtitle>Order Number:</Subtitle>
-                            <Info>March 14, 2019</Info>
-                        </DataItem>
-                        <DataItem>
-                            <Subtitle>Order Time:</Subtitle>
-                            <Info>1:00pm 10/12/19</Info>
-                        </DataItem>
-                        <DataItem>
-                            <Subtitle>Delivery Time:</Subtitle>
-                            <Info>90 Minute Express Delivery</Info>
-                        </DataItem>
-                        <DataItem>
-                            <Subtitle>Delivery Location:</Subtitle>
-                            <Info>1st floor, House 149, Road-22, Mohakhali DOHS, Dhaka - North</Info>
-                        </DataItem>
+                        {createdOrder?.created_at && (
+                            <DataItem>
+                                <Subtitle>Order Date:</Subtitle>
+                                <Info>{createdOrder.created_at.slice(0, 10)}</Info>
+                            </DataItem>
+                        )}
+                        {createdOrder?.when && (
+                            <DataItem>
+                                <Subtitle>Order Time:</Subtitle>
+                                <Info>{createdOrder.when}</Info>
+                            </DataItem>
+                        )}
+                        {createdOrder?.schedule && (
+                            <DataItem>
+                                <Subtitle>Delivery Time:</Subtitle>
+                                <Info>{createdOrder.schedule}</Info>
+                            </DataItem>
+                        )}
+                        {createdOrder?.address && (
+                            <DataItem>
+                                <Subtitle>Delivery Location:</Subtitle>
+                                <Info>{createdOrder?.address}</Info>
+                            </DataItem>
+                        )}
                     </DataItems>
                 </DataSection>
                 <DataSection>
                     <DataTitle>Total Amount</DataTitle>
                     <DataItems>
-                        <DataItem>
-                            <Subtitle>Sub Total:</Subtitle>
-                            <Info>$10,864.00</Info>
-                        </DataItem>
-                        <DataItem>
-                            <Subtitle>Payment Method:</Subtitle>
-                            <Info>Cash On Delivery</Info>
-                        </DataItem>
+                        {createdOrder?.products.length && (
+                            <DataItem>
+                                <Subtitle>Sub Total:</Subtitle>
+                                <Info>
+                                    ${(createdOrder.products
+                                        .map(product => product.price)
+                                        .reduce((total, current) => total + current, 0)
+                                    ).toFixed(2)}
+                                </Info>
+                            </DataItem>
+                        )}
+                        {createdOrder?.payment && (
+                            <DataItem>
+                                <Subtitle>Payment Method:</Subtitle>
+                                <Info>{createdOrder.payment}</Info>
+                            </DataItem>
+                        )}
                         <DataItem>
                             <Subtitle>Cash on delivery:</Subtitle>
-                            <Info>10</Info>
+                            <Info>${(10).toFixed(2)}</Info>
                         </DataItem>
-                        <DataItem>
-                            <Subtitle>Total:</Subtitle>
-                            <Info>$10,874.00</Info>
-                        </DataItem>
+                        {createdOrder?.products.length && (
+                            <DataItem>
+                                <Subtitle>Total:</Subtitle>
+                                <Info>
+                                    ${(createdOrder.products
+                                        .map(product => product.price)
+                                        .reduce((total, current) => total + current, 0)
+                                        + 10
+                                    ).toFixed(2)}
+                                </Info>
+                            </DataItem>
+                        )}
                     </DataItems>
                 </DataSection>
             </OrderBody>

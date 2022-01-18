@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
 // redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { createOrderRequest } from 'redux/orders/actions'
 import { getPaymentOptionsSelector } from 'redux/checkout/selectors'
 
 // types
@@ -22,6 +23,8 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
     const paymentOptions: PaymentOption[] = useSelector(
         (state: RootReducer) => getPaymentOptionsSelector(state)
     )
+
+    const dispatch = useDispatch()
 
     return (
         <CheckoutStep
@@ -52,8 +55,18 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
             <SubmitButton
                 isWide
                 title='Proceed to Checkout'
-                disabled={!(state.address && state.schedule && state.number && state.payment)}
-                onClick={() => { }}
+                disabled={!(
+                    state.address && 
+                    state.schedule && 
+                    state.number && 
+                    state.payment
+                )}
+                onClick={() => dispatch(createOrderRequest({
+                    address: state.address?.description,
+                    schedule: state.schedule?.description,
+                    number: state.number,
+                    payment: state.payment?.name
+                }))}
             />
         </CheckoutStep>
     )

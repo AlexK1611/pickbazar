@@ -37,6 +37,9 @@ export const CartReducer = (state = initialState, action: CartAction): CartState
                 })
             }
         }
+        case CartActionTypes.CLEAR_CART: {
+            return { ...state, cart: [] }
+        }
         default: {
             return state
         }
