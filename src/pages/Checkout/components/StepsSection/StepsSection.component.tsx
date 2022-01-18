@@ -1,166 +1,34 @@
-import { FC, MouseEvent } from 'react'
-
-// redux
-import { useSelector, useDispatch } from 'react-redux'
-import { removeAddress, removePhoneNumber } from 'redux/checkout/actions'
-import {
-    getDeliveryAddressesSelector,
-    getDeliverySchedulesSelector,
-    getPaymentOptionsSelector,
-    getPhoneNumbersSelector
-} from 'redux/checkout/selectors'
+import { FC } from 'react'
 
 // types
-import { RootReducer } from 'redux/rootReducer'
-import {
-    AddressItem,
-    PaymentOption,
-    PhoneNumberItem,
-    ScheduleItem
-} from 'redux/checkout/types'
 import { StepsSectionProps } from './StepsSection.types'
 
 // styled components
-import {
-    CheckoutSteps,
-    CheckoutStepOptions,
-    CheckoutStepInfo,
-    TermsAndConditions
-} from './StepsSection.styles'
+import { CheckoutSteps } from './StepsSection.styles'
 
-import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
-import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
-import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
+// components
+import { AddressStep } from './components/AddressStep/AddressStep.component'
+import { DeliveryStep } from './components/DeliveryStep/DeliveryStep.component'
+import { ContactStep } from './components/ContactStep/ContactStep.component'
+import { PaymentStep } from './components/PaymentStep/PaymentStep.component'
 
 export const StepsSection: FC<StepsSectionProps> = ({
     setFormType,
     setAddressId,
     setPhoneNumber
-}) => {
-    const deliveryAddresses: AddressItem[] = useSelector((state: RootReducer) => getDeliveryAddressesSelector(state))
-    const deliverySchedules: ScheduleItem[] = useSelector((state: RootReducer) => getDeliverySchedulesSelector(state))
-    const phoneNumbers: PhoneNumberItem[] = useSelector((state: RootReducer) => getPhoneNumbersSelector(state))
-    const paymentOptions: PaymentOption[] = useSelector((state: RootReducer) => getPaymentOptionsSelector(state))
-
-    const dispatch = useDispatch()
-
-    const editAddressHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
-        event.stopPropagation()
-        setAddressId(id)
-        setFormType('edit-address')
-    }
-
-    const removeAddressHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
-        event.stopPropagation()
-        dispatch(removeAddress(id))
-    }
-
-    const editPhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, number: string) => {
-        event.stopPropagation()
-        setPhoneNumber(number)
-        setFormType('edit-number')
-    }
-
-    const removePhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, number: string) => {
-        event.stopPropagation()
-        dispatch(removePhoneNumber(number))
-    }
-    
+}) => { 
     return (
         <CheckoutSteps>
-            <CheckoutStep
-                stepNumber={1}
-                stepName='Delivery Address'
-                stepLabel='Address'
-                addAction={() => setFormType('add-address')}
-            >
-                {deliveryAddresses && (
-                    <CheckoutStepOptions>
-                        {deliveryAddresses.map(address => (
-                            <CheckoutOption
-                                key={`address-${address.id}`}
-                                title={address.title}
-                                info={address.description}
-                                editAction={event => editAddressHandler(event, address.id)}
-                                removeAction={event => removeAddressHandler(event, address.id)}
-                            />
-                        ))}
-                    </CheckoutStepOptions>
-                )}
-            </CheckoutStep>
-            <CheckoutStep
-                stepNumber={2}
-                stepName='Delivery Schedule'
-            >
-                {deliverySchedules && (
-                    <>
-                        <CheckoutStepOptions>
-                            {deliverySchedules.map(schedule => (
-                                <CheckoutOption
-                                    key={`delivery-${schedule.id}`}
-                                    title={schedule.name}
-                                    info={schedule.description}
-                                />
-                            ))}
-                        </CheckoutStepOptions>
-                        <CheckoutStepOptions>
-                            {deliverySchedules.map(schedule => (
-                                <CheckoutOption
-                                    key={`delivery-${schedule.id}`}
-                                    title={schedule.label}
-                                    info={schedule.time}
-                                />
-                            ))}
-                        </CheckoutStepOptions>
-                    </>
-                )}
-            </CheckoutStep>
-            <CheckoutStep
-                stepNumber={3}
-                stepName='Contact Number'
-                stepLabel='Number'
-                addAction={() => setFormType('add-number')}
-            >
-                {phoneNumbers && (
-                    <CheckoutStepOptions>
-                        {phoneNumbers.map(phone => (
-                            <CheckoutOption
-                                key={`phone-${phone.number.slice(0, 4)}-${phone.number.slice(-4)}`}
-                                title={phone.title}
-                                info={phone.number}
-                                editAction={event => editPhoneNumberHandler(event, phone.number)}
-                                removeAction={event => removePhoneNumberHandler(event, phone.number)}
-                            />
-                        ))}
-                    </CheckoutStepOptions>
-                )}
-            </CheckoutStep>
-            <CheckoutStep
-                stepNumber={4}
-                stepName='Payment Option'
-                stepLabel='Card'
-            >
-                {paymentOptions && (
-                    <CheckoutStepOptions>
-                        {paymentOptions.map(payment => (
-                            <CheckoutOption
-                                key={`payment-${payment.id}`}
-                                title={payment.name}
-                                info={payment.description}
-                            />
-                        ))}
-                    </CheckoutStepOptions>
-                )}
-                <CheckoutStepInfo>
-                    By making this purchase you agree to our 
-                    <TermsAndConditions>terms and conditions.</TermsAndConditions>
-                </CheckoutStepInfo>
-                <SubmitButton
-                    isWide
-                    title='Proceed to Checkout'
-                    onClick={() => {}}
-                />
-            </CheckoutStep>
+            <AddressStep
+                setFormType={setFormType}
+                setAddressId={setAddressId}
+            />
+            <DeliveryStep />
+            <ContactStep
+                setFormType={setFormType}
+                setPhoneNumber={setPhoneNumber}
+            />
+            <PaymentStep />
         </CheckoutSteps>
     )
 }
