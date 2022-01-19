@@ -1,12 +1,12 @@
 import { Dispatch } from 'redux'
 import { axiosInstance } from 'config/api'
-import { CreateOrderPayload, OrdersActionTypes } from './types'
+import { CreatedOrderResponse, CreateOrderPayload, OrdersActionTypes } from './types'
 import { RootReducer } from 'redux/rootReducer'
 
 export const createOrderRequest = (order: CreateOrderPayload) => {
     return async (dispatch: Dispatch, getState: () => RootReducer) => {
         try {
-            const { data } = await axiosInstance.post('/orders', {
+            const { data } = await axiosInstance.post<CreatedOrderResponse>('/orders', {
                 address: order.address,
                 when: new Date().toLocaleTimeString(),
                 products: getState().products.products?.map(product => product.id),

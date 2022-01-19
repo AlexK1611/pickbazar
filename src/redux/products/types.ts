@@ -88,10 +88,6 @@ export interface ExtendedProductUnit extends ProductUnit {
     photos: ExtendedProductPhoto[]
 }
 
-export interface ProductsResponse {
-    data: ProductUnit[]
-}
-
 export interface ProductInfoResponse {
     data: ExtendedProductUnit
 }

@@ -7,7 +7,7 @@ export interface CreateOrderPayload {
     payment?: string
 }
 
-export interface CreatedOrderItem {
+export interface CreatedOrderResponse {
     id: number,
     address: string,
     when: string,
@@ -18,7 +18,10 @@ export interface CreatedOrderItem {
     updated_by: null,
     created_at: string,
     updated_at: string,
-    products: ExtendedProductUnit[],
+    products: ExtendedProductUnit[]
+}
+
+export interface CreatedOrderItem extends CreatedOrderResponse {
     schedule: string
     payment: string
 }
