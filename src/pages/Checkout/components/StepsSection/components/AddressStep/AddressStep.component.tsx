@@ -3,7 +3,7 @@ import { FC, MouseEvent } from 'react'
 // redux
 import { useSelector, useDispatch } from 'react-redux'
 import { removeAddress } from 'redux/checkout/actions'
-import { getDeliveryAddressesSelector } from 'redux/checkout/selectors'
+import { getDeliveryAddresses } from 'redux/checkout/selectors'
 
 // types
 import { AddressItem } from 'redux/checkout/types'
@@ -25,7 +25,7 @@ export const AddressStep: FC<AddressStepProps> = ({
     action
 }) => {
     const deliveryAddresses: AddressItem[] = useSelector(
-        (state: RootReducer) => getDeliveryAddressesSelector(state)
+        (state: RootReducer) => getDeliveryAddresses(state)
     )
 
     const dispatch = useDispatch()

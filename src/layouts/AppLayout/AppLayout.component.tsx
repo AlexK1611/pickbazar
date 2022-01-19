@@ -3,7 +3,7 @@ import { FC, useState, useEffect } from 'react'
 // redux
 import { useSelector, useDispatch } from 'react-redux'
 import { removeAuthMessage } from 'redux/auth/actions'
-import { getAuthMessageSelector, getUserSelector } from 'redux/auth/selectors'
+import { getAuthMessage, getUser } from 'redux/auth/selectors'
 
 // libraries
 import { Link } from 'react-router-dom'
@@ -35,10 +35,10 @@ import { ReactComponent as Logo } from 'assets/images/logo.svg'
 
 export const AppLayout: FC = ({ children }) => {
     const user = useSelector(
-        (state: RootReducer) => getUserSelector(state)
+        (state: RootReducer) => getUser(state)
     )
     const authMessage = useSelector(
-        (state: RootReducer) => getAuthMessageSelector(state)
+        (state: RootReducer) => getAuthMessage(state)
     )
     const dispatch = useDispatch()
 

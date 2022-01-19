@@ -3,7 +3,7 @@ import { FC, MouseEvent } from 'react'
 // redux
 import { useSelector, useDispatch } from 'react-redux'
 import { removePhoneNumber } from 'redux/checkout/actions'
-import { getPhoneNumbersSelector } from 'redux/checkout/selectors'
+import { getPhoneNumbers } from 'redux/checkout/selectors'
 
 // types
 import { ContactStepProps } from './ContactStep.types'
@@ -25,7 +25,7 @@ export const ContactStep: FC<ContactStepProps> = ({
     action
 }) => {
     const phoneNumbers: PhoneNumberItem[] = useSelector(
-        (state: RootReducer) => getPhoneNumbersSelector(state)
+        (state: RootReducer) => getPhoneNumbers(state)
     )
 
     const dispatch = useDispatch()

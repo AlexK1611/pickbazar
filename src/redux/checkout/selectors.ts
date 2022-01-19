@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import { RootReducer } from '../rootReducer'
 
-export const getDeliveryAddressesSelector = createSelector(
+export const getDeliveryAddresses = createSelector(
     (state: RootReducer) => state.checkout,
     state => state.addresses
 )
@@ -13,12 +13,12 @@ export const getDeliveryAddress = (id?: string) => {
     )
 }
 
-export const getDeliverySchedulesSelector = createSelector(
+export const getDeliverySchedules = createSelector(
     (state: RootReducer) => state.checkout,
     state => state.schedules
 )
 
-export const getPhoneNumbersSelector = createSelector(
+export const getPhoneNumbers = createSelector(
     (state: RootReducer) => state.checkout,
     state => state.phones
 )
@@ -30,7 +30,7 @@ export const getPhoneNumber = (phoneNumber?: string) => {
     )
 }
 
-export const getPaymentOptionsSelector = createSelector(
+export const getPaymentOptions = createSelector(
     (state: RootReducer) => state.checkout,
     state => state.payments
 )

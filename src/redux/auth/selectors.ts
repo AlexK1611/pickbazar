@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect'
 import { RootReducer } from '../rootReducer'
 
-export const getUserSelector = createSelector(
+export const getUser = createSelector(
     (state: RootReducer) => state.auth,
     state => state.user
 )
 
-export const getAuthMessageSelector = createSelector(
+export const getAuthMessage = createSelector(
     (state: RootReducer) => state.auth,
     state => state.authMessage
 )

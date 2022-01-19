@@ -1,17 +1,17 @@
 import { createSelector } from 'reselect'
 import { RootReducer } from '../rootReducer'
 
-export const getCartItemsSelector = createSelector(
+export const getCartItems = createSelector(
     (state: RootReducer) => state.cart,
     state => state.cart
 )
 
-export const getCartItemTypesSelector = createSelector(
+export const getCartItemTypes = createSelector(
     (state: RootReducer) => state.cart,
     state => state.cart.length
 )
 
-export const getCartTotalSelector = createSelector(
+export const getCartTotal = createSelector(
     (state: RootReducer) => state.cart,
     state => {
         if (state.cart.length === 0) return 0

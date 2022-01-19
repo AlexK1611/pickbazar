@@ -3,7 +3,7 @@ import { FC, useEffect } from 'react'
 // redux
 import { useSelector, useDispatch } from 'react-redux'
 import { couponsRequest } from 'redux/coupons/actions'
-import { getCouponsSelector } from 'redux/coupons/selectors'
+import { getCoupons } from 'redux/coupons/selectors'
 
 // libraries
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -27,7 +27,7 @@ import { CouponItem } from 'redux/coupons/types'
 
 export const Coupons: FC = () => {
     const coupons: CouponItem[] | null = useSelector(
-        (state: RootReducer) => getCouponsSelector(state)
+        (state: RootReducer) => getCoupons(state)
     )
     const dispatch = useDispatch()
 

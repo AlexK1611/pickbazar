@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 // redux
 import { useSelector } from 'react-redux'
-import { getDeliverySchedulesSelector } from 'redux/checkout/selectors'
+import { getDeliverySchedules } from 'redux/checkout/selectors'
 
 // types
 import { RootReducer } from 'redux/rootReducer'
@@ -19,7 +19,7 @@ import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.compone
 
 export const DeliveryStep: FC<DeliverStepProps> = ({ state, action }) => {
     const deliverySchedules: ScheduleItem[] = useSelector(
-        (state: RootReducer) => getDeliverySchedulesSelector(state)
+        (state: RootReducer) => getDeliverySchedules(state)
     )
 
     return (

@@ -4,8 +4,8 @@ import { FC, useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { categoriesRequest } from 'redux/categories/actions'
 import { productsRequest } from 'redux/products/actions'
-import { getCategoriesSelector } from 'redux/categories/selectors'
-import { getProductsSelector } from 'redux/products/selectors'
+import { getCategories } from 'redux/categories/selectors'
+import { getProducts } from 'redux/products/selectors'
 
 // types
 import { CategoryItem } from 'redux/categories/types'
@@ -27,8 +27,8 @@ import { ProductsList } from './components/ProductsList/ProductsList.component'
 import { Categories } from './components/Categories/Categories.component'
 
 export const Products: FC = () => {
-    const categories: CategoryItem[] | null = useSelector((state: RootReducer) => getCategoriesSelector(state))
-    const products: ProductUnit[] | null = useSelector((state: RootReducer) => getProductsSelector(state))
+    const categories: CategoryItem[] | null = useSelector((state: RootReducer) => getCategories(state))
+    const products: ProductUnit[] | null = useSelector((state: RootReducer) => getProducts(state))
     const dispatch = useDispatch()
 
     const [parentCategory, setParentCategory] = useState(0)

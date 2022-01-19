@@ -3,7 +3,7 @@ import { FC, useEffect } from 'react'
 // redux
 import { useSelector, useDispatch } from 'react-redux'
 import { productInfoRequest, productsRequest } from 'redux/products/actions'
-import { getProductInfoSelector, getProductsSelector } from 'redux/products/selectors'
+import { getProductInfo, getProducts } from 'redux/products/selectors'
 
 // libraries
 import { useParams } from 'react-router-dom'
@@ -28,14 +28,14 @@ export const Product: FC = () => {
             dispatch(productInfoRequest(productId))
         }
     }, [productId])
-    const productInfo: ExtendedProductUnit | null = useSelector((state: RootReducer) => getProductInfoSelector(state))
+    const productInfo: ExtendedProductUnit | null = useSelector((state: RootReducer) => getProductInfo(state))
 
     useEffect(() => {
         if (productInfo) {
             dispatch(productsRequest(productInfo.category.id, 0))
         }
     }, [productInfo])
-    const products: ProductUnit[] | null = useSelector((state: RootReducer) => getProductsSelector(state))
+    const products: ProductUnit[] | null = useSelector((state: RootReducer) => getProducts(state))
 
     return (
         <ProductPage>

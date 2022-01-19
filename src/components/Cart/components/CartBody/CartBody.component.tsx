@@ -2,8 +2,8 @@ import { FC } from 'react'
 
 // redux
 import { useSelector } from 'react-redux'
-import { getUserSelector } from 'redux/auth/selectors'
-import { getCartItemsSelector, getCartTotalSelector } from 'redux/cart/selectors'
+import { getUser } from 'redux/auth/selectors'
+import { getCartItems, getCartTotal } from 'redux/cart/selectors'
 
 // styled components
 import {
@@ -31,9 +31,9 @@ import { PurchaseItem } from 'redux/cart/types'
 import emptyCart from 'assets/images/empty-cart.svg'
 
 export const CartBody: FC = () => {
-    const user = useSelector((state: RootReducer) => getUserSelector(state))
-    const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItemsSelector(state))
-    const cartTotal = useSelector((state: RootReducer) => getCartTotalSelector(state))
+    const user = useSelector((state: RootReducer) => getUser(state))
+    const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItems(state))
+    const cartTotal = useSelector((state: RootReducer) => getCartTotal(state))
 
     return (
         <BodyContainer>

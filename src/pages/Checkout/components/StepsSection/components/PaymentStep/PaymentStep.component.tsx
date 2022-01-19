@@ -3,7 +3,7 @@ import { FC } from 'react'
 // redux
 import { useSelector, useDispatch } from 'react-redux'
 import { createOrderRequest } from 'redux/orders/actions'
-import { getPaymentOptionsSelector } from 'redux/checkout/selectors'
+import { getPaymentOptions } from 'redux/checkout/selectors'
 
 // types
 import { RootReducer } from 'redux/rootReducer'
@@ -21,7 +21,7 @@ import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 
 export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
     const paymentOptions: PaymentOption[] = useSelector(
-        (state: RootReducer) => getPaymentOptionsSelector(state)
+        (state: RootReducer) => getPaymentOptions(state)
     )
 
     const dispatch = useDispatch()
