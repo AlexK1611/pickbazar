@@ -22,6 +22,7 @@ import { EditNumber } from '../EditNumber/EditNumber.component'
 
 // types
 import { CheckoutModalProps } from './CheckoutModal.types'
+import { AddressItem, PhoneNumberItem } from 'redux/checkout/types'
 
 export const CheckoutModal: FC<CheckoutModalProps> = ({
     isModal,
@@ -30,8 +31,12 @@ export const CheckoutModal: FC<CheckoutModalProps> = ({
     addressId,
     phoneNumber
 }) => {
-    const addressToEdit = useSelector((state: RootReducer) => getDeliveryAddress(addressId)(state))
-    const numberToEdit = useSelector((state: RootReducer) => getPhoneNumber(phoneNumber)(state))
+    const addressToEdit: AddressItem | undefined = useSelector(
+        (state: RootReducer) => getDeliveryAddress(addressId)(state)
+    )
+    const numberToEdit: PhoneNumberItem | undefined = useSelector(
+        (state: RootReducer) => getPhoneNumber(phoneNumber)(state)
+    )
     const portalNode = document.getElementById('portal')!
 
     if (!isModal) return null

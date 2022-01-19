@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 
 // types 
 import { RootReducer } from 'redux/rootReducer'
+import { CreatedOrderItem } from 'redux/orders/types'
 
 // styled components
 import { CheckoutContainer } from './Checkout.styles'
@@ -23,7 +24,9 @@ export const Checkout: FC = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const createdOrder = useSelector((state: RootReducer) => getCreatedOrder(state))
+    const createdOrder: CreatedOrderItem | null = useSelector(
+        (state: RootReducer) => getCreatedOrder(state)
+    )
     useEffect(() => {
         if (createdOrder) {
             navigate('/order', { replace: true })

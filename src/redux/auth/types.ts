@@ -10,7 +10,7 @@ export interface SignInData {
     password: string
 }
 
-interface UserItem {
+export interface UserItem {
     id: number,
     username: string,
     email: string,

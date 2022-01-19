@@ -13,7 +13,9 @@ import { CartHeaderProps } from './CartHeader.types'
 import { RootReducer } from 'redux/rootReducer'
 
 export const CartHeader: FC<CartHeaderProps> = ({ closeCart }) => {
-    const cartItemTypes = useSelector((state: RootReducer) => getCartItemTypes(state))
+    const cartItemTypes: number = useSelector(
+        (state: RootReducer) => getCartItemTypes(state)
+    )
 
     return (
         <HeaderContainer>

@@ -23,6 +23,7 @@ import {
 
 // types
 import { RootReducer } from 'redux/rootReducer'
+import { UserItem } from 'redux/auth/types'
 
 // reusable components
 import { Toast } from 'components/Toast/Toast.component'
@@ -34,10 +35,10 @@ import { ProfileMenu } from './components/ProfileMenu/ProfileMenu.component'
 import { ReactComponent as Logo } from 'assets/images/logo.svg'
 
 export const AppLayout: FC = ({ children }) => {
-    const user = useSelector(
+    const user: UserItem | null = useSelector(
         (state: RootReducer) => getUser(state)
     )
-    const authMessage = useSelector(
+    const authMessage: string | null = useSelector(
         (state: RootReducer) => getAuthMessage(state)
     )
     const dispatch = useDispatch()

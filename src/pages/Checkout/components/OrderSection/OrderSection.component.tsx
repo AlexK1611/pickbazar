@@ -15,8 +15,12 @@ import { RootReducer } from 'redux/rootReducer'
 import { PurchaseItem } from 'redux/cart/types'
 
 export const OrderSection: FC = () => {
-    const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItems(state))
-    const cartTotal = useSelector((state: RootReducer) => getCartTotal(state))
+    const cart: PurchaseItem[] | [] = useSelector(
+        (state: RootReducer) => getCartItems(state)
+    )
+    const cartTotal: number = useSelector(
+        (state: RootReducer) => getCartTotal(state)
+    )
 
     return (
         <OrderContainer>

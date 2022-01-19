@@ -13,8 +13,12 @@ import { CartButtonProps } from './CartButton.types'
 import { RootReducer } from 'redux/rootReducer'
 
 export const CartButton: FC<CartButtonProps> = ({ openCart }) => {
-    const cartItemTypes = useSelector((state: RootReducer) => getCartItemTypes(state))
-    const cartTotal = useSelector((state: RootReducer) => getCartTotal(state))
+    const cartItemTypes: number = useSelector(
+        (state: RootReducer) => getCartItemTypes(state)
+    )
+    const cartTotal: number = useSelector(
+        (state: RootReducer) => getCartTotal(state)
+    )
 
     return (
         <ButtonContainer onClick={openCart}>

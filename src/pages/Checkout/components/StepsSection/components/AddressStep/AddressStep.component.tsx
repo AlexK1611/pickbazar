@@ -24,7 +24,7 @@ export const AddressStep: FC<AddressStepProps> = ({
     state,
     action
 }) => {
-    const deliveryAddresses: AddressItem[] = useSelector(
+    const deliveryAddresses: AddressItem[] | [] = useSelector(
         (state: RootReducer) => getDeliveryAddresses(state)
     )
 

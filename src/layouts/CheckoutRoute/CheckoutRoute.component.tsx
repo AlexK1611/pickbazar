@@ -7,6 +7,7 @@ import { getCartItems } from 'redux/cart/selectors'
 
 // types 
 import { RootReducer } from 'redux/rootReducer'
+import { UserItem } from 'redux/auth/types'
 import { PurchaseItem } from 'redux/cart/types'
 import { CheckoutRouteProps } from './CheckoutRoute.types'
 
@@ -14,8 +15,12 @@ import { CheckoutRouteProps } from './CheckoutRoute.types'
 import { Navigate } from 'react-router-dom'
 
 export const CheckoutRoute: FC<CheckoutRouteProps> = ({ children }) => {
-    const user = useSelector((state: RootReducer) => getUser(state))
-    const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItems(state))
+    const user: UserItem | null = useSelector(
+        (state: RootReducer) => getUser(state)
+    )
+    const cart: PurchaseItem[] | [] = useSelector(
+        (state: RootReducer) => getCartItems(state)
+    )
 
     return user && cart.length > 0 ? children : <Navigate to='/' />
 }

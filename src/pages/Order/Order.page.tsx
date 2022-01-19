@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { getCreatedOrder } from 'redux/orders/selectors'
+import { CreatedOrderItem } from 'redux/orders/types'
 import { RootReducer } from 'redux/rootReducer'
 import {
     OrderContainer,
@@ -16,7 +17,9 @@ import {
 } from './Order.styles'
 
 export const Order: FC = () => {
-    const createdOrder = useSelector((state: RootReducer) => getCreatedOrder(state))
+    const createdOrder: CreatedOrderItem | null = useSelector(
+        (state: RootReducer) => getCreatedOrder(state)
+    )
 
     return (
         <OrderContainer>
