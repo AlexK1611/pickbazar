@@ -23,14 +23,15 @@ export const signUpRequest = (data: SignUpData) => {
 export const googleAuthRequest = (token: string) => {
     return async (dispatch: Dispatch) => {
         try {
-            const response = await axiosInstance.get(`/auth/google/callback${token}`)
-            console.log(response)
+            const { data: { jwt, user } } = await axiosInstance.get(`/auth/google/callback${token}`)
 
-            dispatch({ type: AuthActionTypes.SET_JWT, payload: response.data.jwt })
-            localStorage.setItem('jwt', JSON.stringify(response.data.jwt))
+            dispatch({ type: AuthActionTypes.SET_JWT, payload:jwt })
+            localStorage.setItem('jwt', JSON.stringify(jwt))
 
-            dispatch({ type: AuthActionTypes.SET_USER, payload: response.data.user })
-            localStorage.setItem('user', JSON.stringify(response.data.user))
+            dispatch({ type: AuthActionTypes.SET_USER, payload: user })
+            localStorage.setItem('user', JSON.stringify(user))
+
+            dispatch({ type: AuthActionTypes.SET_AUTH_MESSAGE, payload: 'Signed in successfully' })
         } catch (error) {
             console.log(error)
         }

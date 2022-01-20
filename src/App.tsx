@@ -25,7 +25,7 @@ const App: FC = () => {
       <GlobalStyles />
       <AppLayout>
         <Routes>
-          <Route path='/connect/google/redirect' element={<LoginRedirect />} />
+          <Route path='/auth/google/callback' element={<LoginRedirect />} />
           <Route path='/' element={<Main />} />
           <Route path='/products/:id' element={<Product />} />
           <Route
