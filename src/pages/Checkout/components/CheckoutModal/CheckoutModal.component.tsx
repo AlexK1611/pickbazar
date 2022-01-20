@@ -37,6 +37,7 @@ export const CheckoutModal: FC<CheckoutModalProps> = ({
     const numberToEdit: PhoneNumberItem | undefined = useSelector(
         (state: RootReducer) => getPhoneNumber(phoneNumber)(state)
     )
+    // TODO: та я смотрю ты прям автоматную очередь себе запульнул)
     const portalNode = document.getElementById('portal') as HTMLDivElement
 
     if (!isModal) return null

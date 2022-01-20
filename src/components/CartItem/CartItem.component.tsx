@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { useDispatch } from 'react-redux'
+// TODO: Абсолютные пути конечно круто, но очень сильно сбивает момет `redux/cart/actions`. Есть стойкое ощущение что ты испортишь это из самого редакса.
 import {
     decreaseQuantity,
     increaseQuantity,
@@ -36,6 +37,7 @@ export const CartItem: FC<CartItemProps> = ({
                 <ItemCounter>
                     <CounterSection
                         isFirst
+                        // TODO старайся избегать функций в рендере и изначально декларировать их перед return;
                         onClick={() => dispatch(increaseQuantity(id))}
                     >
                         <SecondaryText>+</SecondaryText>

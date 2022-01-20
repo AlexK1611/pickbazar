@@ -18,6 +18,7 @@ export const removeItemFromCart = (id: number) => {
             type: CartActionTypes.REMOVE_CART_ITEM,
             payload: id
         })
+        // TODO: а почему не redux-persist ?
         const storagedCart: PurchaseItem[] = JSON.parse(localStorage.getItem('cart') || '[]')
         const updatedCart = storagedCart.filter(item => item.id !== id)
         localStorage.setItem('cart', JSON.stringify(updatedCart))

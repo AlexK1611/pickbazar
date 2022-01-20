@@ -7,12 +7,14 @@ export const productsRequest = (category: number, start: number) => {
     return async (dispatch: Dispatch, getState: () => RootReducer) => {
         try {
             const { data } = await axiosInstance.get<ProductUnit[]>(
+                // TODO: Почитай в axios про то, как можнно проще передавать query params
                 `/products?_where[_or][0][category]=${category}&_start=${start}&_limit=10`
             )
             const products = getState().products.products
 
             if (data.length === 0) {
                 dispatch({ type: ProductsActionTypes.CLEAR_PRODUCTS })
+                // TODO а продукты то зачем в local storage ?
                 if (localStorage.getItem('products')) localStorage.removeItem('products')
             } else if (products && products[0].category.id === data[0].category.id) {
                 const payload = products.concat(

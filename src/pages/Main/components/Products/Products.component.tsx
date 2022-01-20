@@ -78,6 +78,7 @@ export const Products: FC = () => {
                 {!products && <ProductsMessage>Select category</ProductsMessage>}
                 {products && <ProductsList products={products}/>}
                 {products && products.length % 10 === 0 && (
+                    // TODO: у тебя вьюшка не должна знать о количестве дополнительно запрашиваемых продуктов. Это так же должно быть частью онли редакса
                     <LoadMoreBtn onClick={() => setStart(start => start + 10)}>
                         <LoadMoreBtnTitle>Load More</LoadMoreBtnTitle>
                     </LoadMoreBtn>

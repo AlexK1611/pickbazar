@@ -17,6 +17,7 @@ export const AuthModal: FC<AuthModalProps> = ({ isModal, closeModal }) => {
         return () => setFormType('register')
     }, [])
 
+    // TODO: еще один выстрел в колено
     const portalNode = document.getElementById('portal') as HTMLDivElement
 
     if (!isModal) return null

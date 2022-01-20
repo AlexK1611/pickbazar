@@ -52,6 +52,8 @@ export const ContactStep: FC<ContactStepProps> = ({
                 <StepOptions>
                     {phoneNumbers.map(phone => (
                         <CheckoutOption
+                            // TODO: советую покопать в сторну uuid, чтоб у тебя изначально id был при создании номера. В будущем проще будет подменить данную схему на 
+                            // беке
                             key={`phone-${phone.number.slice(0, 4)}-${phone.number.slice(-4)}`}
                             title={phone.title}
                             info={phone.number}
