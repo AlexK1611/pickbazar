@@ -1,3 +1,4 @@
+// TODO: неиспользуемая переменная
 import { FC, useState } from 'react'
 import {
     CategoriesList,

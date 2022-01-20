@@ -55,9 +55,12 @@ export const AddressStep: FC<AddressStepProps> = ({
                             key={`address-${address.id}`}
                             title={address.title}
                             info={address.description}
+                            // TODO: Подумай тоже как в таких ситуациях можно избежать анонимки в рендере. Есть 2 способа
                             editAction={event => editAddressHandler(event, address.id)}
                             removeAction={event => removeAddressHandler(event, address.id)}
+                            // TODO: Для таких сравнений лучше отдельную функцию делать с хорошим неймингом, иначе тяжело читать
                             isSelected={!!(state.address?.id === address.id)}
+                            // Вот такую штуку точно лучше делать во вьюшке. Ты смешал нутряк бизнес логики со вьюшкой. Вьюшка не должна знать о твоих потрохах редакса
                             onClick={() => action({
                                 type: OrderCreationTypes.SET_ORDER_ADDRESS,
                                 payload: { id: address.id, description: address.description }

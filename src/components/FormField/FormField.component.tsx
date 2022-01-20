@@ -12,6 +12,7 @@ export const FormField = forwardRef<any, FormFieldProps>(
         return (
             <FieldContainer>
                 <FieldInput
+                    // TODO: а для чего ref тебе тут нужен?
                     ref={ref}
                     placeholder={placeholder}
                     type={type}

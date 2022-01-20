@@ -45,6 +45,7 @@ export const Order: FC = () => {
                                 <Subtitle>Total</Subtitle>
                                 <Info isColumn>
                                     ${(createdOrder.products
+                                        // TODO: А теперь дважды подумай над тем что ты сделал в следующих 2х строках)
                                         .map(product => product.price)
                                         .reduce((total, current) => total + current, 0)
                                     ).toFixed(2)}
@@ -65,6 +66,7 @@ export const Order: FC = () => {
                         {createdOrder?.created_at && (
                             <DataItem>
                                 <Subtitle>Order Date:</Subtitle>
+                                { /* TODO: Используй библиотеки либо luxon, либо moment */}
                                 <Info>{createdOrder.created_at.slice(0, 10)}</Info>
                             </DataItem>
                         )}

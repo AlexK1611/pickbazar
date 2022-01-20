@@ -25,6 +25,7 @@ const App: FC = () => {
       <GlobalStyles />
       <AppLayout>
         <Routes>
+          { /* TODO: Унифицируй этот компонент. Как создавать к примеру еще один путь для фейсбука - зачем?  */ }
           <Route path='/auth/google/callback' element={<LoginRedirect />} />
           <Route path='/' element={<Main />} />
           <Route path='/products/:id' element={<Product />} />

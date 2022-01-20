@@ -32,6 +32,7 @@ import { PurchaseItem } from 'redux/cart/types'
 import emptyCart from 'assets/images/empty-cart.svg'
 
 export const CartBody: FC = () => {
+    // TODO: ты же ссылку по сути передаешь, зачем state => func(state) ?
     const user: UserItem | null = useSelector(
         (state: RootReducer) => getUser(state)
     )
