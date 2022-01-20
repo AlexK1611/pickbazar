@@ -101,6 +101,7 @@ export const SignUp: FC<SignUpProps> = ({ switchToLogin }) => {
                     icon={<GoogleIcon/>}
                     bgColor='#4286F4'
                     title='Continue With Google'
+                    href={`${process.env.REACT_APP_HOST}/connect/google`}
                 />
             </SocialButtons>
             <LoginProposal>

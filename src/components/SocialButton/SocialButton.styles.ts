@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ButtonContainer = styled.button<{
+export const ButtonContainer = styled.a<{
     bgColor: string
 }>`
     display: flex;

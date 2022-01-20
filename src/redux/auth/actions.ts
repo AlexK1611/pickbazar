@@ -20,6 +20,23 @@ export const signUpRequest = (data: SignUpData) => {
     }
 }
 
+export const googleAuthRequest = (token: string) => {
+    return async (dispatch: Dispatch) => {
+        try {
+            const response = await axiosInstance.get(`/auth/google/callback${token}`)
+            console.log(response)
+
+            dispatch({ type: AuthActionTypes.SET_JWT, payload: response.data.jwt })
+            localStorage.setItem('jwt', JSON.stringify(response.data.jwt))
+
+            dispatch({ type: AuthActionTypes.SET_USER, payload: response.data.user })
+            localStorage.setItem('user', JSON.stringify(response.data.user))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 export const removeAuthMessage = () => ({
     type: AuthActionTypes.REMOVE_AUTH_MESSAGE
 })

@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GlobalStyles } from './ui-kit/global'
 
 // pages
+import { LoginRedirect } from 'pages/LoginRedirect/LoginRedirect.component'
 import { Main } from './pages/Main/Main.page'
 import { Product } from 'pages/Product/Product.page'
 import { NotFound } from './pages/NotFound/NotFound.page'
@@ -24,6 +25,7 @@ const App: FC = () => {
       <GlobalStyles />
       <AppLayout>
         <Routes>
+          <Route path='/connect/google/redirect' element={<LoginRedirect />} />
           <Route path='/' element={<Main />} />
           <Route path='/products/:id' element={<Product />} />
           <Route

@@ -80,6 +80,7 @@ export const SignIn: FC<SignInProps> = ({ switchToRegister }) => {
                     icon={<GoogleIcon/>}
                     bgColor='#4286F4'
                     title='Continue With Google'
+                    href={`${process.env.REACT_APP_HOST}/connect/google`}
                 />
             </SocialButtons>
             <RegisterProposal>
