@@ -6,7 +6,7 @@ import { CartBody } from './components/CartBody/CartBody.component'
 import { CartHeader } from './components/CartHeader/CartHeader.component'
 
 export const Cart: FC<CartProps> = ({ isCart, closeCart }) => {
-    const portalNode = document.getElementById('portal')!
+    const portalNode = document.getElementById('portal') as HTMLDivElement
 
     if (!isCart) return null
 

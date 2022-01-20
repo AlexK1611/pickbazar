@@ -37,7 +37,7 @@ export const CheckoutModal: FC<CheckoutModalProps> = ({
     const numberToEdit: PhoneNumberItem | undefined = useSelector(
         (state: RootReducer) => getPhoneNumber(phoneNumber)(state)
     )
-    const portalNode = document.getElementById('portal')!
+    const portalNode = document.getElementById('portal') as HTMLDivElement
 
     if (!isModal) return null
 

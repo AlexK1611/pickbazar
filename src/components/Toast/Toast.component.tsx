@@ -6,7 +6,7 @@ import { ToastProps } from './Toast.types'
 export const Toast: FC<ToastProps> = ({ isToast, message }) => {
     if (!isToast) return null
 
-    const portalNode = document.getElementById('portal')!
+    const portalNode = document.getElementById('portal') as HTMLDivElement
 
     return ReactDOM.createPortal(
         <ToastComponent>
