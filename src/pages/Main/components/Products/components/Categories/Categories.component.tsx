@@ -1,5 +1,4 @@
-// TODO: неиспользуемая переменная
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import {
     CategoriesList,
     CategoryListItem,
