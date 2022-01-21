@@ -6,8 +6,7 @@ import { CartBody } from './components/CartBody/CartBody.component'
 import { CartHeader } from './components/CartHeader/CartHeader.component'
 
 export const Cart: FC<CartProps> = ({ isCartOpened, closeCart }) => {
-    // TODO: Переименуй portal на cart-portal или что-то такое. Слишком общий нейминг для такой штуки
-    const portalNode = document.getElementById('portal') as HTMLDivElement
+    const cartNode = document.getElementById('cart') as HTMLDivElement
 
     if (!isCartOpened) return null
 
@@ -16,6 +15,6 @@ export const Cart: FC<CartProps> = ({ isCartOpened, closeCart }) => {
             <CartHeader closeCart={closeCart} />
             <CartBody />
         </CartContainer>,
-        portalNode
+        cartNode
     )
 }
