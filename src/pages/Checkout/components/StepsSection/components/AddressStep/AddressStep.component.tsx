@@ -18,6 +18,9 @@ import { StepOptions } from './AddressStep.styles'
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 
+// helpers
+import { valuesComparator } from '../../StepsSection.helpers'
+
 export const AddressStep: FC<AddressStepProps> = ({
     setFormType,
     setAddressId,
@@ -58,8 +61,7 @@ export const AddressStep: FC<AddressStepProps> = ({
                             // TODO: Подумай тоже как в таких ситуациях можно избежать анонимки в рендере. Есть 2 способа
                             editAction={event => editAddressHandler(event, address.id)}
                             removeAction={event => removeAddressHandler(event, address.id)}
-                            // TODO: Для таких сравнений лучше отдельную функцию делать с хорошим неймингом, иначе тяжело читать
-                            isSelected={!!(state.address?.id === address.id)}
+                            isSelected={valuesComparator(state.address?.id, address.id)}
                             // Вот такую штуку точно лучше делать во вьюшке. Ты смешал нутряк бизнес логики со вьюшкой. Вьюшка не должна знать о твоих потрохах редакса
                             onClick={() => action({
                                 type: OrderCreationTypes.SET_ORDER_ADDRESS,

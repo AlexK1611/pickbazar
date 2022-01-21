@@ -17,6 +17,9 @@ import { StepOptions } from './DeliveryStep.styles'
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 
+// helpers
+import { valuesComparator } from '../../StepsSection.helpers'
+
 export const DeliveryStep: FC<DeliverStepProps> = ({ state, action }) => {
     const deliverySchedules: ScheduleItem[] = useSelector(
         (state: RootReducer) => getDeliverySchedules(state)
@@ -35,7 +38,7 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, action }) => {
                                 key={`delivery-${schedule.id}`}
                                 title={schedule.name}
                                 info={schedule.description}
-                                isSelected={!!(state.schedule?.id === schedule.id)}
+                                isSelected={valuesComparator(state.schedule?.id, schedule.id)}
                                 onClick={() => action({
                                     type: OrderCreationTypes.SET_ORDER_SCHEDULE,
                                     payload: { id: schedule.id, description: schedule.description }
@@ -49,7 +52,7 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, action }) => {
                                 key={`delivery-${schedule.id}`}
                                 title={schedule.label}
                                 info={schedule.time}
-                                isSelected={!!(state.schedule?.id === schedule.id)}
+                                isSelected={valuesComparator(state.schedule?.id, schedule.id)}
                                 onClick={() => action({
                                     type: OrderCreationTypes.SET_ORDER_SCHEDULE,
                                     payload: { id: schedule.id, description: schedule.description }

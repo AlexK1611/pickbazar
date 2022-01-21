@@ -18,6 +18,9 @@ import { StepOptions } from './ContactStep.styles'
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 
+// helpers
+import { valuesComparator } from '../../StepsSection.helpers'
+
 export const ContactStep: FC<ContactStepProps> = ({
     setFormType,
     setPhoneNumber,
@@ -59,7 +62,7 @@ export const ContactStep: FC<ContactStepProps> = ({
                             info={phone.number}
                             editAction={event => editPhoneNumberHandler(event, phone.number)}
                             removeAction={event => removePhoneNumberHandler(event, phone.number)}
-                            isSelected={!!(state.number === phone.number)}
+                            isSelected={valuesComparator(state.number, phone.number)}
                             onClick={() => action({
                                 type: OrderCreationTypes.SET_ORDER_PHONE_NUMBER,
                                 payload: phone.number

@@ -19,6 +19,9 @@ import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 
+// helpers
+import { valuesComparator } from '../../StepsSection.helpers'
+
 export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
     const paymentOptions: PaymentOption[] = useSelector(
         (state: RootReducer) => getPaymentOptions(state)
@@ -39,7 +42,7 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
                             key={`payment-${payment.id}`}
                             title={payment.name}
                             info={payment.description}
-                            isSelected={!!(state.payment?.id === payment.id)}
+                            isSelected={valuesComparator(state.payment?.id,payment.id)}
                             onClick={() => action({
                                 type: OrderCreationTypes.SET_ORDER_PAYMENT,
                                 payload: { id: payment.id, name: payment.name }
