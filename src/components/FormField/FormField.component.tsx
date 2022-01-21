@@ -12,7 +12,11 @@ export const FormField = forwardRef<any, FormFieldProps>(
         return (
             <FieldContainer>
                 <FieldInput
-                    // TODO: а для чего ref тебе тут нужен?
+                    /*
+                        изначально react-hook-form выдавала ошибку связанную с forwadRef.
+                        мне оставалось либо задать ref null, либо сделать переиспользуемое
+                        поле forwardRef'ом, что либа регистрировала поля и экшны срабатывали
+                    */
                     ref={ref}
                     placeholder={placeholder}
                     type={type}
