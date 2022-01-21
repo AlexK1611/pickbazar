@@ -2,8 +2,8 @@ import { FC } from 'react'
 
 // redux
 import { useSelector } from 'react-redux'
-import { getUser } from 'redux/auth/selectors'
-import { getCartItems, getCartTotal } from 'redux/cart/selectors'
+import { getUser } from 'store/auth/selectors'
+import { getCartItems, getCartTotal } from 'store/cart/selectors'
 
 // styled components
 import {
@@ -24,9 +24,9 @@ import {
 import { CartItem } from 'components/CartItem/CartItem.component'
 
 // types
-import { RootReducer } from 'redux/rootReducer'
-import { UserItem } from 'redux/auth/types'
-import { PurchaseItem } from 'redux/cart/types'
+import { RootReducer } from 'store/rootReducer'
+import { UserItem } from 'store/auth/types'
+import { PurchaseItem } from 'store/cart/types'
 
 // images
 import emptyCart from 'assets/images/empty-cart.svg'

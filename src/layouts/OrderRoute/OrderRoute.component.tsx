@@ -2,12 +2,12 @@ import { FC } from 'react'
 
 // redux
 import { useSelector } from 'react-redux'
-import { getCreatedOrder } from 'redux/orders/selectors'
+import { getCreatedOrder } from 'store/orders/selectors'
 
 // types 
-import { RootReducer } from 'redux/rootReducer'
+import { RootReducer } from 'store/rootReducer'
 import { OrderRouteProps } from './OrderRoute.types'
-import { CreatedOrderItem } from 'redux/orders/types'
+import { CreatedOrderItem } from 'store/orders/types'
 
 // libraries
 import { Navigate } from 'react-router-dom'

@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 // redux
 import { useDispatch } from 'react-redux'
-import { signUpRequest } from 'redux/auth/actions'
+import { signUpRequest } from 'store/auth/actions'
 
 // libraries
 import { useForm } from 'react-hook-form'
@@ -23,7 +23,7 @@ import {
 
 // types
 import { SignUpProps } from './SignUp.types'
-import { SignUpData } from 'redux/auth/types'
+import { SignUpData } from 'store/auth/types'
 
 // helpers
 import { signUpValidation } from './SignUp.helpers'

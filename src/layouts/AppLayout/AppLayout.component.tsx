@@ -2,8 +2,8 @@ import { FC, useState, useEffect } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { removeAuthMessage } from 'redux/auth/actions'
-import { getAuthMessage, getUser } from 'redux/auth/selectors'
+import { removeAuthMessage } from 'store/auth/actions'
+import { getAuthMessage, getUser } from 'store/auth/selectors'
 
 // libraries
 import { Link } from 'react-router-dom'
@@ -22,8 +22,8 @@ import {
 } from './AppLayout.styles'
 
 // types
-import { RootReducer } from 'redux/rootReducer'
-import { UserItem } from 'redux/auth/types'
+import { RootReducer } from 'store/rootReducer'
+import { UserItem } from 'store/auth/types'
 
 // reusable components
 import { Toast } from 'components/Toast/Toast.component'

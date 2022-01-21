@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { getCartItemTypes, getCartTotal } from 'redux/cart/selectors'
+import { getCartItemTypes, getCartTotal } from 'store/cart/selectors'
 import {
     ButtonContainer,
     ItemsContainer,
@@ -10,7 +10,7 @@ import {
     Price
 } from './CartButton.styles'
 import { CartButtonProps } from './CartButton.types'
-import { RootReducer } from 'redux/rootReducer'
+import { RootReducer } from 'store/rootReducer'
 
 export const CartButton: FC<CartButtonProps> = ({ setCartOpened }) => {
     const cartItemTypes: number = useSelector(

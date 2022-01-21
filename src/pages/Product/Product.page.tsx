@@ -2,8 +2,8 @@ import { FC, useEffect } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { productInfoRequest, productsRequest } from 'redux/products/actions'
-import { getProductInfo, getProducts } from 'redux/products/selectors'
+import { productInfoRequest, productsRequest } from 'store/products/actions'
+import { getProductInfo, getProducts } from 'store/products/selectors'
 
 // libraries
 import { useParams } from 'react-router-dom'
@@ -12,8 +12,8 @@ import { useParams } from 'react-router-dom'
 import { ProductPage } from './Product.styles'
 
 // types
-import { ExtendedProductUnit, ProductUnit } from 'redux/products/types'
-import { RootReducer } from 'redux/rootReducer'
+import { ExtendedProductUnit, ProductUnit } from 'store/products/types'
+import { RootReducer } from 'store/rootReducer'
 
 // components
 import { Info } from './components/Info/Info.component'

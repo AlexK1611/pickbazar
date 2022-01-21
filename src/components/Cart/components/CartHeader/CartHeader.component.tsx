@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { getCartItemTypes } from 'redux/cart/selectors'
+import { getCartItemTypes } from 'store/cart/selectors'
 import {
     HeaderContainer,
     ItemsContainer,
@@ -10,7 +10,7 @@ import {
     CloseIcon
 } from './CartHeader.styles'
 import { CartHeaderProps } from './CartHeader.types'
-import { RootReducer } from 'redux/rootReducer'
+import { RootReducer } from 'store/rootReducer'
 
 export const CartHeader: FC<CartHeaderProps> = ({ setCartOpened }) => {
     const cartItemTypes: number = useSelector(

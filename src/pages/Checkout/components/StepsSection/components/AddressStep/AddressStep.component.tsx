@@ -2,12 +2,12 @@ import { FC, MouseEvent } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { removeAddress } from 'redux/checkout/actions'
-import { getDeliveryAddresses } from 'redux/checkout/selectors'
+import { removeAddress } from 'store/checkout/actions'
+import { getDeliveryAddresses } from 'store/checkout/selectors'
 
 // types
-import { AddressItem } from 'redux/checkout/types'
-import { RootReducer } from 'redux/rootReducer'
+import { AddressItem } from 'store/checkout/types'
+import { RootReducer } from 'store/rootReducer'
 import { AddressStepProps } from './AddressStep.types'
 import { OrderCreationTypes } from '../../StepsSection.types'
 

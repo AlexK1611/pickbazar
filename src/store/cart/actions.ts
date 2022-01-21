@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux'
-import { ExtendedProductUnit, ProductUnit } from 'redux/products/types'
+import { ExtendedProductUnit, ProductUnit } from 'store/products/types'
 import { CartActionTypes, PurchaseItem } from './types'
 
 export const addItemToCart = (purchase: ExtendedProductUnit | ProductUnit) => {

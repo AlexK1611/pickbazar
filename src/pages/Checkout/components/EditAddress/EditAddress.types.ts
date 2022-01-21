@@ -1,4 +1,4 @@
-import { AddressItem } from 'redux/checkout/types'
+import { AddressItem } from 'store/checkout/types'
 
 export interface EditAddressProps {
     closeModal: () => void,

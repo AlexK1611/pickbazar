@@ -2,11 +2,11 @@ import { FC } from 'react'
 
 // redux
 import { useSelector } from 'react-redux'
-import { getDeliverySchedules } from 'redux/checkout/selectors'
+import { getDeliverySchedules } from 'store/checkout/selectors'
 
 // types
-import { RootReducer } from 'redux/rootReducer'
-import { ScheduleItem } from 'redux/checkout/types'
+import { RootReducer } from 'store/rootReducer'
+import { ScheduleItem } from 'store/checkout/types'
 import { DeliverStepProps } from './DeliveryStep.types'
 import { OrderCreationTypes } from '../../StepsSection.types'
 

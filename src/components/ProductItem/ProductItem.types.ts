@@ -1,4 +1,4 @@
-import { ExtendedProductUnit, ProductUnit } from "redux/products/types";
+import { ExtendedProductUnit, ProductUnit } from 'store/products/types'
 
 export interface ProductItemProps {
     product: ExtendedProductUnit | ProductUnit

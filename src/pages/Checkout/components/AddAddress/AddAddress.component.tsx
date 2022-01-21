@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 // redux
 import { useDispatch } from 'react-redux'
-import { addAddress } from 'redux/checkout/actions'
+import { addAddress } from 'store/checkout/actions'
 
 // libraries
 import { useForm } from 'react-hook-form'

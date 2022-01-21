@@ -2,13 +2,13 @@ import { FC, MouseEvent } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { removePhoneNumber } from 'redux/checkout/actions'
-import { getPhoneNumbers } from 'redux/checkout/selectors'
+import { removePhoneNumber } from 'store/checkout/actions'
+import { getPhoneNumbers } from 'store/checkout/selectors'
 
 // types
 import { ContactStepProps } from './ContactStep.types'
-import { PhoneNumberItem } from 'redux/checkout/types'
-import { RootReducer } from 'redux/rootReducer'
+import { PhoneNumberItem } from 'store/checkout/types'
+import { RootReducer } from 'store/rootReducer'
 import { OrderCreationTypes } from '../../StepsSection.types'
 
 // styled components

@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addItemToCart } from 'redux/cart/actions'
-import { getCartItems } from 'redux/cart/selectors'
+import { addItemToCart } from 'store/cart/actions'
+import { getCartItems } from 'store/cart/selectors'
 import {
     InfoContainer,
     PicturesSection,
@@ -21,8 +21,8 @@ import {
     CategoryTitle
 } from './Info.styles'
 import { InfoProps } from './Info.types'
-import { RootReducer } from 'redux/rootReducer'
-import { PurchaseItem } from 'redux/cart/types'
+import { RootReducer } from 'store/rootReducer'
+import { PurchaseItem } from 'store/cart/types'
 import { CartButton } from 'components/CartButton/CartButton.component'
 import { Cart } from 'components/Cart/Cart.component'
 

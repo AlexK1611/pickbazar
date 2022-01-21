@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux'
 import { axiosInstance } from 'config/api'
 import { CreatedOrderResponse, CreateOrderPayload, OrdersActionTypes } from './types'
-import { RootReducer } from 'redux/rootReducer'
+import { RootReducer } from 'store/rootReducer'
 
 export const createOrderRequest = (order: CreateOrderPayload) => {
     return async (dispatch: Dispatch, getState: () => RootReducer) => {

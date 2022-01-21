@@ -1,4 +1,4 @@
-import { CategoryItem } from "redux/categories/types";
+import { CategoryItem } from 'store/categories/types'
 
 export interface CategoriesProps {
     categories: CategoryItem[],

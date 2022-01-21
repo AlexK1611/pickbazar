@@ -2,15 +2,15 @@ import { FC, useState, useEffect } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { getCreatedOrder } from 'redux/orders/selectors'
-import { clearCart } from 'redux/cart/actions'
+import { getCreatedOrder } from 'store/orders/selectors'
+import { clearCart } from 'store/cart/actions'
 
 // libraries
 import { useNavigate } from 'react-router-dom'
 
 // types 
-import { RootReducer } from 'redux/rootReducer'
-import { CreatedOrderItem } from 'redux/orders/types'
+import { RootReducer } from 'store/rootReducer'
+import { CreatedOrderItem } from 'store/orders/types'
 
 // styled components
 import { CheckoutContainer } from './Checkout.styles'

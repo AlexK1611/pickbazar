@@ -2,12 +2,12 @@ import { FC } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { createOrderRequest } from 'redux/orders/actions'
-import { getPaymentOptions } from 'redux/checkout/selectors'
+import { createOrderRequest } from 'store/orders/actions'
+import { getPaymentOptions } from 'store/checkout/selectors'
 
 // types
-import { RootReducer } from 'redux/rootReducer'
-import { PaymentOption } from 'redux/checkout/types'
+import { RootReducer } from 'store/rootReducer'
+import { PaymentOption } from 'store/checkout/types'
 import { PaymentStepProps } from './PaymentStep.types'
 import { OrderCreationTypes } from '../../StepsSection.types'
 

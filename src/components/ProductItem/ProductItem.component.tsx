@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addItemToCart } from 'redux/cart/actions'
-import { getCartItems } from 'redux/cart/selectors'
+import { addItemToCart } from 'store/cart/actions'
+import { getCartItems } from 'store/cart/selectors'
 import {
     ItemContainer,
     Discount,
@@ -18,8 +18,8 @@ import {
     ButtonTitle
 } from './ProductItem.styles'
 import { ProductItemProps } from './ProductItem.types'
-import { RootReducer } from 'redux/rootReducer'
-import { PurchaseItem } from 'redux/cart/types'
+import { RootReducer } from 'store/rootReducer'
+import { PurchaseItem } from 'store/cart/types'
 
 export const ProductItem: FC<ProductItemProps> = ({ product }) => {
     const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItems(state))

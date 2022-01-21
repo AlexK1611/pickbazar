@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { getCartItems, getCartTotal } from 'redux/cart/selectors'
+import { getCartItems, getCartTotal } from 'store/cart/selectors'
 import {
     OrderContainer,
     Title,
@@ -11,8 +11,8 @@ import {
     OrderItem,
     QuantityAndSize
 } from './OrderSection.styles'
-import { RootReducer } from 'redux/rootReducer'
-import { PurchaseItem } from 'redux/cart/types'
+import { RootReducer } from 'store/rootReducer'
+import { PurchaseItem } from 'store/cart/types'
 
 export const OrderSection: FC = () => {
     const cart: PurchaseItem[] | [] = useSelector(

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 
 // redux
 import { useSelector } from 'react-redux'
-import { RootReducer } from 'redux/rootReducer'
-import { getDeliveryAddress, getPhoneNumber } from 'redux/checkout/selectors'
+import { RootReducer } from 'store/rootReducer'
+import { getDeliveryAddress, getPhoneNumber } from 'store/checkout/selectors'
 
 // styled components
 import {
@@ -22,7 +22,7 @@ import { EditNumber } from '../EditNumber/EditNumber.component'
 
 // types
 import { CheckoutModalProps } from './CheckoutModal.types'
-import { AddressItem, PhoneNumberItem } from 'redux/checkout/types'
+import { AddressItem, PhoneNumberItem } from 'store/checkout/types'
 
 export const CheckoutModal: FC<CheckoutModalProps> = ({
     isModal,

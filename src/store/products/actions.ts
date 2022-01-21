@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux'
 import { axiosInstance } from 'config/api'
 import { ProductInfoResponse, ProductsActionTypes, ProductUnit } from './types'
-import { RootReducer } from 'redux/rootReducer'
+import { RootReducer } from 'store/rootReducer'
 
 export const productsRequest = (category: number, start: number) => {
     return async (dispatch: Dispatch, getState: () => RootReducer) => {

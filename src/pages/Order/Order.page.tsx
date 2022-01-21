@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { getCreatedOrder, getCreatedOrderTotal } from 'redux/orders/selectors'
+import { getCreatedOrder, getCreatedOrderTotal } from 'store/orders/selectors'
 import moment from 'moment'
-import { CreatedOrderItem } from 'redux/orders/types'
-import { RootReducer } from 'redux/rootReducer'
+import { CreatedOrderItem } from 'store/orders/types'
+import { RootReducer } from 'store/rootReducer'
 import {
     OrderContainer,
     OrderBody,

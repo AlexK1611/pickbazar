@@ -5,7 +5,7 @@ import {
     CheckoutActionTypes,
     PhoneNumberItem
 } from './types'
-import { RootReducer } from 'redux/rootReducer'
+import { RootReducer } from 'store/rootReducer'
 
 export const addAddress = (data: AddressPayload) => {
     return (dispatch: Dispatch, getState: () => RootReducer) => {

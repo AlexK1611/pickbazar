@@ -1,4 +1,4 @@
-import { ExtendedProductUnit } from 'redux/products/types'
+import { ExtendedProductUnit } from 'store/products/types'
 
 export interface CreateOrderPayload {
     address?: string,

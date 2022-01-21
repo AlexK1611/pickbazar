@@ -1,11 +1,10 @@
 import { FC } from 'react'
 import { useDispatch } from 'react-redux'
-// TODO: Абсолютные пути конечно круто, но очень сильно сбивает момет `redux/cart/actions`. Есть стойкое ощущение что ты испортишь это из самого редакса.
 import {
     decreaseQuantity,
     increaseQuantity,
     removeItemFromCart
-} from 'redux/cart/actions'
+} from 'store/cart/actions'
 import {
     ItemContainer,
     PrimaryText,

@@ -2,15 +2,15 @@ import { FC, useState, useEffect } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { categoriesRequest } from 'redux/categories/actions'
-import { productsRequest } from 'redux/products/actions'
-import { getCategories } from 'redux/categories/selectors'
-import { getProducts } from 'redux/products/selectors'
+import { categoriesRequest } from 'store/categories/actions'
+import { productsRequest } from 'store/products/actions'
+import { getCategories } from 'store/categories/selectors'
+import { getProducts } from 'store/products/selectors'
 
 // types
-import { CategoryItem } from 'redux/categories/types'
-import { ProductUnit } from 'redux/products/types'
-import { RootReducer } from 'redux/rootReducer'
+import { CategoryItem } from 'store/categories/types'
+import { ProductUnit } from 'store/products/types'
+import { RootReducer } from 'store/rootReducer'
 
 // styled components
 import {

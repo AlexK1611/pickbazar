@@ -1,4 +1,4 @@
-import { PhoneNumberItem } from 'redux/checkout/types'
+import { PhoneNumberItem } from 'store/checkout/types'
 
 export interface EditNumberProps {
     closeModal: () => void,

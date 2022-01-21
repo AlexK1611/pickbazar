@@ -2,13 +2,13 @@ import { FC } from 'react'
 
 // redux
 import { useSelector } from 'react-redux'
-import { getUser } from 'redux/auth/selectors'
-import { getCartItems } from 'redux/cart/selectors'
+import { getUser } from 'store/auth/selectors'
+import { getCartItems } from 'store/cart/selectors'
 
 // types 
-import { RootReducer } from 'redux/rootReducer'
-import { UserItem } from 'redux/auth/types'
-import { PurchaseItem } from 'redux/cart/types'
+import { RootReducer } from 'store/rootReducer'
+import { UserItem } from 'store/auth/types'
+import { PurchaseItem } from 'store/cart/types'
 import { CheckoutRouteProps } from './CheckoutRoute.types'
 
 // libraries

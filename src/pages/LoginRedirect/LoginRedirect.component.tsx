@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { googleAuthRequest } from 'redux/auth/actions'
-import { getJwt } from 'redux/auth/selectors'
+import { googleAuthRequest } from 'store/auth/actions'
+import { getJwt } from 'store/auth/selectors'
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
-import { RootReducer } from 'redux/rootReducer'
+import { RootReducer } from 'store/rootReducer'
 
 export const LoginRedirect = () => {
     const jwt: string | null = useSelector((state: RootReducer) => getJwt(state))
