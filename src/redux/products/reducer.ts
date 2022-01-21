@@ -1,7 +1,7 @@
 import { ProductsState, ProductsAction, ProductsActionTypes } from './types'
 
 const initialState: ProductsState = {
-    products: JSON.parse(localStorage.getItem('products') || 'null'),
+    products: null,
     productInfo: null
 }
 

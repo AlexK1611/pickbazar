@@ -14,17 +14,13 @@ export const productsRequest = (category: number, start: number) => {
 
             if (data.length === 0) {
                 dispatch({ type: ProductsActionTypes.CLEAR_PRODUCTS })
-                // TODO а продукты то зачем в local storage ?
-                if (localStorage.getItem('products')) localStorage.removeItem('products')
             } else if (products && products[0].category.id === data[0].category.id) {
                 const payload = products.concat(
                     data.filter((newItem: ProductUnit) => !products.some((oldItem: ProductUnit) => oldItem.id === newItem.id))
                 )
                 dispatch({ type: ProductsActionTypes.SET_PRODUCTS, payload })
-                localStorage.setItem('products', JSON.stringify(payload))
             } else {
                 dispatch({ type: ProductsActionTypes.SET_PRODUCTS, payload: data })
-                localStorage.setItem('products', JSON.stringify(data))
             }
         } catch (error) {
             console.log(error)
