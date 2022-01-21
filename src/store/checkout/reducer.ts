@@ -2,9 +2,9 @@ import { deliverySchedules, paymentOptions } from './helpers'
 import { CheckoutAction, CheckoutActionTypes, CheckoutState } from './types'
 
 const initialState: CheckoutState = {
-    addresses: JSON.parse(localStorage.getItem('addresses') || '[]'),
+    addresses: [],
     schedules: deliverySchedules,
-    phones: JSON.parse(localStorage.getItem('phones') || '[]'),
+    phones: [],
     payments: paymentOptions
 }
 

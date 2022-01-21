@@ -2,8 +2,8 @@ import { AuthState, AuthAction, AuthActionTypes } from './types'
 
 const initialState: AuthState = {
     authMessage: null,
-    jwt: JSON.parse(localStorage.getItem('jwt') || 'null') || null,
-    user: JSON.parse(localStorage.getItem('user') || 'null') || null
+    jwt: null,
+    user: null
 }
 
 export const AuthReducer = (state = initialState, action: AuthAction): AuthState => {
