@@ -37,7 +37,7 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
         }
     }, [productInfo.photos.length])
 
-    const [isCart, handleCart] = useState(false)
+    const [isCartOpened, setCartOpened] = useState(false)
 
     return (
         <InfoContainer>
@@ -76,10 +76,10 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
                     </Category>
                 )}   
             </InfoSection>
-            <CartButton openCart={() => handleCart(true)} />
+            <CartButton openCart={() => setCartOpened(true)} />
             <Cart
-                isCart={isCart}
-                closeCart={() => handleCart(false)}
+                isCartOpened={isCartOpened}
+                closeCart={() => setCartOpened(false)}
             />
         </InfoContainer>
     )

@@ -6,16 +6,16 @@ import { CartButton } from 'components/CartButton/CartButton.component'
 import { Cart } from 'components/Cart/Cart.component'
 
 export const Main: FC = () => {
-    const [isCart, handleCart] = useState(false)
+    const [isCartOpened, setCartOpened] = useState(false)
     return (
         <>
             <TopSection />
             <Coupons />
             <Products />
-            <CartButton openCart={() => handleCart(true)} />
+            <CartButton openCart={() => setCartOpened(true)} />
             <Cart
-                isCart={isCart}
-                closeCart={() => handleCart(false)}
+                isCartOpened={isCartOpened}
+                closeCart={() => setCartOpened(false)}
             />
         </>
 
