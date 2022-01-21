@@ -94,13 +94,16 @@ export interface ProductInfoResponse {
 
 export interface ProductsState {
     products: ProductUnit[] | null,
-    productInfo: ExtendedProductUnit | null
+    productInfo: ExtendedProductUnit | null,
+    requestStart: number
 }
 
 export enum ProductsActionTypes {
     SET_PRODUCTS = 'SET_PRODUCTS',
     SET_PRODUCT_INFO = 'SET_PRODUCT_INFO',
-    CLEAR_PRODUCTS = 'CLEAR_PRODUCTS'
+    CLEAR_PRODUCTS = 'CLEAR_PRODUCTS',
+    INCREASE_START = 'INCREASE_START',
+    RESET_START = 'RESET_START'
 }
 
 interface SetProductsAction {
@@ -117,4 +120,18 @@ interface ClearProductsAction {
     type: ProductsActionTypes.CLEAR_PRODUCTS
 }
 
-export type ProductsAction = SetProductsAction | SetProductInfoAction | ClearProductsAction
+interface IncreaseStartAction {
+    type: ProductsActionTypes.INCREASE_START
+}
+
+interface ResetStartAction {
+    type: ProductsActionTypes.RESET_START
+}
+
+export type ProductsAction = (
+    SetProductsAction | 
+    SetProductInfoAction | 
+    ClearProductsAction |
+    IncreaseStartAction |
+    ResetStartAction
+)

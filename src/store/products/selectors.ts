@@ -10,3 +10,8 @@ export const getProductInfo = createSelector(
     (state: RootReducer) => state.products,
     state => state.productInfo
 )
+
+export const getProductsRequestStart = createSelector(
+    (state: RootReducer) => state.products,
+    state => state.requestStart
+)

@@ -38,3 +38,11 @@ export const productInfoRequest = (id: string) => {
         }
     }
 }
+
+export const loadMoreProducts = () => ({
+    type: ProductsActionTypes.INCREASE_START
+})
+
+export const resetProductsRequestStart = () => ({
+    type: ProductsActionTypes.RESET_START
+})

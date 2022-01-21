@@ -2,7 +2,8 @@ import { ProductsState, ProductsAction, ProductsActionTypes } from './types'
 
 const initialState: ProductsState = {
     products: null,
-    productInfo: null
+    productInfo: null,
+    requestStart: 0
 }
 
 export const ProductsReducer = (state = initialState, action: ProductsAction): ProductsState => {
@@ -15,6 +16,12 @@ export const ProductsReducer = (state = initialState, action: ProductsAction): P
         }
         case ProductsActionTypes.CLEAR_PRODUCTS: {
             return { ...state, products: null }
+        }
+        case ProductsActionTypes.INCREASE_START: {
+            return { ...state, requestStart: state.requestStart + 10 }
+        }
+        case ProductsActionTypes.RESET_START: {
+            return { ...state, requestStart: 0 }
         }
         default: {
             return state

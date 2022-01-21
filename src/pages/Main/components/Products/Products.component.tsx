@@ -3,9 +3,13 @@ import { FC, useState, useEffect } from 'react'
 // redux
 import { useSelector, useDispatch } from 'react-redux'
 import { categoriesRequest } from 'store/categories/actions'
-import { productsRequest } from 'store/products/actions'
+import {
+    loadMoreProducts,
+    productsRequest,
+    resetProductsRequestStart
+} from 'store/products/actions'
 import { getCategories } from 'store/categories/selectors'
-import { getProducts } from 'store/products/selectors'
+import { getProducts, getProductsRequestStart } from 'store/products/selectors'
 
 // types
 import { CategoryItem } from 'store/categories/types'
@@ -28,11 +32,11 @@ import { Categories } from './components/Categories/Categories.component'
 export const Products: FC = () => {
     const categories: CategoryItem[] | null = useSelector(getCategories)
     const products: ProductUnit[] | null = useSelector(getProducts)
+    const productsRequestStart: number = useSelector(getProductsRequestStart)
     const dispatch = useDispatch()
 
     const [parentCategory, setParentCategory] = useState(0)
     const [selectedCategory, setSelectedCategory] = useState(0)
-    const [start, setStart] = useState(0)
 
     useEffect(() => {
         if (!categories) {
@@ -42,9 +46,9 @@ export const Products: FC = () => {
 
     useEffect(() => {
         if (selectedCategory) {
-            dispatch(productsRequest(selectedCategory, start))
+            dispatch(productsRequest(selectedCategory, productsRequestStart))
         }
-    }, [selectedCategory, start])
+    }, [selectedCategory, productsRequestStart])
 
     useEffect(() => {
         if (products && !selectedCategory) {
@@ -55,9 +59,13 @@ export const Products: FC = () => {
 
     const categoryHandler = (category: number) => {
         if (category !== selectedCategory) {
-            setStart(0)
+            dispatch(resetProductsRequestStart())
         }
         setSelectedCategory(category)
+    }
+
+    const loadMoreHandler = () => {
+        dispatch(loadMoreProducts())
     }
 
     return (
@@ -77,8 +85,7 @@ export const Products: FC = () => {
                 {!products && <ProductsMessage>Select category</ProductsMessage>}
                 {products && <ProductsList products={products}/>}
                 {products && products.length % 10 === 0 && (
-                    // TODO: у тебя вьюшка не должна знать о количестве дополнительно запрашиваемых продуктов. Это так же должно быть частью онли редакса
-                    <LoadMoreBtn onClick={() => setStart(start => start + 10)}>
+                    <LoadMoreBtn onClick={loadMoreHandler}>
                         <LoadMoreBtnTitle>Load More</LoadMoreBtnTitle>
                     </LoadMoreBtn>
                 )}
