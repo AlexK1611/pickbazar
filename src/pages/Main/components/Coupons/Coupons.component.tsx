@@ -8,9 +8,6 @@ import { getCoupons } from 'redux/coupons/selectors'
 // libraries
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation } from 'swiper'
-// TODO: если это css - то лучше импортить в index.js/ts
-import 'swiper/css'
-import 'swiper/css/navigation'
 
 // styled components
 import {
