@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { getCreatedOrder } from 'redux/orders/selectors'
+import { getCreatedOrder, getCreatedOrderTotal } from 'redux/orders/selectors'
 import { CreatedOrderItem } from 'redux/orders/types'
 import { RootReducer } from 'redux/rootReducer'
 import {
@@ -19,6 +19,9 @@ import {
 export const Order: FC = () => {
     const createdOrder: CreatedOrderItem | null = useSelector(
         (state: RootReducer) => getCreatedOrder(state)
+    )
+    const createdOrderTotal: number | undefined = useSelector(
+        (state: RootReducer) => getCreatedOrderTotal(state)
     )
 
     return (
@@ -43,13 +46,7 @@ export const Order: FC = () => {
                         {createdOrder?.products.length && (
                             <div>
                                 <Subtitle>Total</Subtitle>
-                                <Info isColumn>
-                                    ${(createdOrder.products
-                                        // TODO: А теперь дважды подумай над тем что ты сделал в следующих 2х строках)
-                                        .map(product => product.price)
-                                        .reduce((total, current) => total + current, 0)
-                                    ).toFixed(2)}
-                                </Info>
+                                <Info isColumn>${createdOrderTotal?.toFixed(2)}</Info>
                             </div>
                         )}
                         {createdOrder?.payment && (
@@ -96,12 +93,7 @@ export const Order: FC = () => {
                         {createdOrder?.products.length && (
                             <DataItem>
                                 <Subtitle>Sub Total:</Subtitle>
-                                <Info>
-                                    ${(createdOrder.products
-                                        .map(product => product.price)
-                                        .reduce((total, current) => total + current, 0)
-                                    ).toFixed(2)}
-                                </Info>
+                                <Info>${createdOrderTotal?.toFixed(2)}</Info>
                             </DataItem>
                         )}
                         {createdOrder?.payment && (
@@ -117,13 +109,7 @@ export const Order: FC = () => {
                         {createdOrder?.products.length && (
                             <DataItem>
                                 <Subtitle>Total:</Subtitle>
-                                <Info>
-                                    ${(createdOrder.products
-                                        .map(product => product.price)
-                                        .reduce((total, current) => total + current, 0)
-                                        + 10
-                                    ).toFixed(2)}
-                                </Info>
+                                <Info>${(createdOrderTotal! + 10).toFixed(2)}</Info>
                             </DataItem>
                         )}
                     </DataItems>
