@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { googleAuthRequest } from 'store/auth/actions'
 import { getJwt } from 'store/auth/selectors'
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
-import { RootReducer } from 'store/rootReducer'
 
 export const LoginRedirect = () => {
-    const jwt: string | null = useSelector((state: RootReducer) => getJwt(state))
+    const jwt: string | null = useSelector(getJwt)
     const dispatch = useDispatch()
     const params = useParams()
     const location = useLocation()

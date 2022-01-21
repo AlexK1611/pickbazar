@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 
 // redux
 import { useSelector } from 'react-redux'
-import { RootReducer } from 'store/rootReducer'
 import { getDeliveryAddress, getPhoneNumber } from 'store/checkout/selectors'
 
 // styled components
@@ -33,12 +32,8 @@ export const CheckoutModal: FC<CheckoutModalProps> = ({
     addressId,
     phoneNumber
 }) => {
-    const addressToEdit: AddressItem | undefined = useSelector(
-        (state: RootReducer) => getDeliveryAddress(addressId)(state)
-    )
-    const numberToEdit: PhoneNumberItem | undefined = useSelector(
-        (state: RootReducer) => getPhoneNumber(phoneNumber)(state)
-    )
+    const addressToEdit: AddressItem | undefined = useSelector(getDeliveryAddress(addressId))
+    const numberToEdit: PhoneNumberItem | undefined = useSelector(getPhoneNumber(phoneNumber))
 
     const checkoutModalNode = document.getElementById('checkout-modal') as HTMLDivElement
 

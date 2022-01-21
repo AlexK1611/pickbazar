@@ -10,12 +10,9 @@ import {
     CloseIcon
 } from './CartHeader.styles'
 import { CartHeaderProps } from './CartHeader.types'
-import { RootReducer } from 'store/rootReducer'
 
 export const CartHeader: FC<CartHeaderProps> = ({ setCartOpened }) => {
-    const cartItemTypes: number = useSelector(
-        (state: RootReducer) => getCartItemTypes(state)
-    )
+    const cartItemTypes: number = useSelector(getCartItemTypes)
 
     return (
         <HeaderContainer>

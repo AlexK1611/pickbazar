@@ -20,13 +20,10 @@ import {
 } from './Coupons.styles'
 
 // types
-import { RootReducer } from 'store/rootReducer'
 import { CouponItem } from 'store/coupons/types'
 
 export const Coupons: FC = () => {
-    const coupons: CouponItem[] | null = useSelector(
-        (state: RootReducer) => getCoupons(state)
-    )
+    const coupons: CouponItem[] | null = useSelector(getCoupons)
     const dispatch = useDispatch()
 
     useEffect(() => {

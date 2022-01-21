@@ -10,7 +10,6 @@ import { getProducts } from 'store/products/selectors'
 // types
 import { CategoryItem } from 'store/categories/types'
 import { ProductUnit } from 'store/products/types'
-import { RootReducer } from 'store/rootReducer'
 
 // styled components
 import {
@@ -27,12 +26,8 @@ import { ProductsList } from './components/ProductsList/ProductsList.component'
 import { Categories } from './components/Categories/Categories.component'
 
 export const Products: FC = () => {
-    const categories: CategoryItem[] | null = useSelector(
-        (state: RootReducer) => getCategories(state)
-    )
-    const products: ProductUnit[] | null = useSelector(
-        (state: RootReducer) => getProducts(state)
-    )
+    const categories: CategoryItem[] | null = useSelector(getCategories)
+    const products: ProductUnit[] | null = useSelector(getProducts)
     const dispatch = useDispatch()
 
     const [parentCategory, setParentCategory] = useState(0)

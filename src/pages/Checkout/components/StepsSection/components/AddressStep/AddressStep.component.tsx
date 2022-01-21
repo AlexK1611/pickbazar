@@ -7,7 +7,6 @@ import { getDeliveryAddresses } from 'store/checkout/selectors'
 
 // types
 import { AddressItem } from 'store/checkout/types'
-import { RootReducer } from 'store/rootReducer'
 import { AddressStepProps } from './AddressStep.types'
 import { OrderCreationTypes } from '../../StepsSection.types'
 
@@ -27,9 +26,7 @@ export const AddressStep: FC<AddressStepProps> = ({
     state,
     action
 }) => {
-    const deliveryAddresses: AddressItem[] | [] = useSelector(
-        (state: RootReducer) => getDeliveryAddresses(state)
-    )
+    const deliveryAddresses: AddressItem[] | [] = useSelector(getDeliveryAddresses)
 
     const dispatch = useDispatch()
 

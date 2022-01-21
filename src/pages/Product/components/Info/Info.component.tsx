@@ -21,14 +21,13 @@ import {
     CategoryTitle
 } from './Info.styles'
 import { InfoProps } from './Info.types'
-import { RootReducer } from 'store/rootReducer'
 import { PurchaseItem } from 'store/cart/types'
 import { CartButton } from 'components/CartButton/CartButton.component'
 import { Cart } from 'components/Cart/Cart.component'
 import { ExtendedProductUnit, ProductUnit } from 'store/products/types'
 
 export const Info: FC<InfoProps> = ({ productInfo }) => {
-    const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItems(state))
+    const cart: PurchaseItem[] | [] = useSelector(getCartItems)
     const dispatch = useDispatch()
 
     const [selectedPicture, setSelectedPicture] = useState('')

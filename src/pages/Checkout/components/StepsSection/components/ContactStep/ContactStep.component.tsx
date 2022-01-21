@@ -8,7 +8,6 @@ import { getPhoneNumbers } from 'store/checkout/selectors'
 // types
 import { ContactStepProps } from './ContactStep.types'
 import { PhoneNumberItem } from 'store/checkout/types'
-import { RootReducer } from 'store/rootReducer'
 import { OrderCreationTypes } from '../../StepsSection.types'
 
 // styled components
@@ -27,9 +26,7 @@ export const ContactStep: FC<ContactStepProps> = ({
     state,
     action
 }) => {
-    const phoneNumbers: PhoneNumberItem[] = useSelector(
-        (state: RootReducer) => getPhoneNumbers(state)
-    )
+    const phoneNumbers: PhoneNumberItem[] = useSelector(getPhoneNumbers)
 
     const dispatch = useDispatch()
 

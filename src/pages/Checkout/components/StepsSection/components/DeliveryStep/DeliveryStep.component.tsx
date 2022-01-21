@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import { getDeliverySchedules } from 'store/checkout/selectors'
 
 // types
-import { RootReducer } from 'store/rootReducer'
 import { ScheduleItem } from 'store/checkout/types'
 import { DeliverStepProps } from './DeliveryStep.types'
 import { OrderCreationTypes } from '../../StepsSection.types'
@@ -21,9 +20,7 @@ import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.compone
 import { valuesComparator } from '../../StepsSection.helpers'
 
 export const DeliveryStep: FC<DeliverStepProps> = ({ state, action }) => {
-    const deliverySchedules: ScheduleItem[] = useSelector(
-        (state: RootReducer) => getDeliverySchedules(state)
-    )
+    const deliverySchedules: ScheduleItem[] = useSelector(getDeliverySchedules)
 
     return (
         <CheckoutStep

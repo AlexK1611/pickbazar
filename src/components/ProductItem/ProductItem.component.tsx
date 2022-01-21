@@ -18,12 +18,11 @@ import {
     ButtonTitle
 } from './ProductItem.styles'
 import { ProductItemProps } from './ProductItem.types'
-import { RootReducer } from 'store/rootReducer'
 import { PurchaseItem } from 'store/cart/types'
 import { ExtendedProductUnit, ProductUnit } from 'store/products/types'
 
 export const ProductItem: FC<ProductItemProps> = ({ product }) => {
-    const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItems(state))
+    const cart: PurchaseItem[] | [] = useSelector(getCartItems)
     const dispatch = useDispatch()
 
     const cartItemAddHandler = (product: ExtendedProductUnit | ProductUnit) => {

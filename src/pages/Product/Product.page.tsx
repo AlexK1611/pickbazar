@@ -13,7 +13,6 @@ import { ProductPage } from './Product.styles'
 
 // types
 import { ExtendedProductUnit, ProductUnit } from 'store/products/types'
-import { RootReducer } from 'store/rootReducer'
 
 // components
 import { Info } from './components/Info/Info.component'
@@ -28,14 +27,14 @@ export const Product: FC = () => {
             dispatch(productInfoRequest(productId))
         }
     }, [productId])
-    const productInfo: ExtendedProductUnit | null = useSelector((state: RootReducer) => getProductInfo(state))
+    const productInfo: ExtendedProductUnit | null = useSelector(getProductInfo)
 
     useEffect(() => {
         if (productInfo) {
             dispatch(productsRequest(productInfo.category.id, 0))
         }
     }, [productInfo])
-    const products: ProductUnit[] | null = useSelector((state: RootReducer) => getProducts(state))
+    const products: ProductUnit[] | null = useSelector(getProducts)
 
     return (
         <ProductPage>

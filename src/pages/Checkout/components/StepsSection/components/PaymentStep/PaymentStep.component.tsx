@@ -6,7 +6,6 @@ import { createOrderRequest } from 'store/orders/actions'
 import { getPaymentOptions } from 'store/checkout/selectors'
 
 // types
-import { RootReducer } from 'store/rootReducer'
 import { PaymentOption } from 'store/checkout/types'
 import { PaymentStepProps } from './PaymentStep.types'
 import { OrderCreationTypes } from '../../StepsSection.types'
@@ -23,9 +22,7 @@ import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 import { valuesComparator } from '../../StepsSection.helpers'
 
 export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
-    const paymentOptions: PaymentOption[] = useSelector(
-        (state: RootReducer) => getPaymentOptions(state)
-    )
+    const paymentOptions: PaymentOption[] = useSelector(getPaymentOptions)
 
     const dispatch = useDispatch()
 

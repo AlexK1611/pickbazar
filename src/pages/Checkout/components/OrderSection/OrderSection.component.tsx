@@ -11,16 +11,11 @@ import {
     OrderItem,
     QuantityAndSize
 } from './OrderSection.styles'
-import { RootReducer } from 'store/rootReducer'
 import { PurchaseItem } from 'store/cart/types'
 
 export const OrderSection: FC = () => {
-    const cart: PurchaseItem[] | [] = useSelector(
-        (state: RootReducer) => getCartItems(state)
-    )
-    const cartTotal: number = useSelector(
-        (state: RootReducer) => getCartTotal(state)
-    )
+    const cart: PurchaseItem[] | [] = useSelector(getCartItems)
+    const cartTotal: number = useSelector(getCartTotal)
 
     return (
         <OrderContainer>

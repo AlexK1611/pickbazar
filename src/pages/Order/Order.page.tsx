@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { getCreatedOrder, getCreatedOrderTotal } from 'store/orders/selectors'
 import moment from 'moment'
 import { CreatedOrderItem } from 'store/orders/types'
-import { RootReducer } from 'store/rootReducer'
 import {
     OrderContainer,
     OrderBody,
@@ -18,12 +17,8 @@ import {
 } from './Order.styles'
 
 export const Order: FC = () => {
-    const createdOrder: CreatedOrderItem | null = useSelector(
-        (state: RootReducer) => getCreatedOrder(state)
-    )
-    const createdOrderTotal: number | undefined = useSelector(
-        (state: RootReducer) => getCreatedOrderTotal(state)
-    )
+    const createdOrder: CreatedOrderItem | null = useSelector(getCreatedOrder)
+    const createdOrderTotal: number | undefined = useSelector(getCreatedOrderTotal)
 
     return (
         <OrderContainer>

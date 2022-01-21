@@ -10,15 +10,10 @@ import {
     Price
 } from './CartButton.styles'
 import { CartButtonProps } from './CartButton.types'
-import { RootReducer } from 'store/rootReducer'
 
 export const CartButton: FC<CartButtonProps> = ({ setCartOpened }) => {
-    const cartItemTypes: number = useSelector(
-        (state: RootReducer) => getCartItemTypes(state)
-    )
-    const cartTotal: number = useSelector(
-        (state: RootReducer) => getCartTotal(state)
-    )
+    const cartItemTypes: number = useSelector(getCartItemTypes)
+    const cartTotal: number = useSelector(getCartTotal)
 
     return (
         <ButtonContainer onClick={() => setCartOpened(true)}>

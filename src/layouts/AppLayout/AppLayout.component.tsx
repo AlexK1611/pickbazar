@@ -22,7 +22,6 @@ import {
 } from './AppLayout.styles'
 
 // types
-import { RootReducer } from 'store/rootReducer'
 import { UserItem } from 'store/auth/types'
 
 // reusable components
@@ -35,12 +34,8 @@ import { ProfileMenu } from './components/ProfileMenu/ProfileMenu.component'
 import { ReactComponent as Logo } from 'assets/images/logo.svg'
 
 export const AppLayout: FC = ({ children }) => {
-    const user: UserItem | null = useSelector(
-        (state: RootReducer) => getUser(state)
-    )
-    const authMessage: string | null = useSelector(
-        (state: RootReducer) => getAuthMessage(state)
-    )
+    const user: UserItem | null = useSelector(getUser)
+    const authMessage: string | null = useSelector(getAuthMessage)
     const dispatch = useDispatch()
 
     const [isAuthModal, handleAuthModal] = useState(false)

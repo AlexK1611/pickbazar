@@ -9,7 +9,6 @@ import { clearCart } from 'store/cart/actions'
 import { useNavigate } from 'react-router-dom'
 
 // types 
-import { RootReducer } from 'store/rootReducer'
 import { CreatedOrderItem } from 'store/orders/types'
 
 // styled components
@@ -24,9 +23,7 @@ export const Checkout: FC = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const createdOrder: CreatedOrderItem | null = useSelector(
-        (state: RootReducer) => getCreatedOrder(state)
-    )
+    const createdOrder: CreatedOrderItem | null = useSelector(getCreatedOrder)
     useEffect(() => {
         if (createdOrder) {
             navigate('/order', { replace: true })

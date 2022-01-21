@@ -24,7 +24,6 @@ import {
 import { CartItem } from 'components/CartItem/CartItem.component'
 
 // types
-import { RootReducer } from 'store/rootReducer'
 import { UserItem } from 'store/auth/types'
 import { PurchaseItem } from 'store/cart/types'
 
@@ -32,16 +31,9 @@ import { PurchaseItem } from 'store/cart/types'
 import emptyCart from 'assets/images/empty-cart.svg'
 
 export const CartBody: FC = () => {
-    // TODO: ты же ссылку по сути передаешь, зачем state => func(state) ?
-    const user: UserItem | null = useSelector(
-        (state: RootReducer) => getUser(state)
-    )
-    const cart: PurchaseItem[] | [] = useSelector(
-        (state: RootReducer) => getCartItems(state)
-    )
-    const cartTotal: number = useSelector(
-        (state: RootReducer) => getCartTotal(state)
-    )
+    const user: UserItem | null = useSelector(getUser)
+    const cart: PurchaseItem[] | [] = useSelector(getCartItems)
+    const cartTotal: number = useSelector(getCartTotal)
 
     return (
         <BodyContainer>
