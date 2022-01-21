@@ -91,15 +91,10 @@ export const SignUp: FC<SignUpProps> = ({ switchToLogin }) => {
             </Splitter>
             <SocialButtons>
                 <SocialButton
-                    icon={<FacebookIcon/>}
-                    bgColor='#4267B2'
-                    title='Continue with Facebook'
-                />
-                <SocialButton
                     icon={<GoogleIcon/>}
                     bgColor='#4286F4'
                     title='Continue With Google'
-                    href={`${process.env.REACT_APP_HOST}/connect/google`}
+                    provider='google'
                 />
             </SocialButtons>
             <LoginProposal>

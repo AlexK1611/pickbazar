@@ -2,18 +2,21 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { googleAuthRequest } from 'redux/auth/actions'
 import { getJwt } from 'redux/auth/selectors'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import { RootReducer } from 'redux/rootReducer'
 
 export const LoginRedirect = () => {
     const jwt: string | null = useSelector((state: RootReducer) => getJwt(state))
     const dispatch = useDispatch()
+    const params = useParams()
     const location = useLocation()
     const navigate = useNavigate()
 
     useEffect(() => {
-        dispatch(googleAuthRequest(location.search))
-    }, [location.search])
+        if (params.provider) {
+            dispatch(googleAuthRequest(params.provider, location.search))
+        }
+    }, [params.provider, location.search])
 
     useEffect(() => {
         if (jwt) {

@@ -20,10 +20,10 @@ export const signUpRequest = (data: SignUpData) => {
     }
 }
 
-export const googleAuthRequest = (token: string) => {
+export const googleAuthRequest = (provider: string, token: string) => {
     return async (dispatch: Dispatch) => {
         try {
-            const { data: { jwt, user } } = await axiosInstance.get(`/auth/google/callback${token}`)
+            const { data: { jwt, user } } = await axiosInstance.get(`/auth/${provider}/callback${token}`)
 
             dispatch({ type: AuthActionTypes.SET_JWT, payload:jwt })
             localStorage.setItem('jwt', JSON.stringify(jwt))
