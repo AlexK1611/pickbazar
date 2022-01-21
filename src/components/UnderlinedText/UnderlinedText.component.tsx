@@ -2,9 +2,8 @@ import { FC } from 'react'
 import { TextComponent } from './UnderlinedText.styles'
 import { UnderlinedTextProps } from './UnderlinedText.types'
 
-// TODO: а почему ты не children используешь, а text ?
 export const UnderlinedText: FC<UnderlinedTextProps> = ({
-    text,
+    children,
     onClick,
     color,
     fontSize
@@ -15,7 +14,7 @@ export const UnderlinedText: FC<UnderlinedTextProps> = ({
             fontSize={fontSize}
             onClick={onClick}
         >
-            {text}
+            {children}
         </TextComponent>
     )
 }

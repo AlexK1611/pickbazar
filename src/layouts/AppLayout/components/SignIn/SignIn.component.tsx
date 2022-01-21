@@ -86,11 +86,12 @@ export const SignIn: FC<SignInProps> = ({ switchToRegister }) => {
             <RegisterProposal>
                 Do not have account yet? 
                 <UnderlinedText
-                    text='Register'
                     color='#009E7F'
                     fontSize='15px'
                     onClick={switchToRegister}
-                />
+                >
+                    Register
+                </UnderlinedText>
             </RegisterProposal>
         </>
     )

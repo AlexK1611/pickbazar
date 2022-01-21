@@ -79,11 +79,9 @@ export const SignUp: FC<SignUpProps> = ({ switchToLogin }) => {
                 />
                 <TermsAndConditions>
                     By signing up, you agree to Pickbazar's
-                    <UnderlinedText
-                        text='Terms & Condtion'
-                        color='#4286F4'
-                        fontSize='13px'
-                    />
+                    <UnderlinedText color='#4286F4' fontSize='13px'>
+                        Terms & Condtion
+                    </UnderlinedText>
                 </TermsAndConditions>
                 <SubmitButton isWide title='Submit' />
             </Form>
@@ -107,11 +105,12 @@ export const SignUp: FC<SignUpProps> = ({ switchToLogin }) => {
             <LoginProposal>
                 Already have an account?
                 <UnderlinedText
-                    text='Login'
                     color='#009E7F'
                     fontSize='15px'
                     onClick={switchToLogin}
-                />
+                >
+                    Login
+                </UnderlinedText>
             </LoginProposal>
         </>
     )
