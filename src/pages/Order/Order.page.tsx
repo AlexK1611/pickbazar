@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { getCreatedOrder, getCreatedOrderTotal } from 'redux/orders/selectors'
+import moment from 'moment'
 import { CreatedOrderItem } from 'redux/orders/types'
 import { RootReducer } from 'redux/rootReducer'
 import {
@@ -40,7 +41,7 @@ export const Order: FC = () => {
                         {createdOrder?.created_at && (
                             <div>
                                 <Subtitle>Date</Subtitle>
-                                <Info isColumn>{createdOrder.created_at.slice(0, 10)}</Info>
+                                <Info isColumn>{moment(createdOrder.created_at).format('L')}</Info>
                             </div>
                         )}
                         {createdOrder?.products.length && (
@@ -63,8 +64,7 @@ export const Order: FC = () => {
                         {createdOrder?.created_at && (
                             <DataItem>
                                 <Subtitle>Order Date:</Subtitle>
-                                { /* TODO: Используй библиотеки либо luxon, либо moment */}
-                                <Info>{createdOrder.created_at.slice(0, 10)}</Info>
+                                <Info>{moment(createdOrder.created_at).format('L')}</Info>
                             </DataItem>
                         )}
                         {createdOrder?.when && (
