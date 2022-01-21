@@ -29,6 +29,15 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
 
     const dispatch = useDispatch()
 
+    const createOrderHandler = (
+        address: string | undefined,
+        schedule: string | undefined,
+        number: string | null,
+        payment: string | undefined
+    ) => {
+        dispatch(createOrderRequest({ address, schedule, number, payment }))
+    }
+
     return (
         <CheckoutStep
             stepNumber={4}
@@ -66,12 +75,12 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
                     state.number && 
                     state.payment
                 )}
-                onClick={() => dispatch(createOrderRequest({
-                    address: state.address?.description,
-                    schedule: state.schedule?.description,
-                    number: state.number,
-                    payment: state.payment?.name
-                }))}
+                onClick={() => createOrderHandler(
+                    state.address?.description,
+                    state.schedule?.description,
+                    state.number,
+                    state.payment?.name
+                )}
             />
         </CheckoutStep>
     )

@@ -20,10 +20,15 @@ import {
 import { ProductItemProps } from './ProductItem.types'
 import { RootReducer } from 'store/rootReducer'
 import { PurchaseItem } from 'store/cart/types'
+import { ExtendedProductUnit, ProductUnit } from 'store/products/types'
 
 export const ProductItem: FC<ProductItemProps> = ({ product }) => {
     const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItems(state))
     const dispatch = useDispatch()
+
+    const cartItemAddHandler = (product: ExtendedProductUnit | ProductUnit) => {
+        dispatch(addItemToCart(product))
+    }
     
     return (
         <ItemContainer>
@@ -40,7 +45,7 @@ export const ProductItem: FC<ProductItemProps> = ({ product }) => {
                 <FinalPrice>${product.finalPrice}</FinalPrice>
                 <Button
                     disabled={!!cart.find(item => item.id === product.id)}
-                    onClick={() => dispatch(addItemToCart(product))}
+                    onClick={() => cartItemAddHandler(product)}
                 >
                     <ButtonIcon/>
                     <ButtonTitle>Cart</ButtonTitle>

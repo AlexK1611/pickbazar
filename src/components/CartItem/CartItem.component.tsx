@@ -30,14 +30,24 @@ export const CartItem: FC<CartItemProps> = ({
     size
 }) => {
     const dispatch = useDispatch()
+
+    const increaseQuantityHandler = (id: number) => {
+        dispatch(increaseQuantity(id))
+    }
+    const decreaseQuantityHandler = (id: number) => {
+        dispatch(decreaseQuantity(id))
+    }
+    const cartItemRemoveHandler = (id: number) => {
+        dispatch(removeItemFromCart(id))
+    }
+
     return (
         <ItemContainer>
             <LeftContent>
                 <ItemCounter>
                     <CounterSection
                         isFirst
-                        // TODO старайся избегать функций в рендере и изначально декларировать их перед return;
-                        onClick={() => dispatch(increaseQuantity(id))}
+                        onClick={() => increaseQuantityHandler(id)}
                     >
                         <SecondaryText>+</SecondaryText>
                     </CounterSection>
@@ -46,7 +56,7 @@ export const CartItem: FC<CartItemProps> = ({
                     </CounterSection>
                     <CounterSection
                         isLast
-                        onClick={() => dispatch(decreaseQuantity(id))}
+                        onClick={() => decreaseQuantityHandler(id)}
                     >
                         <SecondaryText>-</SecondaryText>
                     </CounterSection>
@@ -60,7 +70,7 @@ export const CartItem: FC<CartItemProps> = ({
             </LeftContent>
             <RightContent>
                 {quantity && price && <PrimaryText>${(quantity * price).toFixed(2)}</PrimaryText>}
-                <RemoveButton onClick={() => dispatch(removeItemFromCart(id))}>
+                <RemoveButton onClick={() => cartItemRemoveHandler(id)}>
                     <RemoveIcon />
                 </RemoveButton>
             </RightContent>

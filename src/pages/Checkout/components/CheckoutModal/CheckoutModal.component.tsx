@@ -61,7 +61,7 @@ export const CheckoutModal: FC<CheckoutModalProps> = ({
     return ReactDOM.createPortal(
         <ModalBackground>
             <ModalContent>
-                <CloseButton onClick={() => closeModal()}>
+                <CloseButton onClick={closeModal}>
                     <CloseIcon />
                 </CloseButton>
                 {formType === 'add-address' && <AddAddress closeModal={closeModal} />}

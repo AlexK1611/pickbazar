@@ -25,6 +25,7 @@ import { RootReducer } from 'store/rootReducer'
 import { PurchaseItem } from 'store/cart/types'
 import { CartButton } from 'components/CartButton/CartButton.component'
 import { Cart } from 'components/Cart/Cart.component'
+import { ExtendedProductUnit, ProductUnit } from 'store/products/types'
 
 export const Info: FC<InfoProps> = ({ productInfo }) => {
     const cart: PurchaseItem[] | [] = useSelector((state: RootReducer) => getCartItems(state))
@@ -38,6 +39,10 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
     }, [productInfo.photos.length])
 
     const [isCartOpened, setCartOpened] = useState(false)
+
+    const cartItemAddHandler = (product: ExtendedProductUnit | ProductUnit) => {
+        dispatch(addItemToCart(product))
+    }
 
     return (
         <InfoContainer>
@@ -65,7 +70,7 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
                 {productInfo.description && <Description>{productInfo.description}</Description>}
                 <Button
                     disabled={!!cart.find(item => item.id === productInfo.id)}
-                    onClick={() => dispatch(addItemToCart(productInfo))}
+                    onClick={() => cartItemAddHandler(productInfo)}
                 >
                     <ButtonIcon />
                     <ButtonTitle>Buy</ButtonTitle>
