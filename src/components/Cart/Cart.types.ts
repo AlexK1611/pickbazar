@@ -1,4 +1,4 @@
 export interface CartProps {
     isCartOpened: boolean,
-    closeCart: () => void
+    setCartOpened: (param: boolean) => void
 }

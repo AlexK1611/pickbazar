@@ -1,3 +1,3 @@
 export interface SignUpProps {
-    switchToLogin: () => void
+    setFormType: (param: string) => void
 }

@@ -34,10 +34,9 @@ import { SocialButton } from 'components/SocialButton/SocialButton.component'
 import { UnderlinedText } from 'components/UnderlinedText/UnderlinedText.component'
 
 // icons
-import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg'
 import { ReactComponent as GoogleIcon } from 'assets/icons/google.svg'
 
-export const SignIn: FC<SignInProps> = ({ switchToRegister }) => {
+export const SignIn: FC<SignInProps> = ({ setFormType }) => {
     const dispatch = useDispatch()
     const { register, handleSubmit, formState: { errors } } = useForm<SignInData>({
         mode: 'all',
@@ -83,7 +82,7 @@ export const SignIn: FC<SignInProps> = ({ switchToRegister }) => {
                 <UnderlinedText
                     color='#009E7F'
                     fontSize='15px'
-                    onClick={switchToRegister}
+                    onClick={() => setFormType('register')}
                 >
                     Register
                 </UnderlinedText>

@@ -29,6 +29,7 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, action }) => {
         <CheckoutStep
             stepNumber={2}
             stepName='Delivery Schedule'
+            formType='add-delivery'
         >
             {deliverySchedules && (
                 <>
@@ -36,6 +37,7 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, action }) => {
                         {deliverySchedules.map(schedule => (
                             <CheckoutOption
                                 key={`delivery-${schedule.id}`}
+                                id={schedule.id}
                                 title={schedule.name}
                                 info={schedule.description}
                                 isSelected={valuesComparator(state.schedule?.id, schedule.id)}
@@ -50,6 +52,7 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, action }) => {
                         {deliverySchedules.map(schedule => (
                             <CheckoutOption
                                 key={`delivery-${schedule.id}`}
+                                id={schedule.id}
                                 title={schedule.label}
                                 info={schedule.time}
                                 isSelected={valuesComparator(state.schedule?.id, schedule.id)}

@@ -49,7 +49,8 @@ export const ContactStep: FC<ContactStepProps> = ({
             stepNumber={3}
             stepName='Contact Number'
             stepLabel='Number'
-            addAction={() => setFormType('add-number')}
+            setFormType={setFormType}
+            formType='add-number'
         >
             {phoneNumbers && (
                 <StepOptions>
@@ -58,10 +59,11 @@ export const ContactStep: FC<ContactStepProps> = ({
                             // TODO: советую покопать в сторну uuid, чтоб у тебя изначально id был при создании номера. В будущем проще будет подменить данную схему на 
                             // беке
                             key={`phone-${phone.number.slice(0, 4)}-${phone.number.slice(-4)}`}
+                            id={phone.number}
                             title={phone.title}
                             info={phone.number}
-                            editAction={event => editPhoneNumberHandler(event, phone.number)}
-                            removeAction={event => removePhoneNumberHandler(event, phone.number)}
+                            editAction={editPhoneNumberHandler}
+                            removeAction={removePhoneNumberHandler}
                             isSelected={valuesComparator(state.number, phone.number)}
                             onClick={() => action({
                                 type: OrderCreationTypes.SET_ORDER_PHONE_NUMBER,

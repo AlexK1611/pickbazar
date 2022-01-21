@@ -67,7 +67,7 @@ export const AppLayout: FC = ({ children }) => {
         <LayoutContainer>
             <AuthModal
                 isModal={isAuthModal}
-                closeModal={() => handleAuthModal(false)}
+                handleAuthModal={handleAuthModal}
             />
             <Toast
                 isToast={authMessage !== null}

@@ -12,10 +12,10 @@ export const Main: FC = () => {
             <TopSection />
             <Coupons />
             <Products />
-            <CartButton openCart={() => setCartOpened(true)} />
+            <CartButton setCartOpened={setCartOpened} />
             <Cart
                 isCartOpened={isCartOpened}
-                closeCart={() => setCartOpened(false)}
+                setCartOpened={setCartOpened}
             />
         </>
 

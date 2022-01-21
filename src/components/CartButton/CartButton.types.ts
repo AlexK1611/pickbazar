@@ -1,3 +1,3 @@
 export interface CartButtonProps {
-    openCart: () => void
+    setCartOpened: (param: boolean) => void
 }

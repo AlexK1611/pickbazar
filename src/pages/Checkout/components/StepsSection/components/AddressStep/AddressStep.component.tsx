@@ -49,18 +49,19 @@ export const AddressStep: FC<AddressStepProps> = ({
             stepNumber={1}
             stepName='Delivery Address'
             stepLabel='Address'
-            addAction={() => setFormType('add-address')}
+            setFormType={setFormType}
+            formType='add-address'
         >
             {deliveryAddresses && (
                 <StepOptions>
                     {deliveryAddresses.map(address => (
                         <CheckoutOption
                             key={`address-${address.id}`}
+                            id={address.id}
                             title={address.title}
                             info={address.description}
-                            // TODO: Подумай тоже как в таких ситуациях можно избежать анонимки в рендере. Есть 2 способа
-                            editAction={event => editAddressHandler(event, address.id)}
-                            removeAction={event => removeAddressHandler(event, address.id)}
+                            editAction={editAddressHandler}
+                            removeAction={removeAddressHandler}
                             isSelected={valuesComparator(state.address?.id, address.id)}
                             // Вот такую штуку точно лучше делать во вьюшке. Ты смешал нутряк бизнес логики со вьюшкой. Вьюшка не должна знать о твоих потрохах редакса
                             onClick={() => action({

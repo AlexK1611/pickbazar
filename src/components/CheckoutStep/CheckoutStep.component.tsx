@@ -16,20 +16,21 @@ export const CheckoutStep: FC<CheckoutStepProps> = ({
     stepNumber,
     stepName,
     stepLabel,
-    addAction,
-    children
+    setFormType,
+    children,
+    formType
 }) => {
     return (
         <Step>
-            <StepHeader isAddOption={!!addAction}>
+            <StepHeader isAddOption={!!setFormType}>
                 <StepMainInfo>
                     <StepNumberContainer>
                         <StepNumber>{stepNumber}</StepNumber>
                     </StepNumberContainer>
                     <StepName>{stepName}</StepName>
                 </StepMainInfo>
-                {addAction && (
-                    <AddButton onClick={addAction}>
+                {setFormType && (
+                    <AddButton onClick={() => setFormType(formType)}>
                         <AddButtonText>+ Add {stepLabel}</AddButtonText>
                     </AddButton>
                 )}

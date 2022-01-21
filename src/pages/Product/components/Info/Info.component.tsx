@@ -76,10 +76,10 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
                     </Category>
                 )}   
             </InfoSection>
-            <CartButton openCart={() => setCartOpened(true)} />
+            <CartButton setCartOpened={setCartOpened} />
             <Cart
                 isCartOpened={isCartOpened}
-                closeCart={() => setCartOpened(false)}
+                setCartOpened={setCartOpened}
             />
         </InfoContainer>
     )

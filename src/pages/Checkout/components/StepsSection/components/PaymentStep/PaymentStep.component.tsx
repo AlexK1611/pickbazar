@@ -34,12 +34,14 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
             stepNumber={4}
             stepName='Payment Option'
             stepLabel='Card'
+            formType='add-payment'
         >
             {paymentOptions && (
                 <StepOptions>
                     {paymentOptions.map(payment => (
                         <CheckoutOption
                             key={`payment-${payment.id}`}
+                            id={payment.id}
                             title={payment.name}
                             info={payment.description}
                             isSelected={valuesComparator(state.payment?.id,payment.id)}

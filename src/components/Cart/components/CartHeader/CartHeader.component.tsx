@@ -12,7 +12,7 @@ import {
 import { CartHeaderProps } from './CartHeader.types'
 import { RootReducer } from 'redux/rootReducer'
 
-export const CartHeader: FC<CartHeaderProps> = ({ closeCart }) => {
+export const CartHeader: FC<CartHeaderProps> = ({ setCartOpened }) => {
     const cartItemTypes: number = useSelector(
         (state: RootReducer) => getCartItemTypes(state)
     )
@@ -23,7 +23,7 @@ export const CartHeader: FC<CartHeaderProps> = ({ closeCart }) => {
                 <ItemsIcon />
                 <ItemsCount>{cartItemTypes} Item(s)</ItemsCount>
             </ItemsContainer>
-            <CloseButton onClick={closeCart}>
+            <CloseButton onClick={() => setCartOpened(false)}>
                 <CloseIcon />
             </CloseButton>
         </HeaderContainer>

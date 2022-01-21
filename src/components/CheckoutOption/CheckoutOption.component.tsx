@@ -12,6 +12,7 @@ import { CheckoutOptionProps } from './CheckoutOption.types'
 import { ReactComponent as EditIcon } from 'assets/icons/edit.svg'
 
 export const CheckoutOption: FC<CheckoutOptionProps> = ({
+    id,
     title,
     info,
     isSelected,
@@ -25,10 +26,10 @@ export const CheckoutOption: FC<CheckoutOptionProps> = ({
                 <OptionTitle>{title}</OptionTitle>
                 {editAction && removeAction && (
                     <OptionButtons>
-                        <OptionButton onClick={editAction}>
+                        <OptionButton onClick={event => editAction(event, id)}>
                             <EditIcon />
                         </OptionButton>
-                        <OptionButton isDeleteBtn onClick={removeAction}>
+                        <OptionButton isDeleteBtn onClick={event => removeAction(event, id)}>
                             <RemoveIcon />
                         </OptionButton>
                     </OptionButtons>

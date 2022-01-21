@@ -1,3 +1,3 @@
 export interface SignInProps {
-    switchToRegister: () => void
+    setFormType: (param: string) => void
 }

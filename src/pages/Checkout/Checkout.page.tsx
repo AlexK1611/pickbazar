@@ -48,7 +48,9 @@ export const Checkout: FC = () => {
             <OrderSection />
             <CheckoutModal
                 isModal={!!formType}
-                closeModal={() => setFormType('')}
+                setFormType={setFormType}
+                setAddressId={setAddressId}
+                setPhoneNumber={setPhoneNumber}
                 formType={formType}
                 addressId={addressId}
                 phoneNumber={phoneNumber}

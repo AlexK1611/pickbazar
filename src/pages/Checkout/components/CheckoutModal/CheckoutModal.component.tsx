@@ -26,7 +26,9 @@ import { AddressItem, PhoneNumberItem } from 'redux/checkout/types'
 
 export const CheckoutModal: FC<CheckoutModalProps> = ({
     isModal,
-    closeModal,
+    setFormType,
+    setAddressId,
+    setPhoneNumber,
     formType,
     addressId,
     phoneNumber
@@ -40,25 +42,39 @@ export const CheckoutModal: FC<CheckoutModalProps> = ({
 
     const checkoutModalNode = document.getElementById('checkout-modal') as HTMLDivElement
 
+    const closeModal = () => {
+        setFormType('')
+    }
+
+    const closeEditAddressForm = () => {
+        setFormType('')
+        setAddressId('')
+    }
+
+    const closeEditNumberForm = () => {
+        setFormType('')
+        setPhoneNumber('')
+    }
+
     if (!isModal) return null
 
     return ReactDOM.createPortal(
         <ModalBackground>
             <ModalContent>
-                <CloseButton onClick={closeModal}>
+                <CloseButton onClick={() => closeModal()}>
                     <CloseIcon />
                 </CloseButton>
                 {formType === 'add-address' && <AddAddress closeModal={closeModal} />}
                 {formType === 'edit-address' && addressToEdit && (
                     <EditAddress
-                        closeModal={closeModal}
+                        closeModal={closeEditAddressForm}
                         dataToEdit={addressToEdit}
                     />
                 )}
                 {formType === 'add-number' && <AddNumber closeModal={closeModal} />}
                 {formType === 'edit-number' && numberToEdit && (
                     <EditNumber
-                        closeModal={closeModal}
+                        closeModal={closeEditNumberForm}
                         dataToEdit={numberToEdit}
                     />
                 )}
