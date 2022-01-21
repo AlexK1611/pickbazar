@@ -7,8 +7,8 @@ export const productsRequest = (category: number, start: number) => {
     return async (dispatch: Dispatch, getState: () => RootReducer) => {
         try {
             const { data } = await axiosInstance.get<ProductUnit[]>(
-                // TODO: Почитай в axios про то, как можнно проще передавать query params
-                `/products?_where[_or][0][category]=${category}&_start=${start}&_limit=10`
+                `/products?_where[_or][0][category]=${category}`,
+                { params: { '_start': start, '_limit': 10 } }
             )
             const products = getState().products.products
 
