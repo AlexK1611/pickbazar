@@ -59,11 +59,11 @@ export const AddressStep: FC<AddressStepProps> = ({
                             info={address.description}
                             editAction={editAddressHandler}
                             removeAction={removeAddressHandler}
-                            isSelected={valuesComparator(state.address?.id, address.id)}
+                            isSelected={valuesComparator(state.addressId, address.id)}
                             // Вот такую штуку точно лучше делать во вьюшке. Ты смешал нутряк бизнес логики со вьюшкой. Вьюшка не должна знать о твоих потрохах редакса
                             onClick={() => action({
-                                type: OrderCreationTypes.SET_ORDER_ADDRESS,
-                                payload: { id: address.id, description: address.description }
+                                type: OrderCreationTypes.SET_ADDRESS_ID,
+                                payload: address.id
                             })}
                         />
                     ))}

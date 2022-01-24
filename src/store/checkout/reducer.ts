@@ -21,7 +21,11 @@ export const CheckoutReducer = (state = initialState, action: CheckoutAction): C
                 ...state,
                 addresses: state.addresses.map(address => {
                     if (address.id === action.payload.id) {
-                        return { ...address, title: action.payload.title, description: action.payload.description }
+                        return {
+                            ...address,
+                            title: action.payload.title,
+                            description: action.payload.description
+                        }
                     }
                     return address
                 })
@@ -43,8 +47,12 @@ export const CheckoutReducer = (state = initialState, action: CheckoutAction): C
             return {
                 ...state,
                 phones: state.phones.map(phone => {
-                    if (phone.number === action.payload.number) {
-                        return { ...phone, title: action.payload.title, number: action.payload.number }
+                    if (phone.id === action.payload.id) {
+                        return {
+                            ...phone,
+                            title: action.payload.title,
+                            number: action.payload.number
+                        }
                     }
                     return phone
                 })
@@ -53,7 +61,7 @@ export const CheckoutReducer = (state = initialState, action: CheckoutAction): C
         case CheckoutActionTypes.REMOVE_PHONE_NUMBER: {
             return {
                 ...state,
-                phones: state.phones.filter(phone => phone.number !== action.payload)
+                phones: state.phones.filter(phone => phone.id !== action.payload)
             }
         }
         default: {

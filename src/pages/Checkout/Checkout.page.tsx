@@ -33,24 +33,24 @@ export const Checkout: FC = () => {
 
     const [formType, setFormType] = useState('')
     const [addressId, setAddressId] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
+    const [phoneId, setPhoneId] = useState('')
 
     return (
         <CheckoutContainer>
             <StepsSection
                 setFormType={setFormType}
                 setAddressId={setAddressId}
-                setPhoneNumber={setPhoneNumber}
+                setPhoneId={setPhoneId}
             />
             <OrderSection />
             <CheckoutModal
                 isModal={!!formType}
                 setFormType={setFormType}
                 setAddressId={setAddressId}
-                setPhoneNumber={setPhoneNumber}
+                setPhoneId={setPhoneId}
                 formType={formType}
                 addressId={addressId}
-                phoneNumber={phoneNumber}
+                phoneId={phoneId}
             />
         </CheckoutContainer>
     )

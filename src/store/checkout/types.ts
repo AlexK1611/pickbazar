@@ -20,9 +20,8 @@ export interface PhoneNumberPayload {
     number: string
 }
 
-export interface PhoneNumberItem {
-    title: string,
-    number: string
+export interface PhoneNumberItem extends PhoneNumberPayload {
+    id: string
 }
 
 export interface PaymentOption {

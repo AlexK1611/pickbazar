@@ -37,10 +37,10 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, action }) => {
                                 id={schedule.id}
                                 title={schedule.name}
                                 info={schedule.description}
-                                isSelected={valuesComparator(state.schedule?.id, schedule.id)}
+                                isSelected={valuesComparator(state.scheduleId, schedule.id)}
                                 onClick={() => action({
-                                    type: OrderCreationTypes.SET_ORDER_SCHEDULE,
-                                    payload: { id: schedule.id, description: schedule.description }
+                                    type: OrderCreationTypes.SET_SCHEDULE_ID,
+                                    payload: schedule.id
                                 })}
                             />
                         ))}
@@ -52,10 +52,10 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, action }) => {
                                 id={schedule.id}
                                 title={schedule.label}
                                 info={schedule.time}
-                                isSelected={valuesComparator(state.schedule?.id, schedule.id)}
+                                isSelected={valuesComparator(state.scheduleId, schedule.id)}
                                 onClick={() => action({
-                                    type: OrderCreationTypes.SET_ORDER_SCHEDULE,
-                                    payload: { id: schedule.id, description: schedule.description }
+                                    type: OrderCreationTypes.SET_SCHEDULE_ID,
+                                    payload: schedule.id
                                 })}
                             />
                         ))}

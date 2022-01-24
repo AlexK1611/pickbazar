@@ -22,7 +22,7 @@ import { valuesComparator } from '../../StepsSection.helpers'
 
 export const ContactStep: FC<ContactStepProps> = ({
     setFormType,
-    setPhoneNumber,
+    setPhoneId,
     state,
     action
 }) => {
@@ -30,15 +30,15 @@ export const ContactStep: FC<ContactStepProps> = ({
 
     const dispatch = useDispatch()
 
-    const editPhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, number: string) => {
+    const editPhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
         event.stopPropagation()
-        setPhoneNumber(number)
+        setPhoneId(id)
         setFormType('edit-number')
     }
 
-    const removePhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, number: string) => {
+    const removePhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
         event.stopPropagation()
-        dispatch(removePhoneNumber(number))
+        dispatch(removePhoneNumber(id))
     }
 
     return (
@@ -53,18 +53,16 @@ export const ContactStep: FC<ContactStepProps> = ({
                 <StepOptions>
                     {phoneNumbers.map(phone => (
                         <CheckoutOption
-                            // TODO: советую покопать в сторну uuid, чтоб у тебя изначально id был при создании номера. В будущем проще будет подменить данную схему на 
-                            // беке
-                            key={`phone-${phone.number.slice(0, 4)}-${phone.number.slice(-4)}`}
-                            id={phone.number}
+                            key={`phone-${phone.id}`}
+                            id={phone.id}
                             title={phone.title}
                             info={phone.number}
                             editAction={editPhoneNumberHandler}
                             removeAction={removePhoneNumberHandler}
-                            isSelected={valuesComparator(state.number, phone.number)}
+                            isSelected={valuesComparator(state.numberId, phone.id)}
                             onClick={() => action({
-                                type: OrderCreationTypes.SET_ORDER_PHONE_NUMBER,
-                                payload: phone.number
+                                type: OrderCreationTypes.SET_PHONE_NUMBER_ID,
+                                payload: phone.id
                             })}
                         />
                     ))}

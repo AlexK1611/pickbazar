@@ -27,13 +27,13 @@ export const CheckoutModal: FC<CheckoutModalProps> = ({
     isModal,
     setFormType,
     setAddressId,
-    setPhoneNumber,
+    setPhoneId,
     formType,
     addressId,
-    phoneNumber
+    phoneId
 }) => {
     const addressToEdit: AddressItem | undefined = useSelector(getDeliveryAddress(addressId))
-    const numberToEdit: PhoneNumberItem | undefined = useSelector(getPhoneNumber(phoneNumber))
+    const numberToEdit: PhoneNumberItem | undefined = useSelector(getPhoneNumber(phoneId))
 
     const checkoutModalNode = document.getElementById('checkout-modal') as HTMLDivElement
 
@@ -48,7 +48,7 @@ export const CheckoutModal: FC<CheckoutModalProps> = ({
 
     const closeEditNumberForm = () => {
         setFormType('')
-        setPhoneNumber('')
+        setPhoneId('')
     }
 
     if (!isModal) return null

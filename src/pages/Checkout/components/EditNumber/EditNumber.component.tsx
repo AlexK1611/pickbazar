@@ -32,7 +32,8 @@ export const EditNumber: FC<EditNumberProps> = ({
     })
     const formValues = getValues()
     const onSubmit = (data: NumberData) => {
-        dispatch(editPhoneNumber(data))
+        const fullData = { ...data, id: dataToEdit.id }
+        dispatch(editPhoneNumber(fullData))
         closeModal()
     }
     

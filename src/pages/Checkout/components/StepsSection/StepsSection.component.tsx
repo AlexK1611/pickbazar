@@ -18,7 +18,7 @@ import { orderCreationReducer, orderCreationState } from './StepsSection.state'
 export const StepsSection: FC<StepsSectionProps> = ({
     setFormType,
     setAddressId,
-    setPhoneNumber
+    setPhoneId
 }) => {
     const [state, action] = useReducer(orderCreationReducer, orderCreationState)
 
@@ -36,7 +36,7 @@ export const StepsSection: FC<StepsSectionProps> = ({
             />
             <ContactStep
                 setFormType={setFormType}
-                setPhoneNumber={setPhoneNumber}
+                setPhoneId={setPhoneId}
                 state={state}
                 action={action}
             />

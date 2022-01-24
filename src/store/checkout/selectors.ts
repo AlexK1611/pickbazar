@@ -23,10 +23,10 @@ export const getPhoneNumbers = createSelector(
     state => state.phones
 )
 
-export const getPhoneNumber = (phoneNumber?: string) => {
+export const getPhoneNumber = (id?: string) => {
     return createSelector(
         (state: RootReducer) => state.checkout.phones,
-        phones => phones.find(phone => phone.number === phoneNumber)
+        phones => phones.find(phone => phone.id === id)
     )
 }
 

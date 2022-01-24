@@ -27,12 +27,12 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
     const dispatch = useDispatch()
 
     const createOrderHandler = (
-        address: string | undefined,
-        schedule: string | undefined,
-        number: string | null,
-        payment: string | undefined
+        addressId: string | undefined,
+        scheduleId: string | undefined,
+        numberId: string | null,
+        paymentId: string | undefined
     ) => {
-        dispatch(createOrderRequest({ address, schedule, number, payment }))
+        dispatch(createOrderRequest({ addressId, scheduleId, numberId, paymentId }))
     }
 
     return (
@@ -50,10 +50,10 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
                             id={payment.id}
                             title={payment.name}
                             info={payment.description}
-                            isSelected={valuesComparator(state.payment?.id,payment.id)}
+                            isSelected={valuesComparator(state.paymentId,payment.id)}
                             onClick={() => action({
-                                type: OrderCreationTypes.SET_ORDER_PAYMENT,
-                                payload: { id: payment.id, name: payment.name }
+                                type: OrderCreationTypes.SET_PAYMENT_ID,
+                                payload: payment.id
                             })}
                         />
                     ))}
@@ -67,16 +67,16 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
                 isWide
                 title='Proceed to Checkout'
                 disabled={!(
-                    state.address && 
-                    state.schedule && 
-                    state.number && 
-                    state.payment
+                    state.addressId && 
+                    state.scheduleId && 
+                    state.numberId && 
+                    state.paymentId
                 )}
                 onClick={() => createOrderHandler(
-                    state.address?.description,
-                    state.schedule?.description,
-                    state.number,
-                    state.payment?.name
+                    state.addressId!,
+                    state.scheduleId!,
+                    state.numberId,
+                    state.paymentId!
                 )}
             />
         </CheckoutStep>
