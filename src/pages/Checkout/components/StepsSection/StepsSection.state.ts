@@ -33,3 +33,23 @@ export const orderCreationReducer = (
         }
     }
 }
+
+export const setOrderAddress = (id: string) => ({
+    type: OrderCreationTypes.SET_ADDRESS_ID,
+    payload: id
+})
+
+export const setOrderSchedule = (id: string) => ({
+    type: OrderCreationTypes.SET_SCHEDULE_ID,
+    payload: id
+})
+
+export const setOrderPhoneNumber = (id: string) => ({
+    type: OrderCreationTypes.SET_PHONE_NUMBER_ID,
+    payload: id
+})
+
+export const setOrderPayment = (id: string) => ({
+    type: OrderCreationTypes.SET_PAYMENT_ID,
+    payload: id
+})

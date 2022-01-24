@@ -24,7 +24,7 @@ export const ContactStep: FC<ContactStepProps> = ({
     setFormType,
     setPhoneId,
     state,
-    action
+    setOption
 }) => {
     const phoneNumbers: PhoneNumberItem[] = useSelector(getPhoneNumbers)
 
@@ -60,10 +60,7 @@ export const ContactStep: FC<ContactStepProps> = ({
                             editAction={editPhoneNumberHandler}
                             removeAction={removePhoneNumberHandler}
                             isSelected={valuesComparator(state.numberId, phone.id)}
-                            onClick={() => action({
-                                type: OrderCreationTypes.SET_PHONE_NUMBER_ID,
-                                payload: phone.id
-                            })}
+                            onClick={() => setOption(phone.id)}
                         />
                     ))}
                 </StepOptions>

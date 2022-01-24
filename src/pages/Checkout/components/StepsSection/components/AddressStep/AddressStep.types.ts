@@ -1,9 +1,8 @@
-import { Dispatch } from 'react'
-import { OrderCreationState, OrderCreationAction } from '../../StepsSection.types'
+import { OrderCreationState } from '../../StepsSection.types'
 
 export interface AddressStepProps {
     setFormType: (arg: string) => void,
     setAddressId: (arg: string) => void,
     state: OrderCreationState,
-    action: Dispatch<OrderCreationAction>
+    setOption: (arg: string) => void
 }

@@ -8,7 +8,6 @@ import { getDeliveryAddresses } from 'store/checkout/selectors'
 // types
 import { AddressItem } from 'store/checkout/types'
 import { AddressStepProps } from './AddressStep.types'
-import { OrderCreationTypes } from '../../StepsSection.types'
 
 // styled components
 import { StepOptions } from './AddressStep.styles'
@@ -24,7 +23,7 @@ export const AddressStep: FC<AddressStepProps> = ({
     setFormType,
     setAddressId,
     state,
-    action
+    setOption
 }) => {
     const deliveryAddresses: AddressItem[] | [] = useSelector(getDeliveryAddresses)
 
@@ -60,11 +59,7 @@ export const AddressStep: FC<AddressStepProps> = ({
                             editAction={editAddressHandler}
                             removeAction={removeAddressHandler}
                             isSelected={valuesComparator(state.addressId, address.id)}
-                            // Вот такую штуку точно лучше делать во вьюшке. Ты смешал нутряк бизнес логики со вьюшкой. Вьюшка не должна знать о твоих потрохах редакса
-                            onClick={() => action({
-                                type: OrderCreationTypes.SET_ADDRESS_ID,
-                                payload: address.id
-                            })}
+                            onClick={() => setOption(address.id)}
                         />
                     ))}
                 </StepOptions>

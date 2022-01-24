@@ -21,7 +21,7 @@ import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 // helpers
 import { valuesComparator } from '../../StepsSection.helpers'
 
-export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
+export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
     const paymentOptions: PaymentOption[] = useSelector(getPaymentOptions)
 
     const dispatch = useDispatch()
@@ -51,10 +51,7 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, action }) => {
                             title={payment.name}
                             info={payment.description}
                             isSelected={valuesComparator(state.paymentId,payment.id)}
-                            onClick={() => action({
-                                type: OrderCreationTypes.SET_PAYMENT_ID,
-                                payload: payment.id
-                            })}
+                            onClick={() => setOption(payment.id)}
                         />
                     ))}
                 </StepOptions>

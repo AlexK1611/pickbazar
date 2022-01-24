@@ -13,7 +13,14 @@ import { ContactStep } from './components/ContactStep/ContactStep.component'
 import { PaymentStep } from './components/PaymentStep/PaymentStep.component'
 
 // state
-import { orderCreationReducer, orderCreationState } from './StepsSection.state'
+import {
+    orderCreationReducer,
+    orderCreationState,
+    setOrderAddress,
+    setOrderSchedule,
+    setOrderPhoneNumber,
+    setOrderPayment
+} from './StepsSection.state'
 
 export const StepsSection: FC<StepsSectionProps> = ({
     setFormType,
@@ -22,27 +29,40 @@ export const StepsSection: FC<StepsSectionProps> = ({
 }) => {
     const [state, action] = useReducer(orderCreationReducer, orderCreationState)
 
+    const setOrderAddressAction = (id: string) => {
+        action(setOrderAddress(id))
+    }
+    const setOrderScheduleAction = (id: string) => {
+        action(setOrderSchedule(id))
+    }
+    const setOrderPhoneNumberAction = (id: string) => {
+        action(setOrderPhoneNumber(id))
+    }
+    const setOrderPaymentAction = (id: string) => {
+        action(setOrderPayment(id))
+    }
+
     return (
         <CheckoutSteps>
             <AddressStep
                 setFormType={setFormType}
                 setAddressId={setAddressId}
                 state={state}
-                action={action}
+                setOption={setOrderAddressAction}
             />
             <DeliveryStep
                 state={state}
-                action={action}
+                setOption={setOrderScheduleAction}
             />
             <ContactStep
                 setFormType={setFormType}
                 setPhoneId={setPhoneId}
                 state={state}
-                action={action}
+                setOption={setOrderPhoneNumberAction}
             />
             <PaymentStep
                 state={state}
-                action={action}
+                setOption={setOrderPaymentAction}
             />
         </CheckoutSteps>
     )
