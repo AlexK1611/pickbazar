@@ -29,7 +29,7 @@ export const Checkout: FC = () => {
             navigate('/order', { replace: true })
             dispatch(clearCart())
         }
-    }, [createdOrder])
+    }, [createdOrder, dispatch, navigate])
 
     const [formType, setFormType] = useState('')
     const [addressId, setAddressId] = useState('')

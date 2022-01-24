@@ -7,7 +7,6 @@ import { getDeliverySchedules } from 'store/checkout/selectors'
 // types
 import { ScheduleItem } from 'store/checkout/types'
 import { DeliverStepProps } from './DeliveryStep.types'
-import { OrderCreationTypes } from '../../StepsSection.types'
 
 // styled components
 import { StepOptions } from './DeliveryStep.styles'

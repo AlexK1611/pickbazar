@@ -8,7 +8,6 @@ import { getPhoneNumbers } from 'store/checkout/selectors'
 // types
 import { ContactStepProps } from './ContactStep.types'
 import { PhoneNumberItem } from 'store/checkout/types'
-import { OrderCreationTypes } from '../../StepsSection.types'
 
 // styled components
 import { StepOptions } from './ContactStep.styles'

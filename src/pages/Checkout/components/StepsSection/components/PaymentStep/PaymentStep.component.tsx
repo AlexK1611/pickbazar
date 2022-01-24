@@ -8,7 +8,6 @@ import { getPaymentOptions } from 'store/checkout/selectors'
 // types
 import { PaymentOption } from 'store/checkout/types'
 import { PaymentStepProps } from './PaymentStep.types'
-import { OrderCreationTypes } from '../../StepsSection.types'
 
 // styled components
 import { StepOptions, StepInfo, TermsAndConditions } from './PaymentStep.styles'
