@@ -27,86 +27,64 @@ export const Order: FC = () => {
                     <DataTitle>Order Received</DataTitle>
                     <OrderMessage>Thank you. Your order has been received</OrderMessage>
                     <OverallInfo>
-                        {createdOrder?.id && (
-                            <div>
-                                <Subtitle>Order Number</Subtitle>
-                                <Info isColumn>{createdOrder.id}</Info>
-                            </div>
-                        )}
-                        {createdOrder?.created_at && (
-                            <div>
-                                <Subtitle>Date</Subtitle>
-                                <Info isColumn>{moment(createdOrder.created_at).format('L')}</Info>
-                            </div>
-                        )}
-                        {createdOrder?.products.length && (
-                            <div>
-                                <Subtitle>Total</Subtitle>
-                                <Info isColumn>${createdOrderTotal?.toFixed(2)}</Info>
-                            </div>
-                        )}
-                        {createdOrder?.payment && (
-                            <div>
-                                <Subtitle>Payment Method</Subtitle>
-                                <Info isColumn>{createdOrder.payment}</Info>
-                            </div>
-                        )}
+                        <div>
+                            <Subtitle>Order Number</Subtitle>
+                            <Info isColumn>{createdOrder?.id}</Info>
+                        </div>
+                        <div>
+                            <Subtitle>Date</Subtitle>
+                            <Info isColumn>{moment(createdOrder?.created_at).format('L')}</Info>
+                        </div>
+                        <div>
+                            <Subtitle>Total</Subtitle>
+                            <Info isColumn>${createdOrderTotal?.toFixed(2)}</Info>
+                        </div>
+                        <div>
+                            <Subtitle>Payment Method</Subtitle>
+                            <Info isColumn>{createdOrder?.payment}</Info>
+                        </div>
                     </OverallInfo>
                 </DataSection>
                 <DataSection>
                     <DataTitle>Order Details</DataTitle>
                     <DataItems>
-                        {createdOrder?.created_at && (
-                            <DataItem>
-                                <Subtitle>Order Date:</Subtitle>
-                                <Info>{moment(createdOrder.created_at).format('L')}</Info>
-                            </DataItem>
-                        )}
-                        {createdOrder?.when && (
-                            <DataItem>
-                                <Subtitle>Order Time:</Subtitle>
-                                <Info>{createdOrder.when}</Info>
-                            </DataItem>
-                        )}
-                        {createdOrder?.schedule && (
-                            <DataItem>
-                                <Subtitle>Delivery Time:</Subtitle>
-                                <Info>{createdOrder.schedule}</Info>
-                            </DataItem>
-                        )}
-                        {createdOrder?.address && (
-                            <DataItem>
-                                <Subtitle>Delivery Location:</Subtitle>
-                                <Info>{createdOrder?.address}</Info>
-                            </DataItem>
-                        )}
+                        <DataItem>
+                            <Subtitle>Order Date:</Subtitle>
+                            <Info>{moment(createdOrder?.created_at).format('L')}</Info>
+                        </DataItem>
+                        <DataItem>
+                            <Subtitle>Order Time:</Subtitle>
+                            <Info>{createdOrder?.when}</Info>
+                        </DataItem>
+                        <DataItem>
+                            <Subtitle>Delivery Time:</Subtitle>
+                            <Info>{createdOrder?.schedule}</Info>
+                        </DataItem>
+                        <DataItem>
+                            <Subtitle>Delivery Location:</Subtitle>
+                            <Info>{createdOrder?.address}</Info>
+                        </DataItem>
                     </DataItems>
                 </DataSection>
                 <DataSection>
                     <DataTitle>Total Amount</DataTitle>
                     <DataItems>
-                        {createdOrder?.products.length && (
-                            <DataItem>
-                                <Subtitle>Sub Total:</Subtitle>
-                                <Info>${createdOrderTotal?.toFixed(2)}</Info>
-                            </DataItem>
-                        )}
-                        {createdOrder?.payment && (
-                            <DataItem>
-                                <Subtitle>Payment Method:</Subtitle>
-                                <Info>{createdOrder.payment}</Info>
-                            </DataItem>
-                        )}
+                        <DataItem>
+                            <Subtitle>Sub Total:</Subtitle>
+                            <Info>${createdOrderTotal?.toFixed(2)}</Info>
+                        </DataItem>
+                        <DataItem>
+                            <Subtitle>Payment Method:</Subtitle>
+                            <Info>{createdOrder?.payment}</Info>
+                        </DataItem>
                         <DataItem>
                             <Subtitle>Cash on delivery:</Subtitle>
                             <Info>${(10).toFixed(2)}</Info>
                         </DataItem>
-                        {createdOrder?.products.length && (
-                            <DataItem>
-                                <Subtitle>Total:</Subtitle>
-                                <Info>${(createdOrderTotal! + 10).toFixed(2)}</Info>
-                            </DataItem>
-                        )}
+                        <DataItem>
+                            <Subtitle>Total:</Subtitle>
+                            <Info>${(createdOrderTotal! + 10).toFixed(2)}</Info>
+                        </DataItem>
                     </DataItems>
                 </DataSection>
             </OrderBody>
