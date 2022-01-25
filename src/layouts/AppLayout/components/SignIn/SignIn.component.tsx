@@ -39,7 +39,6 @@ import { ReactComponent as GoogleIcon } from 'assets/icons/google.svg'
 export const SignIn: FC<SignInProps> = ({ setFormType }) => {
     const dispatch = useDispatch()
     const { register, handleSubmit, formState: { errors } } = useForm<SignInData>({
-        mode: 'all',
         resolver: yupResolver(signInValidation)
     })
     const onSubmit = (data: SignInData) => {
