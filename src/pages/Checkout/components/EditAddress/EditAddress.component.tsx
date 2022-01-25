@@ -22,6 +22,7 @@ import { AddressData } from './EditAddress.types'
 
 // helpers
 import { addressValidation } from './EditAddress.helpers'
+import { equalityChecker } from 'helpers/comparators'
 
 export const EditAddress: FC<EditAddressProps> = ({
     closeModal,
@@ -58,9 +59,8 @@ export const EditAddress: FC<EditAddressProps> = ({
                     isWide
                     title='Edit Address'
                     disabled={
-                        formValues.title === dataToEdit.title ||
-                        formValues.description === dataToEdit.description ?
-                        true : false
+                        equalityChecker(formValues.title, dataToEdit.title) ||
+                        equalityChecker(formValues.description, dataToEdit.description)
                     }
                 />
             </Form>

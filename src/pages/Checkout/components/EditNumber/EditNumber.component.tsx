@@ -20,6 +20,7 @@ import { EditNumberProps, NumberData } from './EditNumber.types'
 
 // helpers
 import { numberValidation } from './EditNumber.helpers'
+import { equalityChecker } from 'helpers/comparators'
 
 export const EditNumber: FC<EditNumberProps> = ({
     closeModal,
@@ -57,9 +58,8 @@ export const EditNumber: FC<EditNumberProps> = ({
                     isWide
                     title='Edit Number'
                     disabled={
-                        formValues.title === dataToEdit.title ||
-                        formValues.number === dataToEdit.number ?
-                        true : false
+                        equalityChecker(formValues.title, dataToEdit.title) ||
+                        equalityChecker(formValues.number, dataToEdit.number)
                     }
                 />
             </Form>
