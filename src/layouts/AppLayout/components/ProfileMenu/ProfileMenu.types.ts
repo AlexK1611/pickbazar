@@ -1,3 +1,3 @@
 export interface ProfileMenuProps {
-    isMenu: boolean
+    isProfileMenuOpen: boolean
 }
