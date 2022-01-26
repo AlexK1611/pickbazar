@@ -5,5 +5,5 @@ export enum AuthFormTypes {
 
 export interface AuthModalProps {
     isModal: boolean,
-    handleAuthModal: (param: boolean) => void
+    authModalHandler: () => void
 }

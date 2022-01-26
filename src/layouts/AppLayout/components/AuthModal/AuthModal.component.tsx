@@ -10,7 +10,7 @@ import { SignIn } from '../SignIn/SignIn.component'
 import { SignUp } from '../SignUp/SignUp.component'
 import { AuthFormTypes, AuthModalProps } from './AuthModal.types'
 
-export const AuthModal: FC<AuthModalProps> = ({ isModal, handleAuthModal }) => {
+export const AuthModal: FC<AuthModalProps> = ({ isModal, authModalHandler }) => {
     const [formType, setFormType] = useState(AuthFormTypes.REGISTER)
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export const AuthModal: FC<AuthModalProps> = ({ isModal, handleAuthModal }) => {
     return ReactDOM.createPortal(
         <ModalBackground>
             <ModalContent>
-                <CloseButton onClick={() => handleAuthModal(false)}>
+                <CloseButton onClick={authModalHandler}>
                     <CloseIcon />
                 </CloseButton>
                 {formType === AuthFormTypes.REGISTER && (
