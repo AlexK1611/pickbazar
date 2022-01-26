@@ -8,6 +8,7 @@ import { getDeliveryAddresses } from 'store/checkout/selectors'
 // types
 import { AddressItem } from 'store/checkout/types'
 import { AddressStepProps } from './AddressStep.types'
+import { CheckoutFormTypes } from 'pages/Checkout/components/CheckoutModal/CheckoutModal.types'
 
 // styled components
 import { StepOptions } from './AddressStep.styles'
@@ -32,7 +33,7 @@ export const AddressStep: FC<AddressStepProps> = ({
     const editAddressHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
         event.stopPropagation()
         setAddressId(id)
-        setFormType('edit-address')
+        setFormType(CheckoutFormTypes.EDIT_ADDRESS)
     }
 
     const removeAddressHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
@@ -46,7 +47,7 @@ export const AddressStep: FC<AddressStepProps> = ({
             stepName='Delivery Address'
             stepLabel='Address'
             setFormType={setFormType}
-            formType='add-address'
+            formType={CheckoutFormTypes.ADD_ADDRESS}
         >
             {deliveryAddresses && (
                 <StepOptions>

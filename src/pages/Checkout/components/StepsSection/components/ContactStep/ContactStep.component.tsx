@@ -8,6 +8,7 @@ import { getPhoneNumbers } from 'store/checkout/selectors'
 // types
 import { ContactStepProps } from './ContactStep.types'
 import { PhoneNumberItem } from 'store/checkout/types'
+import { CheckoutFormTypes } from 'pages/Checkout/components/CheckoutModal/CheckoutModal.types'
 
 // styled components
 import { StepOptions } from './ContactStep.styles'
@@ -32,7 +33,7 @@ export const ContactStep: FC<ContactStepProps> = ({
     const editPhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
         event.stopPropagation()
         setPhoneId(id)
-        setFormType('edit-number')
+        setFormType(CheckoutFormTypes.EDIT_NUMBER)
     }
 
     const removePhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
@@ -46,7 +47,7 @@ export const ContactStep: FC<ContactStepProps> = ({
             stepName='Contact Number'
             stepLabel='Number'
             setFormType={setFormType}
-            formType='add-number'
+            formType={CheckoutFormTypes.ADD_NUMBER}
         >
             {phoneNumbers && (
                 <StepOptions>
