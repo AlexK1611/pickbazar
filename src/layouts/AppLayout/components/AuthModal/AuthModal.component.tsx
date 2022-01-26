@@ -8,16 +8,13 @@ import {
 } from './AuthModal.styles'
 import { SignIn } from '../SignIn/SignIn.component'
 import { SignUp } from '../SignUp/SignUp.component'
-import { AuthModalProps } from './AuthModal.types'
+import { AuthFormTypes, AuthModalProps } from './AuthModal.types'
 
 export const AuthModal: FC<AuthModalProps> = ({ isModal, handleAuthModal }) => {
-    {/** TODO: рекомендую еще слова register и login запихнуть в константу или 
-    enum. Потенциально избавляет тебя от опечаток и непонимания почему все не 
-    работает :) */ }
-    const [formType, setFormType] = useState('register')
+    const [formType, setFormType] = useState(AuthFormTypes.REGISTER)
 
     useEffect(() => {
-        return () => setFormType('register')
+        return () => setFormType(AuthFormTypes.REGISTER)
     }, [])
 
     const authModalNode = document.getElementById('auth-modal') as HTMLDivElement
@@ -30,10 +27,10 @@ export const AuthModal: FC<AuthModalProps> = ({ isModal, handleAuthModal }) => {
                 <CloseButton onClick={() => handleAuthModal(false)}>
                     <CloseIcon />
                 </CloseButton>
-                {formType === 'register' && (
+                {formType === AuthFormTypes.REGISTER && (
                     <SignUp setFormType={setFormType} />
                 )}
-                {formType === 'login' && (
+                {formType === AuthFormTypes.LOGIN && (
                     <SignIn setFormType={setFormType} />
                 )}
             </ModalContent>

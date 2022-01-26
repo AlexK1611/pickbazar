@@ -23,6 +23,7 @@ import {
 // types
 import { SignInProps } from './SignIn.types'
 import { SignInData } from 'store/auth/types'
+import { AuthFormTypes } from '../AuthModal/AuthModal.types'
 
 // helpers
 import { signInValidation } from './SignIn.helpers'
@@ -81,7 +82,7 @@ export const SignIn: FC<SignInProps> = ({ setFormType }) => {
                 <UnderlinedText
                     color='#009E7F'
                     fontSize='15px'
-                    onClick={() => setFormType('register')} /** TODO: функция в рендере */
+                    onClick={() => setFormType(AuthFormTypes.REGISTER)} /** TODO: функция в рендере */
                 >
                     Register
                 </UnderlinedText>

@@ -1,3 +1,6 @@
+import { Dispatch, SetStateAction } from 'react'
+import { AuthFormTypes } from '../AuthModal/AuthModal.types'
+
 export interface SignInProps {
-    setFormType: (param: string) => void
+    setFormType: Dispatch<SetStateAction<AuthFormTypes>>
 }

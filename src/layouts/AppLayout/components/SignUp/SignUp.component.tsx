@@ -24,6 +24,7 @@ import {
 // types
 import { SignUpProps } from './SignUp.types'
 import { SignUpData } from 'store/auth/types'
+import { AuthFormTypes } from '../AuthModal/AuthModal.types'
 
 // helpers
 import { signUpValidation } from './SignUp.helpers'
@@ -100,7 +101,7 @@ export const SignUp: FC<SignUpProps> = ({ setFormType }) => {
                 <UnderlinedText
                     color='#009E7F'
                     fontSize='15px'
-                    onClick={() => setFormType('login')} /** TODO: функция в рендере */
+                    onClick={() => setFormType(AuthFormTypes.LOGIN)} /** TODO: функция в рендере */
                 >
                     Login
                 </UnderlinedText>
