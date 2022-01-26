@@ -19,13 +19,12 @@ import {
 } from './ProductItem.styles'
 import { ProductItemProps } from './ProductItem.types'
 import { PurchaseItem } from 'store/cart/types'
-import { ExtendedProductUnit, ProductUnit } from 'store/products/types'
 
 export const ProductItem: FC<ProductItemProps> = ({ product }) => {
     const cart: PurchaseItem[] | [] = useSelector(getCartItems)
     const dispatch = useDispatch()
 
-    const cartItemAddHandler = (product: ExtendedProductUnit | ProductUnit) => {
+    const cartItemAddHandler = () => {
         dispatch(addItemToCart(product))
     }
     
@@ -44,7 +43,7 @@ export const ProductItem: FC<ProductItemProps> = ({ product }) => {
                 <FinalPrice>${product.finalPrice}</FinalPrice>
                 <Button
                     disabled={!!cart.find(item => item.id === product.id)} /** TODO: вынеси в отдельную функцию */
-                    onClick={() => cartItemAddHandler(product)} /** TODO: функция в рендере */
+                    onClick={cartItemAddHandler}
                 >
                     <ButtonIcon/>
                     <ButtonTitle>Cart</ButtonTitle>
