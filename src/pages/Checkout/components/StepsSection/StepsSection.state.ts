@@ -11,6 +11,7 @@ export const orderCreationState: OrderCreationState = {
     paymentId: null
 }
 
+/** TODO: а каким боком тут редюсер в папке затесался? */
 export const orderCreationReducer = (
     state: OrderCreationState,
     action: OrderCreationAction

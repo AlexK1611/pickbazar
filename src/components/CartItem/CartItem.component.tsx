@@ -45,6 +45,8 @@ export const CartItem: FC<CartItemProps> = ({
         <ItemContainer>
             <LeftContent>
                 <ItemCounter>
+                    {/** TODO: функция в рендере. Передача данных дополнительно не имеет никакого смысла, ибо в функциях у теюбя же есть 
+                     * доступ в пропсы */}
                     <CounterSection
                         isFirst
                         onClick={() => increaseQuantityHandler(id)}

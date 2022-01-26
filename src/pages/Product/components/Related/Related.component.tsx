@@ -12,7 +12,7 @@ export const Related: FC<RelatedProps> = ({ products, productId }) => {
         <RelatedContainer>
             <Title>Related Items</Title>
             <RelatedProducts>
-                {products.filter(product => product.id !== +productId!).map(product => (
+                {products.filter(product => product.id !== +productId!).map(product => ( /** TODO: product.id !== +productId! конструкция достаточно сложна для прочтения, поэтому рекомендую отдельную функцию с неймингом */
                     <ProductItem key={`related-${product.id}`} product={product} />
                 ))}
             </RelatedProducts>

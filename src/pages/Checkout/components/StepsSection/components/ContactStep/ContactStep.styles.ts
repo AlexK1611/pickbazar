@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+/** TODO: у тебя в AddressStep идентичный стиль */
 export const StepOptions = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

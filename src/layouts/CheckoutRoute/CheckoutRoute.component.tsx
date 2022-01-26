@@ -13,6 +13,7 @@ import { CheckoutRouteProps } from './CheckoutRoute.types'
 // libraries
 import { Navigate } from 'react-router-dom'
 
+{/** TODO: children у FC есть изначально. Можно просто оставить FC<{}> */ }
 export const CheckoutRoute: FC<CheckoutRouteProps> = ({ children }) => {
     const user: UserItem | null = useSelector(getUser)
     const cart: PurchaseItem[] | [] = useSelector(getCartItems)

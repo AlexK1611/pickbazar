@@ -43,8 +43,8 @@ export const ProductItem: FC<ProductItemProps> = ({ product }) => {
                 {product.price !== product.finalPrice ? <PreviousPrice>{product.price}</PreviousPrice> : null}
                 <FinalPrice>${product.finalPrice}</FinalPrice>
                 <Button
-                    disabled={!!cart.find(item => item.id === product.id)}
-                    onClick={() => cartItemAddHandler(product)}
+                    disabled={!!cart.find(item => item.id === product.id)} /** TODO: вынеси в отдельную функцию */
+                    onClick={() => cartItemAddHandler(product)} /** TODO: функция в рендере */
                 >
                     <ButtonIcon/>
                     <ButtonTitle>Cart</ButtonTitle>

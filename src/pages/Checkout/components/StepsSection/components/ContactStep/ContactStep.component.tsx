@@ -59,6 +59,7 @@ export const ContactStep: FC<ContactStepProps> = ({
                             editAction={editPhoneNumberHandler}
                             removeAction={removePhoneNumberHandler}
                             isSelected={equalityChecker(state.numberId, phone.id)}
+                            /** TODO: функция в рендере */
                             onClick={() => setOption(phone.id)}
                         />
                     ))}

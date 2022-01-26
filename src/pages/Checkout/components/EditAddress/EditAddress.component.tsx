@@ -61,7 +61,7 @@ export const EditAddress: FC<EditAddressProps> = ({
                     disabled={
                         equalityChecker(formValues.title, dataToEdit.title) ||
                         equalityChecker(formValues.description, dataToEdit.description)
-                    }
+                    } /** TODO: рекомендую вынести в отдельную функцию эту часть  */
                 />
             </Form>
         </>

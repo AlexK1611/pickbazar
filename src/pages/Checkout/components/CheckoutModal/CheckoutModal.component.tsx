@@ -59,6 +59,7 @@ export const CheckoutModal: FC<CheckoutModalProps> = ({
                 <CloseButton onClick={closeModal}>
                     <CloseIcon />
                 </CloseButton>
+                {/** TODO: тож рекомендую add-address докинуть в константу или enum  */ }
                 {formType === 'add-address' && <AddAddress closeModal={closeModal} />}
                 {formType === 'edit-address' && addressToEdit && (
                     <EditAddress

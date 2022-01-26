@@ -53,7 +53,7 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
                             <ThumbnailItem
                                 key={`product-picture-${photo.id}`}
                                 src={`${process.env.REACT_APP_HOST}${photo.url}`}
-                                onClick={() => setSelectedPicture(photo.url)}
+                                onClick={() => setSelectedPicture(photo.url)} /** TODO: функция в рендере */
                                 isSelected={photo.url === selectedPicture}
                             />
                         ))}
@@ -69,7 +69,7 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
                 {productInfo.description && <Description>{productInfo.description}</Description>}
                 <Button
                     disabled={!!cart.find(item => item.id === productInfo.id)}
-                    onClick={() => cartItemAddHandler(productInfo)}
+                    onClick={() => cartItemAddHandler(productInfo)} /** TODO: функция в рендере */
                 >
                     <ButtonIcon />
                     <ButtonTitle>Buy</ButtonTitle>

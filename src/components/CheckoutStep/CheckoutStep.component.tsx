@@ -30,7 +30,7 @@ export const CheckoutStep: FC<CheckoutStepProps> = ({
                     <StepName>{stepName}</StepName>
                 </StepMainInfo>
                 {setFormType && (
-                    <AddButton onClick={() => setFormType(formType)}>
+                    <AddButton onClick={() => setFormType(formType)}> {/** TODO: функция в рендере */}
                         <AddButtonText>+ Add {stepLabel}</AddButtonText>
                     </AddButton>
                 )}

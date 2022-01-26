@@ -100,7 +100,7 @@ export const SignUp: FC<SignUpProps> = ({ setFormType }) => {
                 <UnderlinedText
                     color='#009E7F'
                     fontSize='15px'
-                    onClick={() => setFormType('login')}
+                    onClick={() => setFormType('login')} /** TODO: функция в рендере */
                 >
                     Login
                 </UnderlinedText>
