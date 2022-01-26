@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addItemToCart } from 'store/cart/actions'
 import { getCartItems } from 'store/cart/selectors'
@@ -38,6 +38,10 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
     }, [productInfo.photos.length])
 
     const [isCartOpened, setCartOpened] = useState(false)
+    const cartOpenedHandler = useCallback(
+        () => setCartOpened(isCartOpened => !isCartOpened),
+        []
+    )
 
     const cartItemAddHandler = (product: ExtendedProductUnit | ProductUnit) => {
         dispatch(addItemToCart(product))
@@ -80,10 +84,10 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
                     </Category>
                 )}   
             </InfoSection>
-            <CartButton setCartOpened={setCartOpened} />
+            <CartButton cartOpenedHandler={cartOpenedHandler} />
             <Cart
                 isCartOpened={isCartOpened}
-                setCartOpened={setCartOpened}
+                cartOpenedHandler={cartOpenedHandler}
             />
         </InfoContainer>
     )

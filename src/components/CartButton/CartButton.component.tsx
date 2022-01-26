@@ -11,13 +11,12 @@ import {
 } from './CartButton.styles'
 import { CartButtonProps } from './CartButton.types'
 
-export const CartButton: FC<CartButtonProps> = ({ setCartOpened }) => {
+export const CartButton: FC<CartButtonProps> = ({ cartOpenedHandler }) => {
     const cartItemTypes: number = useSelector(getCartItemTypes)
     const cartTotal: number = useSelector(getCartTotal)
 
-    {/** TODO: функция в рендере */}
     return (
-        <ButtonContainer onClick={() => setCartOpened(true)}>
+        <ButtonContainer onClick={cartOpenedHandler}>
             <ItemsContainer>
                 <ItemsIcon />
                 <ItemsCount>{cartItemTypes} Item(s)</ItemsCount>
