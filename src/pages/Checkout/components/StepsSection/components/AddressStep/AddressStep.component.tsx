@@ -59,7 +59,7 @@ export const AddressStep: FC<AddressStepProps> = ({
                             editAction={editAddressHandler}
                             removeAction={removeAddressHandler}
                             isSelected={equalityChecker(state.addressId, address.id)}
-                            onClick={() => setOption(address.id)}
+                            onClick={() => setOption(address.id)} /** TODO: функция в рендере */
                         />
                     ))}
                 </StepOptions>

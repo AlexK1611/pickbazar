@@ -50,6 +50,7 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
                             title={payment.name}
                             info={payment.description}
                             isSelected={equalityChecker(state.paymentId,payment.id)}
+                            /** TODO: функция в рендере */
                             onClick={() => setOption(payment.id)}
                         />
                     ))}
@@ -67,13 +68,13 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
                     state.scheduleId, 
                     state.numberId, 
                     state.paymentId
-                ))}
+                ))} /** TODO: вынеси в отдельную функцию */
                 onClick={() => createOrderHandler(
                     state.addressId!,
                     state.scheduleId!,
                     state.numberId,
                     state.paymentId!
-                )}
+                )} /** TODO: функция в рендере */
             />
         </CheckoutStep>
     )

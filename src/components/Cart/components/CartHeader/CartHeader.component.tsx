@@ -20,6 +20,7 @@ export const CartHeader: FC<CartHeaderProps> = ({ setCartOpened }) => {
                 <ItemsIcon />
                 <ItemsCount>{cartItemTypes} Item(s)</ItemsCount>
             </ItemsContainer>
+            {/** TODO: функция в рендере */}
             <CloseButton onClick={() => setCartOpened(false)}>
                 <CloseIcon />
             </CloseButton>

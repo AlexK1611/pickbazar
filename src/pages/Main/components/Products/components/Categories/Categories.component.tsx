@@ -21,6 +21,7 @@ export const Categories: FC<CategoriesProps> = ({
                 <CategoryListItem key={`category-${category.id}`}>
                     <CategoryTitle
                         isSelected={category.id === parentCategory}
+                        /** TODO: функция в рендере */
                         onClick={() => setParentCategory(category.id)}
                     >
                         {category.title}
@@ -30,6 +31,7 @@ export const Categories: FC<CategoriesProps> = ({
                             {category.childCategories.map(childCategory => (
                                 <CategoryListItem
                                     key={`category-${childCategory.id}`}
+                                    /** TODO: функция в рендере */
                                     onClick={() => categoryHandler(childCategory.id)}
                                 >
                                     <SubCategoryTitle isSelected={childCategory.id === selectedCategory}>

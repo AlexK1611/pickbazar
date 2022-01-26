@@ -15,6 +15,7 @@ export const CartButton: FC<CartButtonProps> = ({ setCartOpened }) => {
     const cartItemTypes: number = useSelector(getCartItemTypes)
     const cartTotal: number = useSelector(getCartTotal)
 
+    {/** TODO: функция в рендере */}
     return (
         <ButtonContainer onClick={() => setCartOpened(true)}>
             <ItemsContainer>

@@ -6,6 +6,7 @@ import { RootReducer } from 'store/rootReducer'
 export const productsRequest = (category: number, start: number) => {
     return async (dispatch: Dispatch, getState: () => RootReducer) => {
         try {
+            /** TODO: а почему where оставил? */
             const { data } = await axiosInstance.get<ProductUnit[]>(
                 `/products?_where[_or][0][category]=${category}`,
                 { params: { '_start': start, '_limit': 10 } }

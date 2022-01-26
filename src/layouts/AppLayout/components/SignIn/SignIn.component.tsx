@@ -81,7 +81,7 @@ export const SignIn: FC<SignInProps> = ({ setFormType }) => {
                 <UnderlinedText
                     color='#009E7F'
                     fontSize='15px'
-                    onClick={() => setFormType('register')}
+                    onClick={() => setFormType('register')} /** TODO: функция в рендере */
                 >
                     Register
                 </UnderlinedText>

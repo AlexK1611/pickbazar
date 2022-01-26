@@ -51,6 +51,7 @@ export const AppLayout: FC = ({ children }) => {
         }
     }, [authMessage])
 
+    {/** TODO: по неймнгу и внутренностям вообще не понятно за что стейт отвечает */ }
     const [isProfileMenu, handleProfileMenu] = useState(false)
     useEffect(() => {
         if (user === null) {
@@ -80,11 +81,12 @@ export const AppLayout: FC = ({ children }) => {
                 </HeaderItemsGroup>
                 {user ? (
                     <ProfileMenuContainer>
+                        {/** TODO: функция в рендере  */ }
                         <UserProfilePic onClick={() => handleProfileMenu(!isProfileMenu)}/>
                         <ProfileMenu isMenu={isProfileMenu}/>
                     </ProfileMenuContainer>
                 ) : (
-                    <SubmitButton title='Join' onClick={() => handleAuthModal(true)} />
+                    <SubmitButton title='Join' onClick={() => handleAuthModal(true)} /> /** TODO: функция в рендере  */
                 )}
             </Header>
             <Content>{children}</Content>

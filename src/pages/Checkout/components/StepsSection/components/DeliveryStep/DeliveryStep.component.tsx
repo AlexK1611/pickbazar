@@ -37,7 +37,7 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, setOption }) => {
                                 title={schedule.name}
                                 info={schedule.description}
                                 isSelected={equalityChecker(state.scheduleId, schedule.id)}
-                                onClick={() => setOption(schedule.id)}
+                                onClick={() => setOption(schedule.id)} /** TODO: функция в рендере */
                             />
                         ))}
                     </StepOptions>
@@ -49,7 +49,7 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, setOption }) => {
                                 title={schedule.label}
                                 info={schedule.time}
                                 isSelected={equalityChecker(state.scheduleId, schedule.id)}
-                                onClick={() => setOption(schedule.id)}
+                                onClick={() => setOption(schedule.id)} /** TODO: функция в рендере */
                             />
                         ))}
                     </StepOptions>

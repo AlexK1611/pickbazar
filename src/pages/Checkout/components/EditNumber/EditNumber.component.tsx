@@ -60,7 +60,7 @@ export const EditNumber: FC<EditNumberProps> = ({
                     disabled={
                         equalityChecker(formValues.title, dataToEdit.title) ||
                         equalityChecker(formValues.number, dataToEdit.number)
-                    }
+                    } /** TODO: рекомендую вынести в отдельную функцию эту часть  */
                 />
             </Form>
         </>

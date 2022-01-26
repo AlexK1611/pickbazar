@@ -1,3 +1,4 @@
+{/** TODO: аж стесняюсь спросить - а зачем? */ }
 export const equalityChecker = (
     first: string | null,
     second: string

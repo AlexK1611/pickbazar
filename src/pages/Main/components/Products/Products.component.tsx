@@ -84,7 +84,7 @@ export const Products: FC = () => {
             <ProductsSection>
                 {!products && <ProductsMessage>Select category</ProductsMessage>}
                 {products && <ProductsList products={products}/>}
-                {products && products.length % 10 === 0 && (
+                {products && products.length % 10 === 0 && ( /** TODO: у тебя вьюшка не должна знать о таких подробностях */
                     <LoadMoreBtn onClick={loadMoreHandler}>
                         <LoadMoreBtnTitle>Load More</LoadMoreBtnTitle>
                     </LoadMoreBtn>
