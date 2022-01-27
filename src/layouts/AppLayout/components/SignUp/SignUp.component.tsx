@@ -9,17 +9,17 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // styled components
+import { TermsAndConditions } from './SignUp.styled'
 import {
     Form,
     Title,
     Subtitle,
-    TermsAndConditions,
     Splitter,
     SplitterLine,
     SplitterText,
     SocialButtons,
-    LoginProposal
-} from './SignUp.styled'
+    FormSwitcher
+} from '../AuthModal/AuthModal.styles'
 
 // types
 import { SignUpProps } from './SignUp.types'
@@ -96,7 +96,7 @@ export const SignUp: FC<SignUpProps> = ({ formTypeHandler }) => {
                     provider='google'
                 />
             </SocialButtons>
-            <LoginProposal>
+            <FormSwitcher>
                 Already have an account?
                 <UnderlinedText
                     color='#009E7F'
@@ -105,7 +105,7 @@ export const SignUp: FC<SignUpProps> = ({ formTypeHandler }) => {
                 >
                     Login
                 </UnderlinedText>
-            </LoginProposal>
+            </FormSwitcher>
         </>
     )
 }

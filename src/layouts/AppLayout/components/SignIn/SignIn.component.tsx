@@ -17,8 +17,8 @@ import {
     SplitterLine,
     SplitterText,
     SocialButtons,
-    RegisterProposal
-} from './SignIn.styles'
+    FormSwitcher
+} from '../AuthModal/AuthModal.styles'
 
 // types
 import { SignInProps } from './SignIn.types'
@@ -77,7 +77,7 @@ export const SignIn: FC<SignInProps> = ({ formTypeHandler }) => {
                     provider='google'
                 />
             </SocialButtons>
-            <RegisterProposal>
+            <FormSwitcher>
                 Do not have account yet? 
                 <UnderlinedText
                     color='#009E7F'
@@ -86,7 +86,7 @@ export const SignIn: FC<SignInProps> = ({ formTypeHandler }) => {
                 >
                     Register
                 </UnderlinedText>
-            </RegisterProposal>
+            </FormSwitcher>
         </>
     )
 }
