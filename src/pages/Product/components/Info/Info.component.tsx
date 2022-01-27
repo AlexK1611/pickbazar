@@ -24,7 +24,6 @@ import { InfoProps } from './Info.types'
 import { PurchaseItem } from 'store/cart/types'
 import { CartButton } from 'components/CartButton/CartButton.component'
 import { Cart } from 'components/Cart/Cart.component'
-import { ExtendedProductUnit, ProductUnit } from 'store/products/types'
 
 export const Info: FC<InfoProps> = ({ productInfo }) => {
     const cart: PurchaseItem[] | [] = useSelector(getCartItems)
@@ -36,6 +35,9 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
             setSelectedPicture(productInfo.photos[0].url)
         }
     }, [productInfo.photos.length])
+    const selectedPhotoHandler = (url: string) => {
+        return () => setSelectedPicture(url)
+    }
 
     const [isCartOpened, setCartOpened] = useState(false)
     const cartOpenedHandler = useCallback(
@@ -43,8 +45,8 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
         []
     )
 
-    const cartItemAddHandler = (product: ExtendedProductUnit | ProductUnit) => {
-        dispatch(addItemToCart(product))
+    const cartItemAddHandler = () => {
+        dispatch(addItemToCart(productInfo))
     }
 
     return (
@@ -57,7 +59,7 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
                             <ThumbnailItem
                                 key={`product-picture-${photo.id}`}
                                 src={`${process.env.REACT_APP_HOST}${photo.url}`}
-                                onClick={() => setSelectedPicture(photo.url)} /** TODO: функция в рендере */
+                                onClick={selectedPhotoHandler(photo.url)}
                                 isSelected={photo.url === selectedPicture}
                             />
                         ))}
@@ -73,7 +75,7 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
                 {productInfo.description && <Description>{productInfo.description}</Description>}
                 <Button
                     disabled={!!cart.find(item => item.id === productInfo.id)}
-                    onClick={() => cartItemAddHandler(productInfo)} /** TODO: функция в рендере */
+                    onClick={cartItemAddHandler}
                 >
                     <ButtonIcon />
                     <ButtonTitle>Buy</ButtonTitle>
