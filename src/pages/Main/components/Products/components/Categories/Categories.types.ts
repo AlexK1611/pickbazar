@@ -3,7 +3,7 @@ import { CategoryItem } from 'store/categories/types'
 export interface CategoriesProps {
     categories: CategoryItem[],
     parentCategory: number,
-    setParentCategory: (arg: number) => void,
+    parentCategoryHandler: (arg: number) => () => void,
     selectedCategory: number,
-    categoryHandler: (arg: number) => void
+    categoryHandler: (arg: number) => () => void
 }
