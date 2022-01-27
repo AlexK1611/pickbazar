@@ -20,7 +20,7 @@ import { EditNumberProps, NumberData } from './EditNumber.types'
 
 // helpers
 import { numberValidation } from './EditNumber.helpers'
-import { equalityChecker } from 'helpers/comparators'
+import { editFormButtonChecker } from 'pages/Checkout/Checkout.helpers'
 
 export const EditNumber: FC<EditNumberProps> = ({
     closeModal,
@@ -57,10 +57,12 @@ export const EditNumber: FC<EditNumberProps> = ({
                 <SubmitButton
                     isWide
                     title='Edit Number'
-                    disabled={
-                        equalityChecker(formValues.title, dataToEdit.title) ||
-                        equalityChecker(formValues.number, dataToEdit.number)
-                    } /** TODO: рекомендую вынести в отдельную функцию эту часть  */
+                    disabled={editFormButtonChecker(
+                        formValues.title,
+                        dataToEdit.title,
+                        formValues.number,
+                        dataToEdit.number
+                    )}
                 />
             </Form>
         </>

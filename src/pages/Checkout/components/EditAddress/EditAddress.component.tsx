@@ -22,7 +22,7 @@ import { AddressData } from './EditAddress.types'
 
 // helpers
 import { addressValidation } from './EditAddress.helpers'
-import { equalityChecker } from 'helpers/comparators'
+import { editFormButtonChecker } from 'pages/Checkout/Checkout.helpers'
 
 export const EditAddress: FC<EditAddressProps> = ({
     closeModal,
@@ -58,10 +58,12 @@ export const EditAddress: FC<EditAddressProps> = ({
                 <SubmitButton
                     isWide
                     title='Edit Address'
-                    disabled={
-                        equalityChecker(formValues.title, dataToEdit.title) ||
-                        equalityChecker(formValues.description, dataToEdit.description)
-                    } /** TODO: рекомендую вынести в отдельную функцию эту часть  */
+                    disabled={editFormButtonChecker(
+                        formValues.title,
+                        dataToEdit.title,
+                        formValues.description,
+                        dataToEdit.description
+                    )}
                 />
             </Form>
         </>
