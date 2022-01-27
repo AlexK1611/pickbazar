@@ -25,7 +25,6 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, setOption }) => {
         <CheckoutStep
             stepNumber={2}
             stepName='Delivery Schedule'
-            formType='add-delivery'
         >
             {deliverySchedules && (
                 <>

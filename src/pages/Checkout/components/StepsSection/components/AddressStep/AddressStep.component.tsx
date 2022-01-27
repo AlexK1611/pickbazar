@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react'
+import { FC, MouseEvent, useCallback } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -41,13 +41,17 @@ export const AddressStep: FC<AddressStepProps> = ({
         dispatch(removeAddress(id))
     }
 
+    const formTypeHandler = useCallback(
+        () => setFormType(CheckoutFormTypes.ADD_ADDRESS),
+        [setFormType]
+    )
+
     return (
         <CheckoutStep
             stepNumber={1}
             stepName='Delivery Address'
             stepLabel='Address'
-            setFormType={setFormType}
-            formType={CheckoutFormTypes.ADD_ADDRESS}
+            formTypeHandler={formTypeHandler}
         >
             {deliveryAddresses && (
                 <StepOptions>

@@ -16,21 +16,20 @@ export const CheckoutStep: FC<CheckoutStepProps> = ({
     stepNumber,
     stepName,
     stepLabel,
-    setFormType,
-    children,
-    formType
+    formTypeHandler,
+    children
 }) => {
     return (
         <Step>
-            <StepHeader isAddOption={!!setFormType}>
+            <StepHeader isAddOption={!!formTypeHandler}>
                 <StepMainInfo>
                     <StepNumberContainer>
                         <StepNumber>{stepNumber}</StepNumber>
                     </StepNumberContainer>
                     <StepName>{stepName}</StepName>
                 </StepMainInfo>
-                {setFormType && (
-                    <AddButton onClick={() => setFormType(formType)}> {/** TODO: функция в рендере */}
+                {formTypeHandler && (
+                    <AddButton onClick={formTypeHandler}>
                         <AddButtonText>+ Add {stepLabel}</AddButtonText>
                     </AddButton>
                 )}

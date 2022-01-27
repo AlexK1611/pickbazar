@@ -39,7 +39,6 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
             stepNumber={4}
             stepName='Payment Option'
             stepLabel='Card'
-            formType='add-payment'
         >
             {paymentOptions && (
                 <StepOptions>

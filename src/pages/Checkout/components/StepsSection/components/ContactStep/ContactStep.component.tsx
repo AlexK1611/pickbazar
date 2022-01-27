@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react'
+import { FC, MouseEvent, useCallback } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -41,13 +41,17 @@ export const ContactStep: FC<ContactStepProps> = ({
         dispatch(removePhoneNumber(id))
     }
 
+    const formTypeHandler = useCallback(
+        () => setFormType(CheckoutFormTypes.ADD_NUMBER),
+        [setFormType]
+    )
+
     return (
         <CheckoutStep
             stepNumber={3}
             stepName='Contact Number'
             stepLabel='Number'
-            setFormType={setFormType}
-            formType={CheckoutFormTypes.ADD_NUMBER}
+            formTypeHandler={formTypeHandler}
         >
             {phoneNumbers && (
                 <StepOptions>
