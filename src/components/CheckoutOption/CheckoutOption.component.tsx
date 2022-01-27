@@ -26,12 +26,10 @@ export const CheckoutOption: FC<CheckoutOptionProps> = ({
                 <OptionTitle>{title}</OptionTitle>
                 {editAction && removeAction && (
                     <OptionButtons>
-                        {/** TODO: Функция в рендере */}
-                        <OptionButton onClick={event => editAction(event, id)}>
+                        <OptionButton onClick={editAction(id)}>
                             <EditIcon />
                         </OptionButton>
-                        {/** TODO: функция в рендере */}
-                        <OptionButton isDeleteBtn onClick={event => removeAction(event, id)}>
+                        <OptionButton isDeleteBtn onClick={removeAction(id)}>
                             <RemoveIcon />
                         </OptionButton>
                     </OptionButtons>

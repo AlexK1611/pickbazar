@@ -30,16 +30,24 @@ export const AddressStep: FC<AddressStepProps> = ({
 
     const dispatch = useDispatch()
 
-    const editAddressHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
-        event.stopPropagation()
-        setAddressId(id)
-        setFormType(CheckoutFormTypes.EDIT_ADDRESS)
-    }
+    const editAddressHandler = useCallback(
+        (id: string) =>
+        (event: MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation()
+            setAddressId(id)
+            setFormType(CheckoutFormTypes.EDIT_ADDRESS)
+        },
+        [setAddressId, setFormType]
+    )
 
-    const removeAddressHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
-        event.stopPropagation()
-        dispatch(removeAddress(id))
-    }
+    const removeAddressHandler = useCallback(
+        (id: string) =>
+        (event: MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation()
+            dispatch(removeAddress(id))
+        },
+        [dispatch]
+    )
 
     const formTypeHandler = useCallback(
         () => setFormType(CheckoutFormTypes.ADD_ADDRESS),

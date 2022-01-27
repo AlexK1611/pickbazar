@@ -5,7 +5,7 @@ export interface CheckoutOptionProps {
     title: string,
     info: string,
     isSelected?: boolean,
-    editAction?: (event: MouseEvent<HTMLButtonElement>, param: string) => void,
-    removeAction?: (event: MouseEvent<HTMLButtonElement>, param: string) => void,
+    editAction?: (arg: string) => (event: MouseEvent<HTMLButtonElement>) => void,
+    removeAction?: (arg: string) => (event: MouseEvent<HTMLButtonElement>) => void,
     onClick: () => void
 }

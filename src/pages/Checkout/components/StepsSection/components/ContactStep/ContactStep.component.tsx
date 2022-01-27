@@ -30,16 +30,24 @@ export const ContactStep: FC<ContactStepProps> = ({
 
     const dispatch = useDispatch()
 
-    const editPhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
-        event.stopPropagation()
-        setPhoneId(id)
-        setFormType(CheckoutFormTypes.EDIT_NUMBER)
-    }
+    const editPhoneNumberHandler = useCallback(
+        (id: string) =>
+        (event: MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation()
+            setPhoneId(id)
+            setFormType(CheckoutFormTypes.EDIT_NUMBER)
+        },
+        [setPhoneId, setFormType]
+    )
 
-    const removePhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
-        event.stopPropagation()
-        dispatch(removePhoneNumber(id))
-    }
+    const removePhoneNumberHandler = useCallback(
+        (id: string) =>
+        (event: MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation()
+            dispatch(removePhoneNumber(id))
+        },
+        [dispatch]
+    )
 
     const formTypeHandler = useCallback(
         () => setFormType(CheckoutFormTypes.ADD_NUMBER),
