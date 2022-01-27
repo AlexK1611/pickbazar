@@ -24,6 +24,7 @@ import { InfoProps } from './Info.types'
 import { PurchaseItem } from 'store/cart/types'
 import { CartButton } from 'components/CartButton/CartButton.component'
 import { Cart } from 'components/Cart/Cart.component'
+import { cartItemFinder } from 'helpers/helpers'
 
 export const Info: FC<InfoProps> = ({ productInfo }) => {
     const cart: PurchaseItem[] | [] = useSelector(getCartItems)
@@ -74,7 +75,7 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
                 {productInfo.size && <Size>{productInfo.size}</Size>}
                 {productInfo.description && <Description>{productInfo.description}</Description>}
                 <Button
-                    disabled={!!cart.find(item => item.id === productInfo.id)}
+                    disabled={cartItemFinder(cart, productInfo.id)}
                     onClick={cartItemAddHandler}
                 >
                     <ButtonIcon />

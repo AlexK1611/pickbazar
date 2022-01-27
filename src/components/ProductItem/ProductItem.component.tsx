@@ -19,6 +19,7 @@ import {
 } from './ProductItem.styles'
 import { ProductItemProps } from './ProductItem.types'
 import { PurchaseItem } from 'store/cart/types'
+import { cartItemFinder } from 'helpers/helpers'
 
 export const ProductItem: FC<ProductItemProps> = ({ product }) => {
     const cart: PurchaseItem[] | [] = useSelector(getCartItems)
@@ -42,7 +43,7 @@ export const ProductItem: FC<ProductItemProps> = ({ product }) => {
                 {product.price !== product.finalPrice ? <PreviousPrice>{product.price}</PreviousPrice> : null}
                 <FinalPrice>${product.finalPrice}</FinalPrice>
                 <Button
-                    disabled={!!cart.find(item => item.id === product.id)} /** TODO: вынеси в отдельную функцию */
+                    disabled={cartItemFinder(cart, product.id)}
                     onClick={cartItemAddHandler}
                 >
                     <ButtonIcon/>
