@@ -25,13 +25,8 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
 
     const dispatch = useDispatch()
 
-    const createOrderHandler = (
-        addressId: string | undefined,
-        scheduleId: string | undefined,
-        numberId: string | null,
-        paymentId: string | undefined
-    ) => {
-        dispatch(createOrderRequest({ addressId, scheduleId, numberId, paymentId }))
+    const createOrderHandler = () => {
+        dispatch(createOrderRequest(state))
     }
 
     return (
@@ -68,12 +63,7 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
                     state.numberId, 
                     state.paymentId
                 ))} /** TODO: вынеси в отдельную функцию */
-                onClick={() => createOrderHandler(
-                    state.addressId!,
-                    state.scheduleId!,
-                    state.numberId,
-                    state.paymentId!
-                )} /** TODO: функция в рендере */
+                onClick={createOrderHandler}
             />
         </CheckoutStep>
     )
