@@ -11,7 +11,7 @@ import { AddressStepProps } from './AddressStep.types'
 import { CheckoutFormTypes } from 'pages/Checkout/components/CheckoutModal/CheckoutModal.types'
 
 // styled components
-import { StepOptions } from './AddressStep.styles'
+import { StepOptions } from '../../StepsSection.styles'
 
 // components
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'

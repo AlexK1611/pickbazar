@@ -11,7 +11,7 @@ import { PhoneNumberItem } from 'store/checkout/types'
 import { CheckoutFormTypes } from 'pages/Checkout/components/CheckoutModal/CheckoutModal.types'
 
 // styled components
-import { StepOptions } from './ContactStep.styles'
+import { StepOptions } from '../../StepsSection.styles'
 
 // components
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'

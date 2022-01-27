@@ -10,7 +10,8 @@ import { PaymentOption } from 'store/checkout/types'
 import { PaymentStepProps } from './PaymentStep.types'
 
 // styled components
-import { StepOptions, StepInfo, TermsAndConditions } from './PaymentStep.styles'
+import { StepOptions } from '../../StepsSection.styles'
+import { StepInfo, TermsAndConditions } from './PaymentStep.styles'
 
 // components
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'

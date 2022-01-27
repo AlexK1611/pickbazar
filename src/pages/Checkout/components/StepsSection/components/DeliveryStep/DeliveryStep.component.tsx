@@ -9,7 +9,7 @@ import { ScheduleItem } from 'store/checkout/types'
 import { DeliverStepProps } from './DeliveryStep.types'
 
 // styled components
-import { StepOptions } from './DeliveryStep.styles'
+import { StepOptions } from '../../StepsSection.styles'
 
 // components
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
