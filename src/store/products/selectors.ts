@@ -6,6 +6,13 @@ export const getProducts = createSelector(
     state => state.products
 )
 
+export const getRelatedProducts = (id: number) => {
+    return createSelector(
+        (state: RootReducer) => state.products,
+        state => state.products?.filter(item => item.id !== id)
+    )
+}
+
 export const getProductInfo = createSelector(
     (state: RootReducer) => state.products,
     state => state.productInfo
