@@ -35,7 +35,7 @@ export const Info: FC<InfoProps> = ({ productInfo }) => {
         if (productInfo.photos.length) {
             setSelectedPicture(productInfo.photos[0].url)
         }
-    }, [productInfo.photos.length])
+    }, [productInfo.photos])
     const selectedPhotoHandler = (url: string) => {
         return () => setSelectedPicture(url)
     }
