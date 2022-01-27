@@ -5,9 +5,3 @@ export const equalityChecker = (
 ): boolean => {
     return first === second ? true : false
 }
-
-export const everyChecker = (
-    ...args: Array<string | null>
-): boolean => {
-    return args.every(item => !!item)
-}

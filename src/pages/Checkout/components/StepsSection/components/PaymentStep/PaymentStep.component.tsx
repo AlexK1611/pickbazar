@@ -18,7 +18,8 @@ import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.compone
 import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 
 // helpers
-import { equalityChecker, everyChecker } from 'helpers/comparators'
+import { equalityChecker } from 'helpers/comparators'
+import { orderValuesChecker } from './PaymentStep.helpers'
 
 export const PaymentStep: FC<PaymentStepProps> = ({
     paymentId,
@@ -60,12 +61,7 @@ export const PaymentStep: FC<PaymentStepProps> = ({
             <SubmitButton
                 isWide
                 title='Proceed to Checkout'
-                disabled={!(everyChecker(
-                    orderValues.addressId,
-                    orderValues.scheduleId,
-                    orderValues.numberId,
-                    orderValues.paymentId
-                ))} /** TODO: вынеси в отдельную функцию */
+                disabled={!orderValuesChecker(orderValues)}
                 onClick={createOrderHandler}
             />
         </CheckoutStep>
