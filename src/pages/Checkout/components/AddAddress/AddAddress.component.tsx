@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // styled components
-import { Title, Form } from './AddAddress.styles'
+import { FormTitle, Form } from '../CheckoutModal/CheckoutModal.styles'
 
 // components
 import { FormField } from 'components/FormField/FormField.component'
@@ -35,7 +35,7 @@ export const AddAddress: FC<AddAddressProps> = ({ closeModal }) => {
 
     return (
         <>
-            <Title>Add New Address</Title>
+            <FormTitle>Add New Address</FormTitle>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <FormField
                     {...register('title')}

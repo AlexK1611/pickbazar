@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // styled components
-import { Form, Title } from './EditNumber.styles'
+import { FormTitle, Form } from '../CheckoutModal/CheckoutModal.styles'
 
 // components
 import { FormField } from 'components/FormField/FormField.component'
@@ -41,7 +41,7 @@ export const EditNumber: FC<EditNumberProps> = ({
     return (
         <>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <Title>Edit Number</Title>
+                <FormTitle>Edit Number</FormTitle>
                 <FormField
                     {...register('title', { value: dataToEdit.title })}
                     placeholder='Edit title'
