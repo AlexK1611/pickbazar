@@ -18,7 +18,7 @@ import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.compone
 // helpers
 import { equalityChecker } from 'helpers/comparators'
 
-export const DeliveryStep: FC<DeliverStepProps> = ({ state, setOption }) => {
+export const DeliveryStep: FC<DeliverStepProps> = ({ scheduleId, orderValueHandler }) => {
     const deliverySchedules: ScheduleItem[] = useSelector(getDeliverySchedules)
 
     return (
@@ -35,8 +35,8 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, setOption }) => {
                                 id={schedule.id}
                                 title={schedule.name}
                                 info={schedule.description}
-                                isSelected={equalityChecker(state.scheduleId, schedule.id)}
-                                onClick={() => setOption(schedule.id)} /** TODO: функция в рендере */
+                                isSelected={equalityChecker(scheduleId, schedule.id)}
+                                onClick={orderValueHandler('scheduleId', schedule.id)}
                             />
                         ))}
                     </StepOptions>
@@ -47,8 +47,8 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, setOption }) => {
                                 id={schedule.id}
                                 title={schedule.label}
                                 info={schedule.time}
-                                isSelected={equalityChecker(state.scheduleId, schedule.id)}
-                                onClick={() => setOption(schedule.id)} /** TODO: функция в рендере */
+                                isSelected={equalityChecker(scheduleId, schedule.id)}
+                                onClick={orderValueHandler('scheduleId', schedule.id)}
                             />
                         ))}
                     </StepOptions>

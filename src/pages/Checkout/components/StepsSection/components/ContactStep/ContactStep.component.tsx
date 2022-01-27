@@ -23,8 +23,8 @@ import { equalityChecker } from 'helpers/comparators'
 export const ContactStep: FC<ContactStepProps> = ({
     setFormType,
     setPhoneId,
-    state,
-    setOption
+    numberId,
+    orderValueHandler
 }) => {
     const phoneNumbers: PhoneNumberItem[] = useSelector(getPhoneNumbers)
 
@@ -71,9 +71,8 @@ export const ContactStep: FC<ContactStepProps> = ({
                             info={phone.number}
                             editAction={editPhoneNumberHandler}
                             removeAction={removePhoneNumberHandler}
-                            isSelected={equalityChecker(state.numberId, phone.id)}
-                            /** TODO: функция в рендере */
-                            onClick={() => setOption(phone.id)}
+                            isSelected={equalityChecker(numberId, phone.id)}
+                            onClick={orderValueHandler('numberId', phone.id)}
                         />
                     ))}
                 </StepOptions>

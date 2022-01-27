@@ -20,13 +20,17 @@ import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 // helpers
 import { equalityChecker, everyChecker } from 'helpers/comparators'
 
-export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
+export const PaymentStep: FC<PaymentStepProps> = ({
+    paymentId,
+    orderValueHandler,
+    orderValues
+}) => {
     const paymentOptions: PaymentOption[] = useSelector(getPaymentOptions)
 
     const dispatch = useDispatch()
 
     const createOrderHandler = () => {
-        dispatch(createOrderRequest(state))
+        dispatch(createOrderRequest(orderValues))
     }
 
     return (
@@ -43,9 +47,8 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
                             id={payment.id}
                             title={payment.name}
                             info={payment.description}
-                            isSelected={equalityChecker(state.paymentId,payment.id)}
-                            /** TODO: функция в рендере */
-                            onClick={() => setOption(payment.id)}
+                            isSelected={equalityChecker(paymentId, payment.id)}
+                            onClick={orderValueHandler('paymentId', payment.id)}
                         />
                     ))}
                 </StepOptions>
@@ -58,10 +61,10 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
                 isWide
                 title='Proceed to Checkout'
                 disabled={!(everyChecker(
-                    state.addressId, 
-                    state.scheduleId, 
-                    state.numberId, 
-                    state.paymentId
+                    orderValues.addressId,
+                    orderValues.scheduleId,
+                    orderValues.numberId,
+                    orderValues.paymentId
                 ))} /** TODO: вынеси в отдельную функцию */
                 onClick={createOrderHandler}
             />

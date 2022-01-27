@@ -1,6 +1,4 @@
-import { OrderCreationState } from '../../StepsSection.types'
-
 export interface DeliverStepProps {
-    state: OrderCreationState,
-    setOption: (arg: string) => void
+    scheduleId: string,
+    orderValueHandler: (name: string, value: string) => () => void
 }

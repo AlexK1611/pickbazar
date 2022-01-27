@@ -23,8 +23,8 @@ import { equalityChecker } from 'helpers/comparators'
 export const AddressStep: FC<AddressStepProps> = ({
     setFormType,
     setAddressId,
-    state,
-    setOption
+    addressId,
+    orderValueHandler
 }) => {
     const deliveryAddresses: AddressItem[] | [] = useSelector(getDeliveryAddresses)
 
@@ -71,8 +71,8 @@ export const AddressStep: FC<AddressStepProps> = ({
                             info={address.description}
                             editAction={editAddressHandler}
                             removeAction={removeAddressHandler}
-                            isSelected={equalityChecker(state.addressId, address.id)}
-                            onClick={() => setOption(address.id)} /** TODO: функция в рендере */
+                            isSelected={equalityChecker(addressId, address.id)}
+                            onClick={orderValueHandler('addressId', address.id)}
                         />
                     ))}
                 </StepOptions>
