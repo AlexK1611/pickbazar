@@ -18,8 +18,8 @@ import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.compone
 import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 
 // helpers
-import { equalityChecker } from 'helpers/comparators'
 import { orderValuesChecker } from './PaymentStep.helpers'
+import { selectedOptionChecker } from '../../StepsSection.helpers'
 
 export const PaymentStep: FC<PaymentStepProps> = ({
     paymentId,
@@ -48,7 +48,7 @@ export const PaymentStep: FC<PaymentStepProps> = ({
                             id={payment.id}
                             title={payment.name}
                             info={payment.description}
-                            isSelected={equalityChecker(paymentId, payment.id)}
+                            isSelected={selectedOptionChecker(paymentId, payment.id)}
                             onClick={orderValueHandler('paymentId', payment.id)}
                         />
                     ))}

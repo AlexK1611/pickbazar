@@ -18,7 +18,7 @@ import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 
 // helpers
-import { equalityChecker } from 'helpers/comparators'
+import { selectedOptionChecker } from '../../StepsSection.helpers'
 
 export const ContactStep: FC<ContactStepProps> = ({
     setFormType,
@@ -71,7 +71,7 @@ export const ContactStep: FC<ContactStepProps> = ({
                             info={phone.number}
                             editAction={editPhoneNumberHandler}
                             removeAction={removePhoneNumberHandler}
-                            isSelected={equalityChecker(numberId, phone.id)}
+                            isSelected={selectedOptionChecker(numberId, phone.id)}
                             onClick={orderValueHandler('numberId', phone.id)}
                         />
                     ))}
