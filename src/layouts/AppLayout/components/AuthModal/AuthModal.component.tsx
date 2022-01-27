@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect, useCallback } from 'react'
 import ReactDOM from 'react-dom'
 import {
     ModalBackground,
@@ -12,6 +12,10 @@ import { AuthFormTypes, AuthModalProps } from './AuthModal.types'
 
 export const AuthModal: FC<AuthModalProps> = ({ isModal, authModalHandler }) => {
     const [formType, setFormType] = useState(AuthFormTypes.REGISTER)
+    const formTypeHandler = useCallback(
+        (type: AuthFormTypes) => () => setFormType(type),
+        []
+    )
 
     useEffect(() => {
         return () => setFormType(AuthFormTypes.REGISTER)
@@ -28,10 +32,10 @@ export const AuthModal: FC<AuthModalProps> = ({ isModal, authModalHandler }) => 
                     <CloseIcon />
                 </CloseButton>
                 {formType === AuthFormTypes.REGISTER && (
-                    <SignUp setFormType={setFormType} />
+                    <SignUp formTypeHandler={formTypeHandler} />
                 )}
                 {formType === AuthFormTypes.LOGIN && (
-                    <SignIn setFormType={setFormType} />
+                    <SignIn formTypeHandler={formTypeHandler} />
                 )}
             </ModalContent>
         </ModalBackground>,

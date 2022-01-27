@@ -37,7 +37,7 @@ import { UnderlinedText } from 'components/UnderlinedText/UnderlinedText.compone
 // icons
 import { ReactComponent as GoogleIcon } from 'assets/icons/google.svg'
 
-export const SignIn: FC<SignInProps> = ({ setFormType }) => {
+export const SignIn: FC<SignInProps> = ({ formTypeHandler }) => {
     const dispatch = useDispatch()
     const { register, handleSubmit, formState: { errors } } = useForm<SignInData>({
         resolver: yupResolver(signInValidation)
@@ -82,7 +82,7 @@ export const SignIn: FC<SignInProps> = ({ setFormType }) => {
                 <UnderlinedText
                     color='#009E7F'
                     fontSize='15px'
-                    onClick={() => setFormType(AuthFormTypes.REGISTER)} /** TODO: функция в рендере */
+                    onClick={formTypeHandler(AuthFormTypes.REGISTER)}
                 >
                     Register
                 </UnderlinedText>
