@@ -1,10 +1,10 @@
 import { ExtendedProductUnit } from 'store/products/types'
 
 export interface CreateOrderPayload {
-    addressId?: string,
-    scheduleId?: string,
+    addressId: string | null,
+    scheduleId: string | null,
     numberId: string | null,
-    paymentId?: string
+    paymentId?: string | null
 }
 
 export interface CreatedOrderResponse {

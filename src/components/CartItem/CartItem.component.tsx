@@ -31,13 +31,13 @@ export const CartItem: FC<CartItemProps> = ({
 }) => {
     const dispatch = useDispatch()
 
-    const increaseQuantityHandler = (id: number) => {
+    const increaseQuantityHandler = () => {
         dispatch(increaseQuantity(id))
     }
-    const decreaseQuantityHandler = (id: number) => {
+    const decreaseQuantityHandler = () => {
         dispatch(decreaseQuantity(id))
     }
-    const cartItemRemoveHandler = (id: number) => {
+    const cartItemRemoveHandler = () => {
         dispatch(removeItemFromCart(id))
     }
 
@@ -45,11 +45,9 @@ export const CartItem: FC<CartItemProps> = ({
         <ItemContainer>
             <LeftContent>
                 <ItemCounter>
-                    {/** TODO: функция в рендере. Передача данных дополнительно не имеет никакого смысла, ибо в функциях у теюбя же есть 
-                     * доступ в пропсы */}
                     <CounterSection
                         isFirst
-                        onClick={() => increaseQuantityHandler(id)}
+                        onClick={increaseQuantityHandler}
                     >
                         <SecondaryText>+</SecondaryText>
                     </CounterSection>
@@ -58,7 +56,7 @@ export const CartItem: FC<CartItemProps> = ({
                     </CounterSection>
                     <CounterSection
                         isLast
-                        onClick={() => decreaseQuantityHandler(id)}
+                        onClick={decreaseQuantityHandler}
                     >
                         <SecondaryText>-</SecondaryText>
                     </CounterSection>
@@ -72,7 +70,7 @@ export const CartItem: FC<CartItemProps> = ({
             </LeftContent>
             <RightContent>
                 {quantity && price && <PrimaryText>${(quantity * price).toFixed(2)}</PrimaryText>}
-                <RemoveButton onClick={() => cartItemRemoveHandler(id)}>
+                <RemoveButton onClick={cartItemRemoveHandler}>
                     <RemoveIcon />
                 </RemoveButton>
             </RightContent>

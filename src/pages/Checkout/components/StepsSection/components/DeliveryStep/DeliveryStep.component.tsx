@@ -9,23 +9,22 @@ import { ScheduleItem } from 'store/checkout/types'
 import { DeliverStepProps } from './DeliveryStep.types'
 
 // styled components
-import { StepOptions } from './DeliveryStep.styles'
+import { StepOptions } from '../../StepsSection.styles'
 
 // components
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 
 // helpers
-import { equalityChecker } from 'helpers/comparators'
+import { selectedOptionChecker } from '../../StepsSection.helpers'
 
-export const DeliveryStep: FC<DeliverStepProps> = ({ state, setOption }) => {
+export const DeliveryStep: FC<DeliverStepProps> = ({ scheduleId, orderValueHandler }) => {
     const deliverySchedules: ScheduleItem[] = useSelector(getDeliverySchedules)
 
     return (
         <CheckoutStep
             stepNumber={2}
             stepName='Delivery Schedule'
-            formType='add-delivery'
         >
             {deliverySchedules && (
                 <>
@@ -36,8 +35,8 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, setOption }) => {
                                 id={schedule.id}
                                 title={schedule.name}
                                 info={schedule.description}
-                                isSelected={equalityChecker(state.scheduleId, schedule.id)}
-                                onClick={() => setOption(schedule.id)} /** TODO: функция в рендере */
+                                isSelected={selectedOptionChecker(scheduleId, schedule.id)}
+                                onClick={orderValueHandler('scheduleId', schedule.id)}
                             />
                         ))}
                     </StepOptions>
@@ -48,8 +47,8 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ state, setOption }) => {
                                 id={schedule.id}
                                 title={schedule.label}
                                 info={schedule.time}
-                                isSelected={equalityChecker(state.scheduleId, schedule.id)}
-                                onClick={() => setOption(schedule.id)} /** TODO: функция в рендере */
+                                isSelected={selectedOptionChecker(scheduleId, schedule.id)}
+                                onClick={orderValueHandler('scheduleId', schedule.id)}
                             />
                         ))}
                     </StepOptions>

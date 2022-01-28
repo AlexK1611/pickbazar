@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // styled components
-import { Form, Title } from './EditNumber.styles'
+import { FormTitle, Form } from '../CheckoutModal/CheckoutModal.styles'
 
 // components
 import { FormField } from 'components/FormField/FormField.component'
@@ -20,7 +20,7 @@ import { EditNumberProps, NumberData } from './EditNumber.types'
 
 // helpers
 import { numberValidation } from './EditNumber.helpers'
-import { equalityChecker } from 'helpers/comparators'
+import { editFormButtonChecker } from 'pages/Checkout/Checkout.helpers'
 
 export const EditNumber: FC<EditNumberProps> = ({
     closeModal,
@@ -41,7 +41,7 @@ export const EditNumber: FC<EditNumberProps> = ({
     return (
         <>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <Title>Edit Number</Title>
+                <FormTitle>Edit Number</FormTitle>
                 <FormField
                     {...register('title', { value: dataToEdit.title })}
                     placeholder='Edit title'
@@ -57,10 +57,12 @@ export const EditNumber: FC<EditNumberProps> = ({
                 <SubmitButton
                     isWide
                     title='Edit Number'
-                    disabled={
-                        equalityChecker(formValues.title, dataToEdit.title) ||
-                        equalityChecker(formValues.number, dataToEdit.number)
-                    } /** TODO: рекомендую вынести в отдельную функцию эту часть  */
+                    disabled={editFormButtonChecker(
+                        formValues.title,
+                        dataToEdit.title,
+                        formValues.number,
+                        dataToEdit.number
+                    )}
                 />
             </Form>
         </>

@@ -34,3 +34,13 @@ export const CloseButton = styled.button`
 export const CloseIcon = styled(CloseSvg)`
     fill: rgba(0, 0, 0, 0.25);
 `
+
+export const FormTitle = styled.h2`
+    font-size: 19px;
+    font-weight: 700;
+    color: #0D1136;
+`
+
+export const Form = styled.form`
+    margin-top: 15px;
+`

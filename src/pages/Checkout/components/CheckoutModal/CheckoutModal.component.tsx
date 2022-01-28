@@ -20,7 +20,7 @@ import { EditAddress } from '../EditAddress/EditAddress.component'
 import { EditNumber } from '../EditNumber/EditNumber.component'
 
 // types
-import { CheckoutModalProps } from './CheckoutModal.types'
+import { CheckoutFormTypes, CheckoutModalProps } from './CheckoutModal.types'
 import { AddressItem, PhoneNumberItem } from 'store/checkout/types'
 
 export const CheckoutModal: FC<CheckoutModalProps> = ({
@@ -59,16 +59,15 @@ export const CheckoutModal: FC<CheckoutModalProps> = ({
                 <CloseButton onClick={closeModal}>
                     <CloseIcon />
                 </CloseButton>
-                {/** TODO: тож рекомендую add-address докинуть в константу или enum  */ }
-                {formType === 'add-address' && <AddAddress closeModal={closeModal} />}
-                {formType === 'edit-address' && addressToEdit && (
+                {formType === CheckoutFormTypes.ADD_ADDRESS && <AddAddress closeModal={closeModal} />}
+                {formType === CheckoutFormTypes.EDIT_ADDRESS && addressToEdit && (
                     <EditAddress
                         closeModal={closeEditAddressForm}
                         dataToEdit={addressToEdit}
                     />
                 )}
-                {formType === 'add-number' && <AddNumber closeModal={closeModal} />}
-                {formType === 'edit-number' && numberToEdit && (
+                {formType === CheckoutFormTypes.ADD_NUMBER && <AddNumber closeModal={closeModal} />}
+                {formType === CheckoutFormTypes.EDIT_NUMBER && numberToEdit && (
                     <EditNumber
                         closeModal={closeEditNumberForm}
                         dataToEdit={numberToEdit}

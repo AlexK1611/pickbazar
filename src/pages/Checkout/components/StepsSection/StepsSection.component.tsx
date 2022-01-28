@@ -1,7 +1,7 @@
-import { FC, useReducer } from 'react'
+import { FC, useCallback, useReducer } from 'react'
 
 // types
-import { StepsSectionProps } from './StepsSection.types'
+import { OrderValues, StepsSectionProps } from './StepsSection.types'
 
 // styled components
 import { CheckoutSteps } from './StepsSection.styles'
@@ -12,57 +12,53 @@ import { DeliveryStep } from './components/DeliveryStep/DeliveryStep.component'
 import { ContactStep } from './components/ContactStep/ContactStep.component'
 import { PaymentStep } from './components/PaymentStep/PaymentStep.component'
 
-// state
-import {
-    orderCreationReducer,
-    orderCreationState,
-    setOrderAddress,
-    setOrderSchedule,
-    setOrderPhoneNumber,
-    setOrderPayment
-} from './StepsSection.state'
-
 export const StepsSection: FC<StepsSectionProps> = ({
     setFormType,
     setAddressId,
     setPhoneId
 }) => {
-    const [state, action] = useReducer(orderCreationReducer, orderCreationState)
-
-    const setOrderAddressAction = (id: string) => {
-        action(setOrderAddress(id))
+    const initialValues: OrderValues = {
+        addressId: '',
+        scheduleId: '',
+        numberId: '',
+        paymentId: ''
     }
-    const setOrderScheduleAction = (id: string) => {
-        action(setOrderSchedule(id))
-    }
-    const setOrderPhoneNumberAction = (id: string) => {
-        action(setOrderPhoneNumber(id))
-    }
-    const setOrderPaymentAction = (id: string) => {
-        action(setOrderPayment(id))
-    }
+    const [orderValues, setOrderValues] = useReducer(
+        (
+            oldValues: OrderValues,
+            newValues: { [key: string]: string }
+        ) => ({ ...oldValues, ...newValues }),
+        initialValues
+    )
+    const { addressId, scheduleId, numberId, paymentId } = orderValues
+    const orderValueHandler = useCallback(
+        (name: string, value: string) =>
+        () => setOrderValues({ [name]: value }),
+        []
+    )
 
     return (
         <CheckoutSteps>
             <AddressStep
                 setFormType={setFormType}
                 setAddressId={setAddressId}
-                state={state}
-                setOption={setOrderAddressAction}
+                addressId={addressId}
+                orderValueHandler={orderValueHandler}
             />
             <DeliveryStep
-                state={state}
-                setOption={setOrderScheduleAction}
+                scheduleId={scheduleId}
+                orderValueHandler={orderValueHandler}
             />
             <ContactStep
                 setFormType={setFormType}
                 setPhoneId={setPhoneId}
-                state={state}
-                setOption={setOrderPhoneNumberAction}
+                numberId={numberId}
+                orderValueHandler={orderValueHandler}
             />
             <PaymentStep
-                state={state}
-                setOption={setOrderPaymentAction}
+                paymentId={paymentId}
+                orderValueHandler={orderValueHandler}
+                orderValues={orderValues}
             />
         </CheckoutSteps>
     )

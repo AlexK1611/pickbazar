@@ -37,7 +37,7 @@ export const Coupons: FC = () => {
             {coupons && (
                 <Swiper
                     spaceBetween={40}
-                    slidesPerView={window.innerWidth >= 1366 ? 3 : 2} /** TODO: рекомендую запихнуть это в константу, чтоб было понятно что это и зачем */
+                    slidesPerView={2}
                     navigation
                 >
                     {coupons.map(coupon => (

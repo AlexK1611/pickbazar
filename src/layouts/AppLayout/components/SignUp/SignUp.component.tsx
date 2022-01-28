@@ -9,21 +9,22 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // styled components
+import { TermsAndConditions } from './SignUp.styled'
 import {
     Form,
     Title,
     Subtitle,
-    TermsAndConditions,
     Splitter,
     SplitterLine,
     SplitterText,
     SocialButtons,
-    LoginProposal
-} from './SignUp.styled'
+    FormSwitcher
+} from '../AuthModal/AuthModal.styles'
 
 // types
 import { SignUpProps } from './SignUp.types'
 import { SignUpData } from 'store/auth/types'
+import { AuthFormTypes } from '../AuthModal/AuthModal.types'
 
 // helpers
 import { signUpValidation } from './SignUp.helpers'
@@ -37,7 +38,7 @@ import { UnderlinedText } from 'components/UnderlinedText/UnderlinedText.compone
 // icons
 import { ReactComponent as GoogleIcon } from 'assets/icons/google.svg'
 
-export const SignUp: FC<SignUpProps> = ({ setFormType }) => {
+export const SignUp: FC<SignUpProps> = ({ formTypeHandler }) => {
     const dispatch = useDispatch()
     const { register, handleSubmit, formState: { errors } } = useForm<SignUpData>({
         resolver: yupResolver(signUpValidation)
@@ -95,16 +96,16 @@ export const SignUp: FC<SignUpProps> = ({ setFormType }) => {
                     provider='google'
                 />
             </SocialButtons>
-            <LoginProposal>
+            <FormSwitcher>
                 Already have an account?
                 <UnderlinedText
                     color='#009E7F'
                     fontSize='15px'
-                    onClick={() => setFormType('login')} /** TODO: функция в рендере */
+                    onClick={formTypeHandler(AuthFormTypes.LOGIN)}
                 >
                     Login
                 </UnderlinedText>
-            </LoginProposal>
+            </FormSwitcher>
         </>
     )
 }

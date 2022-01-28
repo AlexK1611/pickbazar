@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect, useCallback } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -36,7 +36,21 @@ export const Products: FC = () => {
     const dispatch = useDispatch()
 
     const [parentCategory, setParentCategory] = useState(0)
+    const parentCategoryHandler = useCallback(
+        (category: number) => () => setParentCategory(category),
+        []
+    )
+
     const [selectedCategory, setSelectedCategory] = useState(0)
+    const categoryHandler = useCallback(
+        (category: number) => () => {
+            if (category !== selectedCategory) {
+                dispatch(resetProductsRequestStart())
+            }
+            setSelectedCategory(category)
+        },
+        [selectedCategory, dispatch]
+    )
 
     useEffect(() => {
         if (!categories) {
@@ -57,13 +71,6 @@ export const Products: FC = () => {
         }
     }, [products, selectedCategory])
 
-    const categoryHandler = (category: number) => {
-        if (category !== selectedCategory) {
-            dispatch(resetProductsRequestStart())
-        }
-        setSelectedCategory(category)
-    }
-
     const loadMoreHandler = () => {
         dispatch(loadMoreProducts())
     }
@@ -75,7 +82,7 @@ export const Products: FC = () => {
                     <Categories
                         categories={categories}
                         parentCategory={parentCategory}
-                        setParentCategory={setParentCategory}
+                        parentCategoryHandler={parentCategoryHandler}
                         selectedCategory={selectedCategory}
                         categoryHandler={categoryHandler}
                     />
@@ -83,11 +90,13 @@ export const Products: FC = () => {
             </CategoriesSection>
             <ProductsSection>
                 {!products && <ProductsMessage>Select category</ProductsMessage>}
-                {products && <ProductsList products={products}/>}
-                {products && products.length % 10 === 0 && ( /** TODO: у тебя вьюшка не должна знать о таких подробностях */
-                    <LoadMoreBtn onClick={loadMoreHandler}>
-                        <LoadMoreBtnTitle>Load More</LoadMoreBtnTitle>
-                    </LoadMoreBtn>
+                {products && (
+                    <>
+                        <ProductsList products={products}/>
+                        <LoadMoreBtn onClick={loadMoreHandler}>
+                            <LoadMoreBtnTitle>Load More</LoadMoreBtnTitle>
+                        </LoadMoreBtn>
+                    </>
                 )}
             </ProductsSection>
         </ProductsSectionContainer>

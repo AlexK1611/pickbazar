@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react'
+import { FC, MouseEvent, useCallback } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -8,45 +8,58 @@ import { getDeliveryAddresses } from 'store/checkout/selectors'
 // types
 import { AddressItem } from 'store/checkout/types'
 import { AddressStepProps } from './AddressStep.types'
+import { CheckoutFormTypes } from 'pages/Checkout/components/CheckoutModal/CheckoutModal.types'
 
 // styled components
-import { StepOptions } from './AddressStep.styles'
+import { StepOptions } from '../../StepsSection.styles'
 
 // components
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 
 // helpers
-import { equalityChecker } from 'helpers/comparators'
+import { selectedOptionChecker } from '../../StepsSection.helpers'
 
 export const AddressStep: FC<AddressStepProps> = ({
     setFormType,
     setAddressId,
-    state,
-    setOption
+    addressId,
+    orderValueHandler
 }) => {
     const deliveryAddresses: AddressItem[] | [] = useSelector(getDeliveryAddresses)
 
     const dispatch = useDispatch()
 
-    const editAddressHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
-        event.stopPropagation()
-        setAddressId(id)
-        setFormType('edit-address')
-    }
+    const editAddressHandler = useCallback(
+        (id: string) =>
+        (event: MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation()
+            setAddressId(id)
+            setFormType(CheckoutFormTypes.EDIT_ADDRESS)
+        },
+        [setAddressId, setFormType]
+    )
 
-    const removeAddressHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
-        event.stopPropagation()
-        dispatch(removeAddress(id))
-    }
+    const removeAddressHandler = useCallback(
+        (id: string) =>
+        (event: MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation()
+            dispatch(removeAddress(id))
+        },
+        [dispatch]
+    )
+
+    const formTypeHandler = useCallback(
+        () => setFormType(CheckoutFormTypes.ADD_ADDRESS),
+        [setFormType]
+    )
 
     return (
         <CheckoutStep
             stepNumber={1}
             stepName='Delivery Address'
             stepLabel='Address'
-            setFormType={setFormType}
-            formType='add-address'
+            formTypeHandler={formTypeHandler}
         >
             {deliveryAddresses && (
                 <StepOptions>
@@ -58,8 +71,8 @@ export const AddressStep: FC<AddressStepProps> = ({
                             info={address.description}
                             editAction={editAddressHandler}
                             removeAction={removeAddressHandler}
-                            isSelected={equalityChecker(state.addressId, address.id)}
-                            onClick={() => setOption(address.id)} /** TODO: функция в рендере */
+                            isSelected={selectedOptionChecker(addressId, address.id)}
+                            onClick={orderValueHandler('addressId', address.id)}
                         />
                     ))}
                 </StepOptions>

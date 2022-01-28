@@ -1,3 +1,3 @@
 export interface CartHeaderProps {
-    setCartOpened: (param: boolean) => void
+    cartOpenedHandler: () => void
 }

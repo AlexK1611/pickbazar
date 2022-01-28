@@ -3,7 +3,7 @@ import { FC, useEffect } from 'react'
 // redux
 import { useSelector, useDispatch } from 'react-redux'
 import { productInfoRequest, productsRequest } from 'store/products/actions'
-import { getProductInfo, getProducts } from 'store/products/selectors'
+import { getProductInfo, getRelatedProducts } from 'store/products/selectors'
 
 // libraries
 import { useParams } from 'react-router-dom'
@@ -34,12 +34,12 @@ export const Product: FC = () => {
             dispatch(productsRequest(productInfo.category.id, 0))
         }
     }, [productInfo])
-    const products: ProductUnit[] | null = useSelector(getProducts)
+    const relatedProducts: ProductUnit[] | undefined = useSelector(getRelatedProducts(+productId!))
 
     return (
         <ProductPage>
             {productInfo && <Info productInfo={productInfo} />}
-            {products && <Related products={products} productId={productId} />}
+            {relatedProducts && <Related relatedProducts={relatedProducts} />}
         </ProductPage>
     )
 }

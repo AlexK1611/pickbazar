@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react'
+import { FC, MouseEvent, useCallback } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -8,45 +8,58 @@ import { getPhoneNumbers } from 'store/checkout/selectors'
 // types
 import { ContactStepProps } from './ContactStep.types'
 import { PhoneNumberItem } from 'store/checkout/types'
+import { CheckoutFormTypes } from 'pages/Checkout/components/CheckoutModal/CheckoutModal.types'
 
 // styled components
-import { StepOptions } from './ContactStep.styles'
+import { StepOptions } from '../../StepsSection.styles'
 
 // components
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 
 // helpers
-import { equalityChecker } from 'helpers/comparators'
+import { selectedOptionChecker } from '../../StepsSection.helpers'
 
 export const ContactStep: FC<ContactStepProps> = ({
     setFormType,
     setPhoneId,
-    state,
-    setOption
+    numberId,
+    orderValueHandler
 }) => {
     const phoneNumbers: PhoneNumberItem[] = useSelector(getPhoneNumbers)
 
     const dispatch = useDispatch()
 
-    const editPhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
-        event.stopPropagation()
-        setPhoneId(id)
-        setFormType('edit-number')
-    }
+    const editPhoneNumberHandler = useCallback(
+        (id: string) =>
+        (event: MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation()
+            setPhoneId(id)
+            setFormType(CheckoutFormTypes.EDIT_NUMBER)
+        },
+        [setPhoneId, setFormType]
+    )
 
-    const removePhoneNumberHandler = (event: MouseEvent<HTMLButtonElement>, id: string) => {
-        event.stopPropagation()
-        dispatch(removePhoneNumber(id))
-    }
+    const removePhoneNumberHandler = useCallback(
+        (id: string) =>
+        (event: MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation()
+            dispatch(removePhoneNumber(id))
+        },
+        [dispatch]
+    )
+
+    const formTypeHandler = useCallback(
+        () => setFormType(CheckoutFormTypes.ADD_NUMBER),
+        [setFormType]
+    )
 
     return (
         <CheckoutStep
             stepNumber={3}
             stepName='Contact Number'
             stepLabel='Number'
-            setFormType={setFormType}
-            formType='add-number'
+            formTypeHandler={formTypeHandler}
         >
             {phoneNumbers && (
                 <StepOptions>
@@ -58,9 +71,8 @@ export const ContactStep: FC<ContactStepProps> = ({
                             info={phone.number}
                             editAction={editPhoneNumberHandler}
                             removeAction={removePhoneNumberHandler}
-                            isSelected={equalityChecker(state.numberId, phone.id)}
-                            /** TODO: функция в рендере */
-                            onClick={() => setOption(phone.id)}
+                            isSelected={selectedOptionChecker(numberId, phone.id)}
+                            onClick={orderValueHandler('numberId', phone.id)}
                         />
                     ))}
                 </StepOptions>

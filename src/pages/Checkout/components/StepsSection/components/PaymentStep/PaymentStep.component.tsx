@@ -10,7 +10,8 @@ import { PaymentOption } from 'store/checkout/types'
 import { PaymentStepProps } from './PaymentStep.types'
 
 // styled components
-import { StepOptions, StepInfo, TermsAndConditions } from './PaymentStep.styles'
+import { StepOptions } from '../../StepsSection.styles'
+import { StepInfo, TermsAndConditions } from './PaymentStep.styles'
 
 // components
 import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
@@ -18,20 +19,20 @@ import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.compone
 import { SubmitButton } from 'components/SubmitButton/SubmitButton.component'
 
 // helpers
-import { equalityChecker, everyChecker } from 'helpers/comparators'
+import { orderValuesChecker } from './PaymentStep.helpers'
+import { selectedOptionChecker } from '../../StepsSection.helpers'
 
-export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
+export const PaymentStep: FC<PaymentStepProps> = ({
+    paymentId,
+    orderValueHandler,
+    orderValues
+}) => {
     const paymentOptions: PaymentOption[] = useSelector(getPaymentOptions)
 
     const dispatch = useDispatch()
 
-    const createOrderHandler = (
-        addressId: string | undefined,
-        scheduleId: string | undefined,
-        numberId: string | null,
-        paymentId: string | undefined
-    ) => {
-        dispatch(createOrderRequest({ addressId, scheduleId, numberId, paymentId }))
+    const createOrderHandler = () => {
+        dispatch(createOrderRequest(orderValues))
     }
 
     return (
@@ -39,7 +40,6 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
             stepNumber={4}
             stepName='Payment Option'
             stepLabel='Card'
-            formType='add-payment'
         >
             {paymentOptions && (
                 <StepOptions>
@@ -49,9 +49,8 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
                             id={payment.id}
                             title={payment.name}
                             info={payment.description}
-                            isSelected={equalityChecker(state.paymentId,payment.id)}
-                            /** TODO: функция в рендере */
-                            onClick={() => setOption(payment.id)}
+                            isSelected={selectedOptionChecker(paymentId, payment.id)}
+                            onClick={orderValueHandler('paymentId', payment.id)}
                         />
                     ))}
                 </StepOptions>
@@ -63,18 +62,8 @@ export const PaymentStep: FC<PaymentStepProps> = ({ state, setOption }) => {
             <SubmitButton
                 isWide
                 title='Proceed to Checkout'
-                disabled={!(everyChecker(
-                    state.addressId, 
-                    state.scheduleId, 
-                    state.numberId, 
-                    state.paymentId
-                ))} /** TODO: вынеси в отдельную функцию */
-                onClick={() => createOrderHandler(
-                    state.addressId!,
-                    state.scheduleId!,
-                    state.numberId,
-                    state.paymentId!
-                )} /** TODO: функция в рендере */
+                disabled={!orderValuesChecker(orderValues)}
+                onClick={createOrderHandler}
             />
         </CheckoutStep>
     )

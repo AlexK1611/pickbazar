@@ -11,7 +11,7 @@ import {
 } from './CartHeader.styles'
 import { CartHeaderProps } from './CartHeader.types'
 
-export const CartHeader: FC<CartHeaderProps> = ({ setCartOpened }) => {
+export const CartHeader: FC<CartHeaderProps> = ({ cartOpenedHandler }) => {
     const cartItemTypes: number = useSelector(getCartItemTypes)
 
     return (
@@ -20,8 +20,7 @@ export const CartHeader: FC<CartHeaderProps> = ({ setCartOpened }) => {
                 <ItemsIcon />
                 <ItemsCount>{cartItemTypes} Item(s)</ItemsCount>
             </ItemsContainer>
-            {/** TODO: функция в рендере */}
-            <CloseButton onClick={() => setCartOpened(false)}>
+            <CloseButton onClick={cartOpenedHandler}>
                 <CloseIcon />
             </CloseButton>
         </HeaderContainer>

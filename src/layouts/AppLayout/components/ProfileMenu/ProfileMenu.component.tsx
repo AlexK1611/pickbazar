@@ -4,9 +4,9 @@ import { signOutRequest } from 'store/auth/actions'
 import { OptionItem, OptionItemText, OptionsList } from './ProfileMenu.styles'
 import { ProfileMenuProps } from './ProfileMenu.types'
 
-export const ProfileMenu: FC<ProfileMenuProps> = ({ isMenu }) => {
+export const ProfileMenu: FC<ProfileMenuProps> = ({ isProfileMenuOpen }) => {
     const dispatch = useDispatch()
-    if (!isMenu) return null
+    if (!isProfileMenuOpen) return null
 
     const profileOptions = [
         {

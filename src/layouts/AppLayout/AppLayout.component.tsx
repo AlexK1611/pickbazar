@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect, useCallback } from 'react'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -44,6 +44,10 @@ export const AppLayout: FC = ({ children }) => {
             handleAuthModal(false)
         }
     }, [user])
+    const authModalHandler = useCallback(
+        () => handleAuthModal(isAuthModal => !isAuthModal),
+        []
+    )
 
     useEffect(() => {
         if (authMessage !== null) {
@@ -51,19 +55,21 @@ export const AppLayout: FC = ({ children }) => {
         }
     }, [authMessage])
 
-    {/** TODO: по неймнгу и внутренностям вообще не понятно за что стейт отвечает */ }
-    const [isProfileMenu, handleProfileMenu] = useState(false)
+    const [isProfileMenuOpen, setProfileMenuOpen] = useState(false)
     useEffect(() => {
         if (user === null) {
-            handleProfileMenu(false)
+            setProfileMenuOpen(false)
         }
     }, [user])
+    const profileMenuHandler = () => {
+        setProfileMenuOpen(isProfileMenuOpen => !isProfileMenuOpen)
+    }
 
     return (
         <LayoutContainer>
             <AuthModal
                 isModal={isAuthModal}
-                handleAuthModal={handleAuthModal}
+                authModalHandler={authModalHandler}
             />
             <Toast
                 isToast={authMessage !== null}
@@ -81,12 +87,11 @@ export const AppLayout: FC = ({ children }) => {
                 </HeaderItemsGroup>
                 {user ? (
                     <ProfileMenuContainer>
-                        {/** TODO: функция в рендере  */ }
-                        <UserProfilePic onClick={() => handleProfileMenu(!isProfileMenu)}/>
-                        <ProfileMenu isMenu={isProfileMenu}/>
+                        <UserProfilePic onClick={profileMenuHandler}/>
+                        <ProfileMenu isProfileMenuOpen={isProfileMenuOpen}/>
                     </ProfileMenuContainer>
                 ) : (
-                    <SubmitButton title='Join' onClick={() => handleAuthModal(true)} /> /** TODO: функция в рендере  */
+                    <SubmitButton title='Join' onClick={authModalHandler} />
                 )}
             </Header>
             <Content>{children}</Content>

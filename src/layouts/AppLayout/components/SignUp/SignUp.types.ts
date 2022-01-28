@@ -1,3 +1,5 @@
+import { AuthFormTypes } from '../AuthModal/AuthModal.types'
+
 export interface SignUpProps {
-    setFormType: (param: string) => void
+    formTypeHandler: (arg: AuthFormTypes) => () => void
 }
