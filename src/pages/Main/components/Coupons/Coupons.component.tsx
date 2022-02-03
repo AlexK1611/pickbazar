@@ -22,6 +22,9 @@ import {
 // types
 import { CouponItem } from 'store/coupons/types'
 
+// helpers
+import { SLIDES_PER_VIEW } from 'helpers/constants'
+
 export const Coupons: FC = () => {
     const coupons: CouponItem[] | null = useSelector(getCoupons)
     const dispatch = useDispatch()
@@ -37,7 +40,7 @@ export const Coupons: FC = () => {
             {coupons && (
                 <Swiper
                     spaceBetween={40}
-                    slidesPerView={2}
+                    slidesPerView={SLIDES_PER_VIEW}
                     navigation
                 >
                     {coupons.map(coupon => (
