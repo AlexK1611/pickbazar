@@ -40,6 +40,13 @@ export const EditAddress: FC<EditAddressProps> = ({
         closeModal()
     }
 
+    const isButtonDisabled = editFormButtonChecker(
+        formValues.title,
+        dataToEdit.title,
+        formValues.description,
+        dataToEdit.description
+    )
+
     return (
         <>
             <Form onSubmit={handleSubmit(onSubmit)}>
@@ -58,12 +65,7 @@ export const EditAddress: FC<EditAddressProps> = ({
                 <SubmitButton
                     isWide
                     title='Edit Address'
-                    disabled={editFormButtonChecker(
-                        formValues.title,
-                        dataToEdit.title,
-                        formValues.description,
-                        dataToEdit.description
-                    )}
+                    disabled={isButtonDisabled}
                 />
             </Form>
         </>

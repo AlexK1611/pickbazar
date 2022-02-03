@@ -37,6 +37,13 @@ export const EditNumber: FC<EditNumberProps> = ({
         dispatch(editPhoneNumber(fullData))
         closeModal()
     }
+
+    const isButtonDisabled = editFormButtonChecker(
+        formValues.title,
+        dataToEdit.title,
+        formValues.number,
+        dataToEdit.number
+    )
     
     return (
         <>
@@ -57,12 +64,7 @@ export const EditNumber: FC<EditNumberProps> = ({
                 <SubmitButton
                     isWide
                     title='Edit Number'
-                    disabled={editFormButtonChecker(
-                        formValues.title,
-                        dataToEdit.title,
-                        formValues.number,
-                        dataToEdit.number
-                    )}
+                    disabled={isButtonDisabled}
                 />
             </Form>
         </>

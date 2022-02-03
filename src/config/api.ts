@@ -12,7 +12,7 @@ export const interceptor = (store: any) => {
         response => response,
         error => {
             /*
-                не получится использовать здесь контекст для отображения сообщений
+                экшн для сообщения об успешной авторизации/аутентификации (сокращенно)
             */
             store.dispatch({
                 type: AuthActionTypes.SET_AUTH_MESSAGE,
