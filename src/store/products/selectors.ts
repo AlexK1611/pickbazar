@@ -6,10 +6,10 @@ export const getProducts = createSelector(
     state => state.products
 )
 
-export const getRelatedProducts = (id: number) => {
+export const getRelatedProducts = (id: string) => {
     return createSelector(
         (state: RootReducer) => state.products,
-        state => state.products?.filter(item => item.id !== id)
+        state => state.products?.filter(item => item.id !== +id)
     )
 }
 

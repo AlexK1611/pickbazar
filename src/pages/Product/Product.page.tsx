@@ -34,7 +34,7 @@ export const Product: FC = () => {
             dispatch(productsRequest(productInfo.category.id, 0))
         }
     }, [productInfo])
-    const relatedProducts: ProductUnit[] | undefined = useSelector(getRelatedProducts(+productId!))
+    const relatedProducts: ProductUnit[] | undefined = useSelector(getRelatedProducts(productId!))
 
     return (
         <ProductPage>
