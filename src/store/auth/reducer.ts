@@ -8,7 +8,7 @@ const initialState: AuthState = {
 
 export const AuthReducer = (state = initialState, action: AuthAction): AuthState => {
     switch (action.type) {
-        case AuthActionTypes.SET_AUTH_MESSAGE: {
+        case AuthActionTypes.SET_TOAST_MESSAGE: {
             return { ...state, authMessage: action.payload}
         }
         case AuthActionTypes.REMOVE_AUTH_MESSAGE: {

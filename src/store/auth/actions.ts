@@ -15,7 +15,7 @@ export const signUpRequest = (data: SignUpData) => {
                 payload: user
             })
             dispatch({
-                type: AuthActionTypes.SET_AUTH_MESSAGE,
+                type: AuthActionTypes.SET_TOAST_MESSAGE,
                 payload: 'Signed up successfully'
             })
         } catch (error) {
@@ -36,7 +36,7 @@ export const googleAuthRequest = (provider: string, token: string) => {
                 type: AuthActionTypes.SET_USER, payload: user
             })
             dispatch({
-                type: AuthActionTypes.SET_AUTH_MESSAGE,
+                type: AuthActionTypes.SET_TOAST_MESSAGE,
                 payload: 'Signed in successfully'
             })
         } catch (error) {
@@ -62,7 +62,7 @@ export const signInRequest = (data: SignInData) => {
                 payload: user
             })
             dispatch({
-                type: AuthActionTypes.SET_AUTH_MESSAGE,
+                type: AuthActionTypes.SET_TOAST_MESSAGE,
                 payload: 'Signed in successfully'
             })
         } catch (error) {
