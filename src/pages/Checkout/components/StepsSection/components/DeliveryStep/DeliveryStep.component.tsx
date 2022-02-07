@@ -16,7 +16,7 @@ import { CheckoutStep } from 'components/CheckoutStep/CheckoutStep.component'
 import { CheckoutOption } from 'components/CheckoutOption/CheckoutOption.component'
 
 // helpers
-import { selectedOptionChecker } from '../../StepsSection.helpers'
+import { valuesEqualityChecker } from 'helpers/helpers'
 
 export const DeliveryStep: FC<DeliverStepProps> = ({ scheduleId, orderValueHandler }) => {
     const deliverySchedules: ScheduleItem[] = useSelector(getDeliverySchedules)
@@ -35,7 +35,7 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ scheduleId, orderValueHandl
                                 id={schedule.id}
                                 title={schedule.name}
                                 info={schedule.description}
-                                isSelected={selectedOptionChecker(scheduleId, schedule.id)}
+                                isSelected={valuesEqualityChecker(scheduleId, schedule.id)}
                                 onClick={orderValueHandler('scheduleId', schedule.id)}
                             />
                         ))}
@@ -47,7 +47,7 @@ export const DeliveryStep: FC<DeliverStepProps> = ({ scheduleId, orderValueHandl
                                 id={schedule.id}
                                 title={schedule.label}
                                 info={schedule.time}
-                                isSelected={selectedOptionChecker(scheduleId, schedule.id)}
+                                isSelected={valuesEqualityChecker(scheduleId, schedule.id)}
                                 onClick={orderValueHandler('scheduleId', schedule.id)}
                             />
                         ))}
