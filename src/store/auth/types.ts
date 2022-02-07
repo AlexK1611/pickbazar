@@ -43,7 +43,7 @@ export interface AuthState {
 }
 
 export enum AuthActionTypes {
-    SET_AUTH_MESSAGE = 'SET_AUTH_MESSAGE',
+    SET_TOAST_MESSAGE = 'SET_TOAST_MESSAGE',
     REMOVE_AUTH_MESSAGE = 'REMOVE_AUTH_MESSAGE',
     SET_JWT = 'SET_JWT',
     REMOVE_JWT = 'REMOVE_JWT',
@@ -52,7 +52,7 @@ export enum AuthActionTypes {
 }
 
 interface SetAuthMessageAction {
-    type: AuthActionTypes.SET_AUTH_MESSAGE,
+    type: AuthActionTypes.SET_TOAST_MESSAGE,
     payload: string
 }
 
