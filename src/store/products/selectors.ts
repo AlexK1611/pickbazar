@@ -9,7 +9,7 @@ export const getProducts = createSelector(
 export const getRelatedProducts = (id: string) => {
     return createSelector(
         (state: RootReducer) => state.products,
-        state => state.products?.filter(item => item.id !== +id)
+        state => state.products?.filter(item => item.id !== Number(id))
     )
 }
 
